@@ -2,7 +2,7 @@
 
 ## 概要
 
-本リポジトリは，Github Pages で公開しているページのソースセットである．    
+本リポジトリは，Github Pages で公開しているページ（以下，本ページ）のソースセットである．    
 当該ページは [Hugo](https://gohugo.io) を利用して作成されている．
 
 ## 環境作成
@@ -165,3 +165,36 @@ $ hugo new docs/cpp/_index.md
 
 `content/docs/cpp/_index.md` が追加されている．    
 
+### クリエイティブ・コモンズ・ライセンスの表示
+
+本ページは CC BY-ND 4.0 で公開する．     
+そこで `layouts/partials/docs/inject/content-after.html` に以下を追加する．
+
+```html
+<hr>
+
+<p>
+<small>
+<a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx"><img src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" /></a><br />本ページは <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx">クリエイティブ・コモンズ 表示 - 改変禁止 4.0 国際ライセンス (CC BY-ND 4.0)</a>の下に提供されています。
+</small>
+</p>
+```
+
+`layouts/partials/docs/inject/footer.html` もあるが，ここに上記を記載すると，画像がつぶれてしまうので，コンテンツの最後につけるようにした．
+
+### ページ内リンク
+
+参考：https://maku77.github.io/hugo/advanced/internal-link.html
+
+任意の場所にページ内リンクができるよう，空の `a` タグがおけるようなショートコードを追加する．
+
+以下の内容の `layouts/shortcodes/anchor.html` というファイルを作成する．
+
+```html
+<a id="{{ .Get 0 }}"></a>
+```
+
+使いかたは以下の通り．
+
+* リンク先：`{{< anchor "anchor-id" >}}`
+* リンク元：`[リンク](#anchor-id)`

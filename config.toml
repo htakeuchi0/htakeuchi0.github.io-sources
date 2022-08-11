@@ -12,15 +12,15 @@ googleAnalytics = 'G-RXNBZFC7LX'
 
 [menu]
   [[menu.after]]
-    identifier = "disclaimer"
-    name = "免責事項"
-    title = "免責事項"
-    url = "/#disclaimer"
+    identifier = 'disclaimer'
+    name = '免責事項'
+    title = '免責事項'
+    url = '/#disclaimer'
     weight = 1
 
   [[menu.after]]
-    identifier = "privacy_policy"
-    name = "プライバシーポリシー"
-    title = "プライバシーポリシー"
-    url = "/#privacy_policy"
+    identifier = 'privacy_policy'
+    name = 'プライバシーポリシー'
+    title = 'プライバシーポリシー'
+    url = '/#privacy_policy'
     weight = 2
