@@ -3,6 +3,7 @@ languageCode = 'ja-jp'
 title = 'htakeuchi0 のノート'
 theme = 'hugo-book'
 enableGitInfo = true
+googleAnalytics = 'G-RXNBZFC7LX'
 
 [params]
   BookTheme = 'auto'
