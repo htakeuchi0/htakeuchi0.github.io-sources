@@ -64,3 +64,93 @@ $ git commit -a -m "first commit"
 $ git remote add origin git@github.com:htakeuchi0/htakeuchi0.github.io-sources.git
 $ git push -u origin main
 ```
+
+### 動作確認
+
+Webサーバモードで hugo を実行し，ブラウザで画面が表示できることを確認する．    
+今回の場合は，表示されているとおり `http://localhost:1313/` にアクセスする．
+
+```shell
+$ hugo server --minify -D
+Start building sites … 
+hugo v0.101.0-9f74196ce611cdf6d355bfb99fd8eba5c68ef7f8+extended linux/amd64 BuildDate=2022-06-28T10:02:18Z VendorInfo=snap
+
+                   | EN  
+-------------------+-----
+  Pages            |  7  
+  Paginator pages  |  0  
+  Non-page files   |  0  
+  Static files     | 79  
+  Processed images |  0  
+  Aliases          |  2  
+  Sitemaps         |  1  
+  Cleaned          |  0  
+
+Built in 138 ms
+Watching for changes in /home/hiroshi/Documents/hugo/htakeuchi0-notebook/{archetypes,content,data,layouts,static,themes}
+Watching for config changes in /home/hiroshi/Documents/hugo/htakeuchi0-notebook/config.toml
+Environment: "development"
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+```
+
+### ホームページの追加
+
+以下のコマンドを実行する．
+
+```shell
+$ hugo new _index.md
+```
+
+`content/_index.md` が生成されているので，以下のように書き換える．
+
+```
+---
+title: ""
+date: 2022-08-11T12:18:39+09:00
+draft: true
+---
+
+# htakeuchi0 のノート
+
+## 概要
+
+## 免責事項 {#disclaimer}
+
+## プライバシーポリシー {#privacy_policy}
+
+## 作者について
+
+## お問い合わせ
+```
+
+設定ファイル `confing.toml` を以下のようにする．
+
+```
+baseURL = 'https://htakeuchi0.github.io/'
+languageCode = 'ja-jp'
+title = 'htakeuchi0 のノート'
+theme = 'hugo-book'
+enableGitInfo = true
+
+[params]
+  BookTheme = 'auto'
+  BookRepo = 'https://github.com/htakeuchi0/htakeuchi0.github.io'
+
+[menu]
+  [[menu.after]]
+    identifier = "disclaimer"
+    name = "免責事項"
+    title = "免責事項"
+    url = "/#disclaimer"
+    weight = 1
+
+  [[menu.after]]
+    identifier = "privacy_policy"
+    name = "プライバシーポリシー"
+    title = "プライバシーポリシー"
+    url = "/#privacy_policy"
+    weight = 2
+```
