@@ -164,6 +164,7 @@ $ hugo new docs/cpp/_index.md
 ```
 
 `content/docs/cpp/_index.md` が追加されている．    
+他のページも同様． 
 
 ### クリエイティブ・コモンズ・ライセンスの表示
 
@@ -175,7 +176,7 @@ $ hugo new docs/cpp/_index.md
 
 <p>
 <small>
-<a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx"><img src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" /></a><br />本ページは <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx">クリエイティブ・コモンズ 表示 - 改変禁止 4.0 国際ライセンス (CC BY-ND 4.0)</a>の下に提供されています。
+<a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx"><img src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" /></a><br />本ページは <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx">クリエイティブ・コモンズ 表示 - 改変禁止 4.0 国際ライセンス (CC BY-ND 4.0)</a> の下に提供されています。
 </small>
 </p>
 ```
