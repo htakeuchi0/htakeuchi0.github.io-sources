@@ -17,7 +17,7 @@ weight: 2
 
 例えば，C++17 では，標準ライブラリに `std::erfc` 関数（相補誤差関数）がありますが，正規分布の累積分布関数を直接計算する関数は提供されていません．
 
-しかし，相補誤差関数と正規分布の累積分布関数は，本質的にスケールが異なるだけなので，`std::erfc` 関数があれば，正規分布の累積分布関数は計算できます．
+しかし，相補誤差関数と正規分布の累積分布関数はスケールが異なるだけなので，`std::erfc` 関数があれば，正規分布の累積分布関数は計算できます．
 
 そこで，本ページでは，[指数関数の定積分]({{< ref "/docs/math/exp.md" >}}) の結果を用いて，相補誤差関数と正規分布の累積分布関数の具体的な関係式を導出します．
 
@@ -41,26 +41,22 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 
 いま，
 {{< katex display >}}
--\frac{(x-\mu)^2}{2\sigma^2}=-\frac{1}{2\sigma^2}x^2+\frac{\mu}{\sigma^2}x-\frac{\mu^2}{\sigma^4}
+-\frac{(x-\mu)^2}{2\sigma^2}=-\frac{1}{2\sigma^2}x^2+\frac{\mu}{\sigma^2}x-\frac{\mu^2}{2\sigma^2}
 {{< /katex >}}
 なので，
 {{< katex display >}}
 \begin{aligned}
   &a=-\frac{1}{2\sigma^2},\\
   &b=\frac{\mu}{\sigma^2},\\
-  &c=-\frac{\mu^2}{\sigma^2}
+  &c=-\frac{\mu^2}{2\sigma^2}
 \end{aligned}
 {{< /katex >}}
 として，[指数関数の定積分の定積分3]({{< ref "/docs/math/exp.md#定積分3" >}})を適用すると，
 {{< katex display >}}
 \begin{aligned}
-&\frac{\sqrt{\pi}}{2\sqrt{-a}}
-=\frac{\sqrt{\pi}}{2\sqrt{1/(2\sigma^2)}}
+&\frac{\sqrt{\pi}}{2\sqrt{-a}}=\frac{\sqrt{\pi}}{2\sqrt{1/(2\sigma^2)}}
 =\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}},\\
-&\frac{b^2-4ac}{4a}\\
-&=\frac{b^2}{4a}-c\\
-&=\frac{\mu^2/\sigma^4}{-2/\sigma^2}-\left(-\frac{\mu^2}{\sigma^2}\right)\\
-&=\frac{\mu^2}{2\sigma^2},\\
+&\frac{b^2-4ac}{4a}=\frac{b^2}{4a}-c=\frac{\mu^2/\sigma^4}{-2/\sigma^2}-\left(-\frac{\mu^2}{2\sigma^2}\right)=0\\
 &\frac{b}{2a}
 =\frac{\mu/\sigma^2}{-1/\sigma^2}
 =-\mu
@@ -70,7 +66,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 {{< katex display >}}
 \begin{aligned}
 &\int_{\alpha}^{\beta}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
-&=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\exp\left(-\frac{\mu^2}{2\sigma^2}\right)\\
+&=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\\
 &\quad\times\left(\mathrm{erfc}\left(\frac{1}{\sqrt{2\sigma^2}}(\alpha-\mu)\right)-\mathrm{erfc}\left(\frac{1}{\sqrt{2\sigma^2}}(\beta-\mu)\right)\right)
 \end{aligned}
 {{< /katex >}}
@@ -78,7 +74,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 {{< katex display >}}
 \begin{aligned}
 &\int_{-\infty}^x\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
-&=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\exp\left(-\frac{\mu^2}{2\sigma^2}\right)\left(2-\mathrm{erfc}\left(\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)\right)
+&=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\left(2-\mathrm{erfc}\left(\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)\right)
 \end{aligned}
 {{< /katex >}}
 です．
@@ -97,7 +93,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 {{< katex display >}}
 \begin{aligned}
 &\int_{-\infty}^x\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
-&=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\exp\left(-\frac{\mu^2}{2\sigma^2}\right)\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)
+&=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)
 \end{aligned}
 {{< /katex >}}
 より，
@@ -105,7 +101,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 \begin{aligned}
 &F_X(x)\\
 &=\frac{1}{\sqrt{2\pi\sigma^2}}\int_{-\infty}^x\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
-&=\frac{1}{2}\exp\left(-\frac{\mu^2}{2\sigma^2}\right)\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)
+&=\frac{1}{2}\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)
 \end{aligned}
 {{< /katex >}}
 と表せます．
@@ -116,6 +112,6 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 {{< katex display >}}
 \begin{aligned}
 &F_X(x)\\
-&=\frac{1}{2}\exp\left(-\frac{\mu^2}{2\sigma^2}\right)\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right).
+&=\frac{1}{2}\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right).
 \end{aligned}
 {{< /katex >}}
