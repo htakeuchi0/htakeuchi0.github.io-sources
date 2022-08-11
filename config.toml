@@ -6,7 +6,8 @@ enableGitInfo = true
 
 [params]
   BookTheme = 'auto'
-  BookRepo = 'https://github.com/htakeuchi0/htakeuchi0.github.io'
+  BookRepo = 'https://github.com/htakeuchi0/htakeuchi0.github.io-sources'
+  BookSearch = false
 
 [menu]
   [[menu.after]]

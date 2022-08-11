@@ -154,3 +154,14 @@ enableGitInfo = true
     url = "/#privacy_policy"
     weight = 2
 ```
+
+### ページの追加
+
+以下のコマンドを実行する．
+
+```shell
+$ hugo new docs/cpp/_index.md
+```
+
+`content/docs/cpp/_index.md` が追加されている．    
+
