@@ -41,7 +41,23 @@ weight: 1
 
 ## 定積分2
 
-次に，{{< katex >}}\int_{\alpha}^{\beta}\exp(ax+b)dx{{< /katex >}} を計算します．
+次に，{{< katex >}}\int_{\alpha}^{\beta}\exp(ax+b)dx{{< /katex >}} を計算します．    
+これには，[[1, 定理5.6]](#cite:1) を利用します．
+
+----
+**Theorem 1.** (変数変換公式 [[1, 定理5.6]](#cite:1)) 関数 {{< katex >}}f,\phi{{< /katex >}} が次の 1--4 を満たすと仮定する．
+1. {{< katex >}}f(x){{< /katex >}} は区間 {{< katex >}}I=[a,b]{{< /katex >}} で連続，
+2. {{< katex >}}\phi(t){{< /katex >}} は区間 {{< katex >}}J=[\alpha,\beta]{{< /katex >}} で微分可能，
+3. {{< katex >}}\phi'(t){{< /katex >}} は {{< katex >}}J{{< /katex >}} で有界可積分（例えば連続），
+4. {{< katex >}}\phi(J)\subset I{{< /katex >}}, {{< katex >}}\phi(\alpha)=a{{< /katex >}}, {{< katex >}}\phi(\beta)=b{{< /katex >}}.
+
+このとき，次の等式が成り立つ．
+{{< katex display >}}
+\int_a^bf(x)dx=\int_{\alpha}^{\beta}f(\phi(t))\phi'(t)dt.
+{{< /katex >}}
+
+----
+
 いま，{{< katex >}}y=ax+b{{< /katex >}}とすると，
 * {{< katex >}}x=(y-b)/a{{< /katex >}},
 * {{< katex >}}y=a\alpha+b{{< /katex >}} ならば {{< katex >}}x=\alpha{{< /katex >}},
@@ -146,3 +162,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 &\quad\times\left(\mathrm{erfc}\left(\sqrt{-a}\left(\alpha+\frac{b}{2a}\right)\right)-\mathrm{erfc}\left(\sqrt{-a}\left(\beta+\frac{b}{2a}\right)\right)\right).
 \end{aligned}
 {{< /katex >}}
+
+## 参考文献
+
+{{< anchor "cite:1" >}}[1] 杉浦 光夫，“基礎数学2 解析入門I”， 東京大学出版会，東京，1980.
