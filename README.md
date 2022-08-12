@@ -108,7 +108,7 @@ $ hugo new _index.md
 
 ```
 ---
-title: ""
+title: "ホームページ"
 date: 2022-08-11T12:18:39+09:00
 draft: true
 ---
@@ -137,7 +137,8 @@ enableGitInfo = true
 
 [params]
   BookTheme = 'auto'
-  BookRepo = 'https://github.com/htakeuchi0/htakeuchi0.github.io'
+  BookRepo = 'https://github.com/htakeuchi0/htakeuchi0.github.io-sources'
+  BookSearch = false
 
 [menu]
   [[menu.after]]
