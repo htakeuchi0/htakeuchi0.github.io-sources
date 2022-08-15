@@ -52,7 +52,7 @@ weight: 1
 
 {{< hint info >}}
 
-{{< theorem section="2" name="Theorem" option="変数変換公式 [[1, 定理5.6]](#cite:1)" >}} 関数 \\(f,\phi\\) が次の 1--4 を満たすと仮定する．
+{{< theorem name="Theorem" option="変数変換公式 [[1, 定理5.6]](#cite:1)" >}} 関数 \\(f,\phi\\) が次の 1--4 を満たすと仮定する．
 1. \\(f(x)\\) は区間 \\(I=[a,b]\\) で連続，
 2. \\(\phi(t)\\) は区間 \\(J=[\alpha,\beta]\\) で微分可能，
 3. \\(\phi\'(t)\\) は \\(J\\) で有界可積分（例えば連続），

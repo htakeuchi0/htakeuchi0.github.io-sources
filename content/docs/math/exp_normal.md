@@ -111,8 +111,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 本ページでは，正規分布の累積分布関数と相補誤差関数の関係式を求めました．結果は，以下のとおりです．
 
 {{< hint info >}}
-{{< theorem name="Proposition" >}}
-\\(X\\) を平均 \\(\mu\\), 分散 \\(\sigma^2\\) の正規分布に従う確率変数とする．\\(F_X\\) を \\(X\\) の累積分布関数，\\(\mathrm{erfc}(x)=(2/\sqrt{\pi})\int_x^{\infty}\exp(-t^2)dt\\) とする．このとき，以下の式が成り立つ．
+{{< theorem name="Proposition" >}} \\(X\\) を平均 \\(\mu\\), 分散 \\(\sigma^2\\) の正規分布に従う確率変数とする．\\(F_X\\) を \\(X\\) の累積分布関数，\\(\mathrm{erfc}(x)=(2/\sqrt{\pi})\int_x^{\infty}\exp(-t^2)dt\\) とする．このとき，以下の式が成り立つ．
 
 {{< katex display >}}
 \begin{aligned}
