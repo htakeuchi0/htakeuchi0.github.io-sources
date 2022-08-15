@@ -10,6 +10,11 @@ googleAnalytics = 'G-RXNBZFC7LX'
   BookRepo = 'https://github.com/htakeuchi0/htakeuchi0.github.io-sources'
   BookSearch = false
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [menu]
   [[menu.after]]
     identifier = 'disclaimer'
