@@ -28,7 +28,7 @@ weight: 1
 ただし，以下の関数を既知とします．この関数は，**相補誤差関数**と呼ばれ，たとえば C++ の標準ライブラリで `std::erfc` として定義されています．
 
 {{< hint info >}}
-{{< theorem name="Definition" >}} 相補誤差関数 \\(\mathrm{erfc}:\mathbb{R}\to\mathbb{R}\\) を以下のように定める．
+{{< theorem-label name="Definition" >}} 相補誤差関数 \\(\mathrm{erfc}:\mathbb{R}\to\mathbb{R}\\) を以下のように定める．
 
 {{< katex display >}}
 \mathrm{erfc}(x)=\frac{2}{\sqrt{\pi}}\int_x^{\infty}\exp(-t^2)dt.
@@ -52,7 +52,7 @@ weight: 1
 
 {{< hint info >}}
 
-{{< theorem name="Theorem" option="変数変換公式 [[1, 定理5.6]](#cite:1)" >}} 関数 \\(f,\phi\\) が次の 1--4 を満たすと仮定する．
+{{< theorem-label name="Theorem" option="変数変換公式 [[1, 定理5.6]](#cite:1)" >}} 関数 \\(f,\phi\\) が次の 1--4 を満たすと仮定する．
 1. \\(f(x)\\) は区間 \\(I=[a,b]\\) で連続，
 2. \\(\phi(t)\\) は区間 \\(J=[\alpha,\beta]\\) で微分可能，
 3. \\(\phi\'(t)\\) は \\(J\\) で有界可積分（例えば連続），
@@ -168,7 +168,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 
 {{< hint info >}}
 
-{{< theorem name="Proposition" >}}  以下が成り立つ．
+{{< theorem-label name="Proposition" >}}  以下が成り立つ．
 
 1. 次の式が成り立つ．
 

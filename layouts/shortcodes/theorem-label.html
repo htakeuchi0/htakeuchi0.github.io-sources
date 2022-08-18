@@ -1,0 +1,28 @@
+<!--
+定理環境ラベルを生成するショートコード．番号は1から始まり，連番で発行される．
+
+Args:
+  name: 定理種類名
+  section: 節番号（省略可）
+  comment: コメント（省略可） 
+
+Usage:
+  \{\{< theorem-label name="<name"> [section="<section>"] [comment="<comment>"] >\}\}
+
+Examples:
+  \{\{< theorem-label name="Theorem" >\}\} -> Theorem 1.
+  \{\{< theorem-label name="Theorem" section="5.2" >\}\} -> Theorem 5.2.2.
+  \{\{< theorem-label name="Proposition" section="3" comment="補足" >\}\} -> Theorem 3.3 (補足)
+-->
+<!-- カウンタの初期化-->
+{{- if not (.Page.Scratch.Get "theorem_num") }}
+  {{- .Page.Scratch.Set "theorem_num" 1 -}}
+{{- end -}}
+<!-- 定理種類 (name), 節番号 (section) の表示 -->
+<b>{{- .Get "name" }} {{ with .Get "section" -}}
+  {{- . -}}.
+{{- end -}}
+<!-- 定理番号 (theorem_num), コメント(comment) の表示 -->
+{{- .Page.Scratch.Get "theorem_num" }}</b>{{- with .Get "comment" }} ({{- . -}}){{- end -}}.
+<!-- 定理番号 (theorem_num) のカウントアップ -->
+{{- .Page.Scratch.Add "theorem_num" 1 -}}
