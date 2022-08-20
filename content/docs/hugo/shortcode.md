@@ -55,7 +55,7 @@ Hugo は markdown で記事を作成できますが，markdown の簡潔に記�
 {{- .Page.Scratch.Add "theorem_num" 1 -}}
 ```
 
-## 設定の変更
+## 設定の変更 {#change_config}
 
 ショートコードの定義としてはよいのですが，定理環境はみやすさのため，`hint` ショートコードで定理全体を囲いたいと思います．つまり，以下のように `hint` ショートコードのブロック内で `theorem-label` ショートコードを利用することになります．
 
