@@ -15,3 +15,4 @@ weight: 2
 
 1. [配列へのポインタとその周辺]({{< ref arrp.md >}})
 2. [配列への参照]({{< ref arr_ref.md >}})
+3. [std::array について]({{< ref stdarray.md >}})
