@@ -66,7 +66,7 @@ double Newton(fref_t f, fref_t df, double x0, double eps=1.0e-10,
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 double f(double x) {

@@ -58,7 +58,7 @@ double Newton(double x0, double eps=1.0e-10, std::size_t loop_max=1024) {
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 int main() {
@@ -218,7 +218,7 @@ double Newton(fp_t fp, fp_t dfp, double x0, double eps=1.0e-10,
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 double f(double x) {

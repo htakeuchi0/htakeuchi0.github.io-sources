@@ -83,7 +83,7 @@ double Newton(const Polynomial& f, const Polynomial& df, double x0, double eps=1
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 int main() {
@@ -132,7 +132,7 @@ double Newton(const Evaluate& f, const Evaluate& df, double x0, double eps=1.0e-
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 ```
 
@@ -193,7 +193,7 @@ double Newton(const Polynomial& f, const Polynomial& df, mfp_t mfp,
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 int main() {
@@ -262,7 +262,7 @@ double Newton(const T& f, const T& df, tmfp_t<T> tmfp,
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 int main() {

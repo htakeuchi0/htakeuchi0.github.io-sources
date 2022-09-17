@@ -50,7 +50,7 @@ double Newton(func_t f, func_t df, double x0, double eps=1.0e-10,
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 ```
 
@@ -72,7 +72,7 @@ double Newton(func_t f, func_t df, double x0, double eps=1.0e-10,
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 double f(double x) {
@@ -181,7 +181,7 @@ double Newton(const T& f, const T& df, mfunc_t<T> eval, double x0, double eps=1.
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 ```
 
@@ -232,7 +232,7 @@ double Newton(const T& f, const T& df, mfunc_t<T> eval, double x0, double eps=1.
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 int main() {
@@ -284,7 +284,7 @@ double Newton(func_t f, func_t df, double x0, double eps=1.0e-10,
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 
@@ -326,7 +326,7 @@ double Newton(const T& f, const T& df, mfunc_t<T> eval, double x0, double eps=1.
       return x;
     }
   }
-  throw std::runtime_error("Not convergence.");
+  throw std::runtime_error("Convergence error: This method did not converge.");
 }
 
 double f(double x) {
