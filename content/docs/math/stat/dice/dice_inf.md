@@ -56,7 +56,7 @@ N^{(k)}=\{(n_1,n_2,\dots,n_k)\in\mathbb{N}^k\mid 1\le n_1<\dots<n_k\}
 {{< katex display >}}
 F_{k,\Omega,n}=\{\omega\in\Omega_{\infty}\mid(\omega^{n_1},\omega^{n_2},\dots,\omega^{n_k})\in\Omega\}
 {{< /katex >}}
-とし，{{< katex >}}F_{0,\Omega,n}=\Omega_{\infty}{{< /katex >}} とします．
+とし，{{< katex >}}F_{0,\{\emptyset\},n}=\Omega_{\infty},F_{0,\emptyset,n}=\emptyset{{< /katex >}} とします．
 
 ここで，{{< katex >}}\mathfrak{F}_{\infty}^0\subset2^{\Omega_{\infty}}{{< /katex >}} を，
 {{< katex display >}}
@@ -223,7 +223,9 @@ Lem. 4, 5 より **{{< katex >}}P_{\infty}^0{{< /katex >}} は {{< katex >}}\mat
 
 これは，Lem. 4, 5 から，E. Hopf の拡張定理 （例えば，[[2]](#cite:2)） が適用できるため，成り立ちます．
 
-Thm. 6 によって，サイコロを無限回投げる場合を表す確率空間 {{< katex >}}(\Omega_{\infty},\mathfrak{F}_{\infty},P_{\infty}){{< /katex >}} が具体的に構成できました．
+Thm. 6 によって，{{< katex >}}P_{\infty}{{< /katex >}} は完全加法的測度なので，{{< katex >}}A\in\mathfrak{F}_{\infty}{{< /katex >}} ならば {{< katex >}}P_{\infty}(A)\ge0{{< /katex >}} であることと，{{< katex >}}A_1,A_2,\dots\in\mathfrak{F}_{\infty}{{< /katex >}} が互いに素ならば，{{< katex >}}P_{\infty}(\sum_{i=1}^{\infty}A_i)=\sum_{i=1}^{\infty}P_{\infty}(A_i){{< /katex >}} であることが従います．{{< katex >}}\Omega_{\infty}\in\mathfrak{F}_{\infty}^0{{< /katex >}} で {{< katex >}}\Omega_{\infty}=F_{0,\{\emptyset\},n}{{< /katex >}} なので，{{< katex >}}P_{\infty}(\Omega_{\infty})=1/6^0=1{{< /katex >}} より {{< katex >}}P_{\infty}{{< /katex >}} は確率になります．
+
+よって，サイコロを無限回投げる場合を表す確率空間 {{< katex >}}(\Omega_{\infty},\mathfrak{F}_{\infty},P_{\infty}){{< /katex >}} が具体的に構成できました．
 
 ## まとめ
 
