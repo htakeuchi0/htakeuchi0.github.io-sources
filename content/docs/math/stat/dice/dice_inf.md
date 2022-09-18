@@ -147,7 +147,7 @@ Lem.1 の証明と同様に，{{< katex >}}\bar{\Omega}^{(1)},\bar{\Omega}^{(2)}
 {{< katex display >}}
 \begin{aligned}
 P_{\infty}^0(A+B)&=\frac{|\bar{\Omega}^{(1)}+\bar{\Omega}^{(2)}|}{6^{k_3}}\\
-&=\frac{|\bar{\Omega}^{(1)}|+|\bar{\Omega^{(2)}}|}{6^{k_3}}\\
+&=\frac{|\bar{\Omega}^{(1)}|+|\bar{\Omega}^{(2)}|}{6^{k_3}}\\
 &=\frac{6^{k_3-k_1}|\Omega^{(1)}|+6^{k_3-k_2}|\Omega^{(2)}|}{6^{k_3}}\\
 &=\frac{|\Omega^{(1)}|}{6^{k_1}}+\frac{|\Omega^{(2)}|}{6^{k_2}}\\
 &=P_{\infty}^0(A)+P_{\infty}^0(B).
