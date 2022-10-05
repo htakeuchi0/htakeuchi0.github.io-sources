@@ -48,7 +48,7 @@ https://github.com/htakeuchi0/cpp_env_sample
    |- Doxyfile               - doxygen設定ファイル
    |- LICENSE                - ライセンスファイル
    |- Makefile               - makeファイル
-   |- README.md              - 本ファイル
+   |- README.md              - READMEファイル
    |- include/               - ヘッダファイル
    |  |- cpp_env_sample/
    |     |- example.h
@@ -165,7 +165,7 @@ main メソッドを含むメインファイルを格納するディレクトリ
    |- Doxyfile               - doxygen設定ファイル
    |- LICENSE                - ライセンスファイル
    |- Makefile               - makeファイル
-   |- README.md              - 本ファイル
+   |- README.md              - READMEファイル
 ```
 
 ### Doxyfile
