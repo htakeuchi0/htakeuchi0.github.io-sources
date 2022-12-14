@@ -16,3 +16,4 @@ weight: 1
 本節では，C++の開発環境に関するノートをまとめています．
 
 1. [Makefile プロジェクト]({{< ref "make.md" >}})
+1. [autoconf プロジェクト (1)]({{< ref "autoconf.md" >}})
