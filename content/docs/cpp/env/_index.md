@@ -17,3 +17,4 @@ weight: 1
 
 1. [Makefile プロジェクト]({{< ref "make.md" >}})
 1. [autoconf プロジェクト (1)]({{< ref "autoconf.md" >}})
+1. [autoconf プロジェクト (2)]({{< ref "autoconf2.md" >}})
