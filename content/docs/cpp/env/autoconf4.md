@@ -1,6 +1,6 @@
 ---
-title: "autoconf プロジェクト (1)"
-weight: 2
+title: "autoconf プロジェクト (4)"
+weight: 5
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -9,13 +9,21 @@ weight: 2
 # bookSearchExclude: false
 ---
 
-# autoconf プロジェクト (1)
+# autoconf プロジェクト (4)
 
 ## 概要
 
-前ページでは，Makefile プロジェクトの例について説明しました．本ページでは，autoconf を使った Makefile の自動生成について説明します．
+[前ページ]({{< ref "autoconf3.md" >}})までで，[Makefile プロジェクト]({{< ref "make.md" >}}) とほとんど同様の機能をもつ autoconf プロジェクトの作成方法を説明しました．
 
-本ページでは，わかりやすさを優先し，やや不自然な箇所がありますが，できるだけ簡単な準備で autoconf による Makefile 生成と，make の実行を試みます．
+本ページでは，これまでの説明の総括として，[autoconf プロジェクト(1)]({{< ref "autoconf.md" >}}) や [autoconf プロジェクト (2)]({{< ref "autoconf2.md" >}}) と同じ節構成で，[Makefile プロジェクト]({{< ref "make.md" >}}) をもとにした autoconf プロジェクトの作成手順を説明します．
+
+## Github リポジトリ
+
+本ページで説明するディレクトリ構成の autoconf プロジェクトは，以下の Github リポジトリ [[1]](#cite:1) として公開しています．
+
+https://github.com/htakeuchi0/autoconf_sample
+
+本ページは CC BY-ND 4.0 のもとで提供していますが，このリポジトリはMITライセンスで公開しています．    
 
 ## 準備
 
@@ -81,10 +89,10 @@ autoconf コマンドで，Makefile を生成する configure スクリプトを
 
 ### configure.ac の作成
 
-まず，準備として，Makefileの雛形の雛形に相当する `Makefile.am` の空ファイルを配置しておきます．
+まず，準備として，Makefileの雛形の雛形に相当する `Makefile.am` の空ファイルを配置しておきます．    
 
 ```bash
-$ touch Makefile.am main/Makefile.am test/Makefile.am
+$ touch Makefile.am include/Makefile.am main/Makefile.am src/Makefile.am test/Makefile.am
 ```
 
 `autoscan` コマンドでファイルの雛形を生成します．
@@ -93,14 +101,7 @@ $ touch Makefile.am main/Makefile.am test/Makefile.am
 $ autoscan
 ```
 
-このとき，以下のファイルが追加されます．
-
-```
-|- configure.scan        configure.in の雛形ファイル
-|- autoscan.log          autoscan コマンドの実行ログ
-```
-
-`autoscan.log` は空で，`configure.scan` の内容は以下のとおりです．
+`configure.scan` の内容は以下のとおりです．
 
 ```bash
 $ cat configure.scan 
@@ -127,11 +128,12 @@ AC_PROG_MAKE_SET
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
+                 include/Makefile
                  main/Makefile
+                 src/Makefile
                  test/Makefile])
 
 AC_OUTPUT
-
 ```
 
 `configure.scan` を `configure.ac` に変更します．
@@ -147,10 +149,12 @@ $ mv configure.scan configure.ac
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([autoconf_sample], [0.0.1], [htakeuchi0gh@gmail.com])
-AM_INIT_AUTOMAKE([foreign subdir-objects])
+AC_INIT([autoconf_sample], [0.0.3], [htakeuchi0gh@gmail.com])
+AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIRS([m4])
+LT_INIT
 
 # Checks for programs.
 AC_PROG_CXX
@@ -167,27 +171,67 @@ AC_PROG_MAKE_SET
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
+                 include/Makefile
                  main/Makefile
+                 src/Makefile
                  test/Makefile])
 AC_OUTPUT
 ```
 
-`AM_INIT_AUTOMAKE([foreign subdir-objects])` は，GNU 準拠でないことを示すため (foreign), オブジェクトがソースファイルがあるサブディレクトリに配置されるようにするため (subdir-objects) の設定を記載しています．
-
-ただし本来は，subdir-objects を指定するのではなく，各サブディレクトリごとにビルドするようにする方がよいと思われるので，その場合の方法は，次ページ以降で取り扱います．
-
-`AC_CONFIG_SRCDIR`, `AC_CONFIG_HEADERS` は下記の通りである必要はないのですが，確実に存在するファイルとしてこれにしています．
-
+`AM_INIT_AUTOMAKE([foreign])` は，GNU 準拠でないため (foreign) 設定しています．また，ライブラリを生成するため，`AC_CONFIG_MACRO_DIRS([m4])`, `LT_INIT` を追加しています．
 
 ### Makefile.am の作成
 
 各 `Makefile.am` を作成します．
 
 * `./Makefile.am`
-  * サブディレクトリを指定するだけです
+  * サブディレクトリと，ライブラリの作成のためのフラグ，その他必要な定義を設定します．
 
 ```Makefile
-SUBDIRS = main test
+SUBDIRS = include src main test
+ACLOCAL_AMFLAGS = -I m4
+
+DOCDIR = doxygen
+LCOVDIR = lcov
+
+clean-local:
+	@rm -f src/*.gcno
+	@rm -f test/*.gcno
+	@rm -f test/*.gcda
+	@rm -rf $(DOCDIR)
+	@rm -rf $(LCOVDIR)
+
+check-local:
+	test/test_acsample
+
+.PHONY: docs lcov
+INDEXPATH = $(DOCDIR)/html/index.html
+docs:
+	doxygen
+	@echo $(INDEXPATH)
+
+COVERAGE = coverage.info
+lcov: check
+	lcov --capture --directory . --output-file $(COVERAGE)
+	lcov --remove $(COVERAGE) **include/c++/** --output-file $(COVERAGE)
+	lcov --remove $(COVERAGE) **bits** --output-file $(COVERAGE)
+	lcov --remove $(COVERAGE) **gtest*.h --output-file $(COVERAGE)
+	lcov --remove $(COVERAGE) **gtest*.cc --output-file $(COVERAGE)
+	genhtml $(COVERAGE) --output-directory $(LCOVDIR)
+	@rm -f *.gcno
+	@rm -f *.gcda
+	@rm -f $(COVERAGE)
+	@echo -n -e ""
+	@echo $(LCOVDIR)/index.html
+
+EXTRA_DIST = Doxyfile LICENSE scripts/*
+```
+
+* `include/Makefile.am`
+  * インストールしないヘッダであることを明示します．
+
+```Makefile
+nobase_include_HEADERS = cpp_env_sample/example.h
 ```
 
 * `main/Makefile.am`
@@ -195,10 +239,23 @@ SUBDIRS = main test
 
 ```Makefile
 bin_PROGRAMS = acsample
-srcs = ../src/example.cc
-acsample_SOURCES = main.cc $(srcs)
+acsample_SOURCES = main.cc
 acsample_CXXFLAGS = -std=c++17 -s -Wall -I$(top_builddir)/include -I/usr/local/include
-acsample_LDADD = 
+acsample_LDADD = ../src/libacsample.la
+acsample_LDFLAGS = -Wl,-rpath=/usr/local/lib
+```
+
+* `src/Makefile.am`
+  * ライブラリ (`libacsample.la`) とテスト用ライブラリ (`libacsampled.la`) を生成します
+
+```Makefile
+lib_LTLIBRARIES = libacsample.la
+noinst_LTLIBRARIES = libacsampled.la
+libacsample_la_SOURCES = example.cc
+libacsample_la_CXXFLAGS = -std=c++17 -s -Wall -I$(top_builddir)/include -I/usr/local/include
+libacsample_la_LDFLAGS = -version-info 0:3:0
+libacsampled_la_SOURCES = example.cc
+libacsampled_la_CXXFLAGS = -std=c++17 -s -Wall -fprofile-arcs -ftest-coverage -fno-inline -fno-inline-small-functions -fno-default-inline -I$(top_builddir)/include -I/usr/local/include
 ```
 
 * `test/Makefile.am`
@@ -207,10 +264,9 @@ acsample_LDADD =
 ```Makefile
 TESTS = test_acsample
 check_PROGRAMS = test_acsample
-srcs = ../src/example.cc
-test_acsample_SOURCES = gtest_example.cc $(srcs)
+test_acsample_SOURCES = gtest_example.cc
 test_acsample_CXXFLAGS = -std=c++17 -s -Wall -fprofile-arcs -ftest-coverage -fno-inline -fno-inline-small-functions -fno-default-inline -I$(top_builddir)/include -I/usr/local/include
-test_acsample_LDADD = -lgtest -lgtest_main -lpthread
+test_acsample_LDADD = ../src/libacsampled.la -lgtest -lgtest_main -lpthread
 ```
 
 ここまでで以下のファイル構成となっているはずです．
@@ -223,6 +279,7 @@ test_acsample_LDADD = -lgtest -lgtest_main -lpthread
 |- autoscan.log
 |- configure.ac
 |- include/
+|  |- Makefile.am
 |  |- cpp_env_sample/
 |     |- example.h
 |
@@ -236,6 +293,7 @@ test_acsample_LDADD = -lgtest -lgtest_main -lpthread
 |  |- install_lcov.sh
 |
 |- src/
+|  |- Makefile.am
 |  |- example.cc
 |
 |- test/
@@ -245,56 +303,46 @@ test_acsample_LDADD = -lgtest -lgtest_main -lpthread
 
 ### autoconf コマンドの実行
 
-aclocal を実行します．
+libtoolize を実行します．
 
 ```bash
-$ aclocal
+$ libtoolize -c
+libtoolize: putting auxiliary files in '.'.
+libtoolize: copying file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
 ```
 
 以下のファイルが追加されます．
 
 ```
-|- aclocal.m4
-|- autom4te.cache/
+|- ltmain.sh
+|- m4/
+   |- libtool.m4
+   |- ltoptions.m4
+   |- ltsugar.m4
+   |- ltversion.m4
+   |- lt~obsolete.m4
 ```
 
-autoheader を実行します．
+aclocal, autoheader, automake を実行します．
 
 ```bash
+$ aclocal
 $ autoheader
-```
-
-以下のファイルが追加されます (`autom4te.cache` 以下は省略)．
-
-```
-|- config.h.in
-```
-
-automake を実行します．
-
-```bash
 $ automake --add-missing
-configure.ac:12: installing './compile'
+configure.ac:10: installing './compile'
+configure.ac:10: installing './config.guess'
+configure.ac:10: installing './config.sub'
 configure.ac:6: installing './install-sh'
 configure.ac:6: installing './missing'
 main/Makefile.am: installing './depcomp'
 parallel-tests: installing './test-driver'
-```
 
-以下のファイルが追加されます．
-
-```
-|- Makefile.in
-|- compile
-|- install-sh
-|- missing
-|- depcomp
-|- test-driver
-|- main/
-|  |- Makefile.in
-|
-|- test/
-   |- Makefile.in
 ```
 
 autoconf を実行します．
@@ -314,7 +362,6 @@ $ autoconf
 
 ### make の実行
 
-ようやく configure ファイルができたので，これで Makefile が生成できます．    
 Makefile の生成と，make の実行を試してみます．
 
 configure を実行します．
@@ -332,7 +379,13 @@ $ ./configure
 |- config.log
 |- config.status
 |- stamp-h1
+|- include/
+|  |- Makefile
+|
 |- main/
+|  |- Makefile
+|
+|- src/
 |  |- Makefile
 |
 |- test/
@@ -346,7 +399,7 @@ $ make
 ```
 
 以下のファイルが追加されます．    
-実行可能なバイナリファイル acsample がビルドされました．
+ライブラリ libacsample.la, libacsamled.la と実行可能なバイナリファイル acsample がビルドされました．
 
 ```
 |- main/
@@ -354,14 +407,20 @@ $ make
 |  |- acsample-main.o
 |
 |- src/
-   |- acsample-example.o
+   |- libacsample.la
+   |- libacsample_la-example.lo
+   |- libacsample_la-example.o
+   |- libacsampled.la
+   |- libacsampled_la-example.gcno
+   |- libacsampled_la-example.lo
+   |- libacsampled_la-example.o
 ```
 
 生成されたバイナリファイルを実行します．
 
 ```bash
 $ main/acsample
-Usage: main/acsample <name> <value> <value2>
+Usage: ... (省略) ... /main/.libs/acsample <name> <value> <value2>
 $ main/acsample a 1 2
 name : a
 value: 3
@@ -377,34 +436,31 @@ make check では，test/Makefile.am に TESTS で指定した実行可能ファ
 
 そこで，make check でテストコードがビルドされ，実行できることを確認してみます．
 
-make check を実行します．
-
 ```bash
 $ make check
-```
 
-以下のファイルが生成されます．
+...(省略)...
 
-```
-|- src/
-|   |- test_acsample-example.gcda
-|   |- test_acsample-example.gcno
-|   |- test_acsample-example.o
-|
-|- test/
-   |- test-suite.log
-   |- test_acsample
-   |- test_acsample-gtest_example.gcda
-   |- test_acsample-gtest_example.gcno
-   |- test_acsample-gtest_example.o
-   |- test_acsample.log
-   |- test_acsample.trs
-```
+PASS: test_acsample
+============================================================================
+Testsuite summary for autoconf_sample 0.0.2
+============================================================================
+# TOTAL: 1
+# PASS:  1
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================
 
-生成されたバイナリファイルを実行します．
+...(省略)...
 
-```bash
-$ test/test_acsample
+make  check-local
+
+...(省略)...
+
+test/test_acsample
 Running main() from /home/hiroshi/Documents/cpp/cppbf/googletest/googletest/src/gtest_main.cc
 [==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
@@ -448,6 +504,16 @@ value: 3
 
 実行できました．
 
+また，ライブラリやヘッダファイルがインストールされています．
+
+```bash
+$ ls /usr/local/include/cpp_env_sample
+example.h
+$ ls /usr/local/lib/libacsample*
+/usr/local/lib/libacsample.a   /usr/local/lib/libacsample.so    /usr/local/lib/libacsample.so.0.0.3
+/usr/local/lib/libacsample.la  /usr/local/lib/libacsample.so.0
+```
+
 アンインストールしておきます．
 
 ```bash
@@ -460,6 +526,8 @@ make clean, make dist, make distclean などが使えますが省略します．
 
 ## まとめ
 
-本ページでは，autoconf を使った Makefile の自動生成について説明しました．    
-autoconf を使うことで，Makefile を生成するための configure スクリプトが生成できて，configure スクリプトで Makefile が生成されることを確認しました．
+本ページでは，[Makefile プロジェクト]({{< ref "make.md" >}}) とほとんど同様の機能をもつ autoconf プロジェクトの作成方法を説明しました．
 
+## 参考文献
+
+{{< anchor "cite:1" >}}[1] htakeuchi0, "htakeuchi0/autoconf_sample: A C++ autoconf sample project", https://github.com/htakeuchi0/autoconf_sample, 2023/1/8 最終アクセス．    

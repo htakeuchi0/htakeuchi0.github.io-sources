@@ -89,10 +89,10 @@ autoconf コマンドで，Makefile を生成する configure スクリプトを
 ### configure.ac の作成
 
 まず，準備として，Makefileの雛形の雛形に相当する `Makefile.am` の空ファイルを配置しておきます．    
-**前ページの設定に対して，`include/cpp_env_sample/Makefile.am`, `src/Makefile.am` を追加しました．**
+**前ページの設定に対して，`include/Makefile.am`, `src/Makefile.am` を追加しました．**
 
 ```bash
-$ touch Makefile.am include/cpp_env_sample/Makefile.am main/Makefile.am src/Makefile.am test/Makefile.am
+$ touch Makefile.am include/Makefile.am main/Makefile.am src/Makefile.am test/Makefile.am
 ```
 
 `autoscan` コマンドでファイルの雛形を生成します．
@@ -128,7 +128,7 @@ AC_PROG_MAKE_SET
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
-                 include/cpp_env_sample/Makefile
+                 include/Makefile
                  main/Makefile
                  src/Makefile
                  test/Makefile])
@@ -172,7 +172,7 @@ AC_PROG_MAKE_SET
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
-                 include/cpp_env_sample/Makefile
+                 include/Makefile
                  main/Makefile
                  src/Makefile
                  test/Makefile])
@@ -192,22 +192,22 @@ AC_OUTPUT
 * `./Makefile.am`
   * サブディレクトリと，ライブラリの作成のためのフラグを指定します．
 
-```
-SUBDIRS = include/cpp_env_sample src main test
+```Makefile
+SUBDIRS = include src main test
 ACLOCAL_AMFLAGS = -I m4
 ```
 
-* `include/cpp_env_sample/Makefile.am`
+* `include/Makefile.am`
   * インストールしないヘッダであることを明示します．
 
-```
-noinst_HEADERS = example.h
+```Makefile
+noinst_HEADERS = cpp_env_sample/example.h
 ```
 
 * `main/Makefile.am`
   * ソースコードとコンパイラへのフラグを指定します
 
-```
+```Makefile
 bin_PROGRAMS = acsample
 acsample_SOURCES = main.cc
 acsample_CXXFLAGS = -std=c++17 -s -Wall -I$(top_builddir)/include -I/usr/local/include
@@ -217,7 +217,7 @@ acsample_LDADD = ../src/libacsample.la
 * `src/Makefile.am`
   * ライブラリ (`libacsample.la`) とテスト用ライブラリ (`libacsampled.la`) を生成します
 
-```
+```Makefile
 noinst_LTLIBRARIES = libacsample.la libacsampled.la
 libacsample_la_SOURCES = example.cc
 libacsample_la_CXXFLAGS = -std=c++17 -s -Wall -I$(top_builddir)/include -I/usr/local/include
@@ -228,7 +228,7 @@ libacsampled_la_CXXFLAGS = -std=c++17 -s -Wall -fprofile-arcs -ftest-coverage -f
 * `test/Makefile.am`
   * テスト実行ファイルの指定 (TESTS), テスト用ソースコードとコンパイラへのフラグを指定します
 
-```
+```Makefile
 TESTS = test_acsample
 check_PROGRAMS = test_acsample
 test_acsample_SOURCES = gtest_example.cc
@@ -246,8 +246,8 @@ test_acsample_LDADD = ../src/libacsampled.la -lgtest -lgtest_main -lpthread
 |- autoscan.log
 |- configure.ac
 |- include/
+|  |- Makefile.am
 |  |- cpp_env_sample/
-|     |- Makefile.am
 |     |- example.h
 |
 |- main/
@@ -346,7 +346,13 @@ $ ./configure
 |- config.log
 |- config.status
 |- stamp-h1
+|- include/
+|  |- Makefile
+|
 |- main/
+|  |- Makefile
+|
+|- src/
 |  |- Makefile
 |
 |- test/
@@ -371,6 +377,8 @@ $ make
    |- libacsample.la
    |- libacsample_la-example.lo
    |- libacsample_la-example.o
+   |- libacsampled.la
+   |- libacsampled_la-example.gcno
    |- libacsampled_la-example.lo
    |- libacsampled_la-example.o
 ```
