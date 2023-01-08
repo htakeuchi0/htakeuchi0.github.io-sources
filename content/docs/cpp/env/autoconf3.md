@@ -123,7 +123,7 @@ make  check-local
 ...(省略)...
 
 test/test_acsample
-Running main() from /home/hiroshi/Documents/cpp/cppbf/googletest/googletest/src/gtest_main.cc
+Running main() from ... (省略) ... /gtest_main.cc
 [==========] Running 4 tests from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 4 tests from ExampleTest

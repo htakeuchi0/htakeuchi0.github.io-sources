@@ -100,8 +100,8 @@ hugo v0.101.0-9f74196ce611cdf6d355bfb99fd8eba5c68ef7f8+extended linux/amd64 Buil
   Cleaned          |  0  
 
 Built in 138 ms
-Watching for changes in /home/hiroshi/Documents/hugo/htakeuchi0-notebook/{archetypes,content,data,layouts,static,themes}
-Watching for config changes in /home/hiroshi/Documents/hugo/htakeuchi0-notebook/config.toml
+Watching for changes in ... (省略) ... /htakeuchi0-notebook/{archetypes,content,data,layouts,static,themes}
+Watching for config changes in ... (省略) ... /htakeuchi0-notebook/config.toml
 Environment: "development"
 Serving pages from memory
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
