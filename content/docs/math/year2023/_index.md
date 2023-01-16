@@ -34,7 +34,7 @@ weight: 4
 
 ## 解法
 
-解がある場合は，{{< katex >}}i\ge1{{< /katex >}} について {{< katex >}}\sum_{j=0}^{n-1}a_j^i\mid x{{< /katex >}} となる最小の {{< katex >}}i{{< /katex >}} を求めて，{{< katex >}}x'=x/\sum_{j=0}^{n-1}a_j^i{{< /katex  >}} に対して {{< katex >}}\sum_{j=0}^{n-1}a_j^{i'}\mid x'{{< /katex >}} を満たす {{< katex >}}i'\ge i{{< /katex >}} を求めることを再帰的に行えば求まります．
+解がある場合は，{{< katex >}}i\ge1{{< /katex >}} について {{< katex >}}\sum_{j=0}^{n-1}a_j^i\mid x{{< /katex >}} となる最小の {{< katex >}}i{{< /katex >}} を求めて，{{< katex >}}x'=x/\sum_{j=0}^{n-1}a_j^i{{< /katex  >}} に対して {{< katex >}}\sum_{j=0}^{n-1}a_j^{i'}\mid x'{{< /katex >}} を満たす {{< katex >}}i'\ge i{{< /katex >}} を求めることを再帰的に行えば求まります．ただし，{{< katex >}}A\mid B{{< /katex >}} とは，{{< katex >}}A{{< /katex >}} が {{< katex >}}B{{< /katex >}} を割り切るという意味です．
 
 解をもたない場合は，ある {{< katex >}}i\ge1{{< /katex >}} で {{< katex >}}\sum_{j=0}^{n-1}a_j^i>x{{< /katex >}} となるので，解をもたないことが判定ができます．
 
