@@ -18,5 +18,5 @@ weight: 5
 本節では，プラレールに関する問題の数学的定式化を試みます．
 
 1. [レール]({{< ref rail.md >}})
-2. [レイアウト]({{< ref rayout.md >}})
+2. [レイアウト]({{< ref layout.md >}})
 3. [プラレール問題]({{< ref plarail-problems.md >}})

@@ -17,29 +17,35 @@ weight: 1
 
 ## レールの数学的表現
 
-レールは直線や曲線の単線のものが基本的ですが，分岐するもの，高さが変わるものなどがあります．部品同士の接続部は，凹凸の形状になっています．また，一部を除き，裏返しても使えるようになっています．
+レールは直線や曲線の単線のものが基本的ですが，並走するもの，分岐するもの，高さが変わるものなどがあります．部品同士の接続部は，凹凸の形状になっています．また，一部を除き，裏返しても使えるようになっています．
 
 以上をふまえ，レールの形式的定義を以下のようにまとめます．
 
 {{< hint info >}}
-{{< theorem-label name="Definition" >}} \\(r=(\phi_1,\dots,\phi_n,t_1,\dots,t_m,\psi,u_1,\dots,u_{n-1})\\) が以下を満たすとき，\\(r\\) はレールであるという．{{< katex >}}{{< /katex >}}
-* \\(n\\), \\(m\\) が1以上の整数である．
-* \\(i=1,2,\dots,n\\) について，以下が成り立つ．
-  * \\(\phi_i:(0,1)\to\mathbb{R}^3\\) である．
-  * \\(\phi_i\\) は単射である．
-  * \\(\lim_{x\to0}\phi_i(x)=0\\) である．
-* \\(i=1,2,\dots,m\\) について，以下が成り立つ．
-  * \\(t_i\in\\{+,-,\bot\\}\\) である．
-* \\(\psi\\) が以下を満たす．
-  * \\(\psi:\\{1,2,\dots,n\\}\times\\{0,1\\}\to\\{1,2,\dots,m\\}\\) である．
-  * \\(t_{\psi(i,j)}\not=\bot\\) ならば，任意の \\(i\'\not=i\\) について \\(\psi(i\',j)\not=\psi(i,j)\\) である．
-  * \\(\psi\\) は全射である．
-  * \\(i=1,2,\dots,n\\) について \\(\psi(i,0)\not=\psi(i,1)\\) である．
-* \\(i=1,2,\dots,n-1\\) について，以下が成り立つ．
-  * \\(u_i\in\mathbb{R}^3\\) である．
+{{< theorem-label name="Definition" >}} 
+1. \\(\Phi\\) を，以下を満たす写像 \\(\phi\\) 全体の集合とする．
+    * \\(\phi:\\{x\in\mathbb{R}\mid 0<x<1\\}\to\mathbb{R}^3\\) である．
+    * \\(\phi\\) は単射である．
+    * \\(\lim_{x\to0}\phi(x)=0\\) である．
+    * \\(\phi\\) は連続で，\\(\lim\_{x\to0}\phi\'(x)/\\|\phi\'(x)\\|_2\\), \\(\lim\_{x\to1}\phi\'(x)/\\|\phi\'(x)\\|_2\\) が存在する．
+2. \\(\mathcal{T}=\\{+,-,\bot\\}\\) とする．
+3. \\(1\\) 以上の整数 \\(n, m\\) に対し，\\(\Psi_{n,m}\\) を，以下を満たす写像 \\(\psi\\) 全体の集合とする．
+    * \\(\psi:\\{1,2,\dots,n\\}\times\\{0,1\\}\to\\{1,2,\dots,m\\}\\) である．
+    * \\(\psi\\) は全射である．
+    * \\(i=1,2,\dots,n\\) について \\(\psi(i,0)\not=\psi(i,1)\\) である．
+
+4. 以下の集合 \\(\mathcal{R}\\) の元 \\(r\\) を **レール** という．
+{{< katex display >}}
+\begin{aligned}
+&\mathcal{R}=\bigg\{(\phi_1,\dots,\phi_n,t_1,\dots,t_m,\psi,u_1,\dots,u_{n-1})\\
+&\quad\in\left(\bigcup_{m=1,2,\dots}(\Phi\times\mathcal{T}^m\times\Psi_{1,m})\right)\cup\left(\bigcup_{\begin{subarray}{c}n=2,3,\dots,\\m=1,2,\dots\end{subarray}}(\Phi^n\times\mathcal{T}^m\times\Psi_{n,m}\times(\mathbb{R}^3)^{n-1})\right)\,\bigg|\\
+&\qquad\qquad\qquad\forall i,j\,(t_{\psi(i,j)}\not=\bot\implies\forall i',j'\,(i\not=i'\implies \psi(i,j)\not=\psi(i',j')))\bigg\}
+\end{aligned}
+{{< /katex >}}
+
 {{< /hint >}}
 
-{{< katex >}}\phi_i\,(1\le i\le n){{< /katex >}} は単純な曲線（自己交差のない曲線）です．つまり，レールは，1個以上の単純な曲線で構成されるものであることを養成しています．次に，{{< katex >}}t_i\,(1\lg i\le m){{< /katex >}} は接続部の形状を表します．ただし，曲線同士の内部結合点は {{< katex >}}\bot{{< /katex >}} で表します．{{< katex >}}\psi{{< /katex >}} は曲線 {{< katex >}}\phi_i\,(1\le i\le n){{< /katex >}} の端点と，接続形状 {{< katex >}}t_i\,(1\le i\le m){{< /katex >}} との対応を表します．{{< katex >}}u_i\,(1\le i\le n-1){{< /katex >}} は {{< katex >}}\phi_i\,(2\le i\le n){{< /katex >}} の {{< katex >}}x=0{{< /katex >}} 側の点の，{{< katex >}}\lim_{x\to0}\phi_1(x){{< /katex >}} からの変位を表します．
+{{< katex >}}\phi_i\,(1\le i\le n){{< /katex >}} は単純な曲線（自己交差のない曲線）です．つまり，レールは，1個以上の単純な曲線で構成されるものであることを要請しています．次に，{{< katex >}}t_i\,(1\le i\le m){{< /katex >}} は接続部の形状を表します．ただし，形状を構成する曲線同士の内部結合点は {{< katex >}}\bot{{< /katex >}} で表します．{{< katex >}}\psi{{< /katex >}} は曲線 {{< katex >}}\phi_i\,(1\le i\le n){{< /katex >}} の端点と，接続形状 {{< katex >}}t_i\,(1\le i\le m){{< /katex >}} との対応を表します．{{< katex >}}u_i\,(1\le i\le n-1){{< /katex >}} は {{< katex >}}\phi_i\,(2\le i\le n){{< /katex >}} の {{< katex >}}x=0{{< /katex >}} 側の点の，{{< katex >}}\lim_{x\to0}\phi_1(x){{< /katex >}} からの変位を表します．
 
 ## レールの例
 
