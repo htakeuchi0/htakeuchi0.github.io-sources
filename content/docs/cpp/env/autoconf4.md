@@ -228,7 +228,7 @@ EXTRA_DIST = Doxyfile LICENSE scripts/*
 ```
 
 * `include/Makefile.am`
-  * インストールしないヘッダであることを明示します．
+  * インストール時にディレクトリ構造を壊さない指定をします．
 
 ```Makefile
 nobase_include_HEADERS = cpp_env_sample/example.h
