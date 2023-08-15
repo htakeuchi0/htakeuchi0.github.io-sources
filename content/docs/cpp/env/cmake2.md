@@ -19,6 +19,14 @@ weight: 7
 
 これらは，`ADD_CUSTOM_TARGET`. `ADD_CUSTOM_COMMAND` を使うと実現できます．
 
+## Github リポジトリ
+
+本ページで説明するディレクトリ構成の CMake プロジェクトは，以下の Github リポジトリ [[1]](#cite:1) として公開しています．
+
+https://github.com/htakeuchi0/cmake_sample
+
+本ページは CC BY-ND 4.0 のもとで提供していますが，このリポジトリはMITライセンスで公開しています．    
+
 ## 準備
 
 今回も [Makefile プロジェクト]({{< ref "make.md" >}}) のリポジトリからスタートします．    
@@ -84,11 +92,12 @@ weight: 7
 
 ```CMake
 cmake_minimum_required(VERSION 3.0)
-project(cmake_sample CXX)
+project(cmake_sample VERSION 0.0.1 LANGUAGES CXX)
 
 add_subdirectory(src)
 add_subdirectory(test)
 add_subdirectory(main)
+add_subdirectory(include)
 
 find_program(DOXYGEN doxygen)
 if (NOT DOXYGEN)
@@ -103,40 +112,87 @@ ADD_CUSTOM_COMMAND(
   COMMAND mv doxygen/ build/)
 ```
 
+* `include/CMakeLists.txt`
+  * インストール時の設定を記述します．
+
+```CMake
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/cpp_env_sample
+  DESTINATION include)
+```
+
 * `main/CMakeLists.txt`
   * ソースコードとリンクするライブラリを指定します．
 
+`make install` でバイナリを `/usr/local/bin` インストールするとき，`/usr/local/lib` にパスを通しておきます．
+
+ただし，`/usr/local` は変更できるようにしておきます．
+
 ```CMake
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+
 add_executable(cmsample main.cc)
-target_link_libraries(cmsample cmsampleimpl)
+
+target_link_libraries(cmsample cmsamplelib)
+
+install(TARGETS cmsample
+  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 ```
 
 * `src/CMakeLists.txt`
   * ソースコードを指定し，ライブラリを作成します．
 
 ```CMake
-add_library(cmsampleimpl SHARED example.cc)
-target_include_directories(cmsampleimpl
-  PUBLIC ${PROJECT_SOURCE_DIR}/include
+add_library(cmsamplelib SHARED example.cc)
+
+target_include_directories(cmsamplelib PUBLIC
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
 )
+
+install(TARGETS cmsamplelib
+  EXPORT cmsamplelib-config
+  LIBRARY DESTINATION lib)
+
+install(EXPORT cmsamplelib-config
+  NAMESPACE cmsamplelib::
+  DESTINATION lib/cmake/cmsamplelib)
+
+include(CMakePackageConfigHelpers)
+
+write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/cmsamplelib-config-version.cmake
+    COMPATIBILITY SameMajorVersion)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cmsamplelib-config-version.cmake
+    DESTINATION lib/cmake/cmsamplelib)
+
+add_library(cmsaplelib::cmsamplelib ALIAS cmsamplelib)
 ```
 
 * `test/CMakeLists.txt`
   * GoogleTest を使うための設定事項を記載し，カバレッジ計測実行についてのコマンドを追加します．
 
+GMock は使わず，インストール時に GoogleTest 関連のものはインストール対象から省きます．
+
 ```CMake
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
+  URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
 )
 
 # For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+if (WIN32)
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+endif()
+set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 add_executable(gtest-${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/src/example.cc ${PROJECT_SOURCE_DIR}/test/gtest_example.cc)
-target_link_libraries(gtest-${PROJECT_NAME} gtest_main)
+target_link_libraries(gtest-${PROJECT_NAME} PRIVATE gtest_main)
 target_include_directories(gtest-${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 add_test(COMMAND gtest-${PROJECT_NAME})
 enable_testing()
@@ -185,6 +241,7 @@ autoconf プロジェクトと異なり，CMakeLists.txt がいくつか追加�
    |- LICENSE                - ライセンスファイル
    |- README.md              - READMEファイル
    |- include/               - ヘッダファイル
+   |  |- CMakeLists.txt
    |  |- cpp_env_sample/
    |     |- example.h
    |
@@ -270,7 +327,7 @@ $ make docs
 Doxygen ドキュメントが `build/doxygen` 以下に生成され，例えば以下のコマンドで内容が確認できます．
 
 ```bash
-$ firefox build/doxygen/html/index.html
+$ firefox doxygen/html/index.html
 ```
 
 ### make lcov
@@ -286,14 +343,38 @@ $ make lcov
 カバレッジ計測結果が `build/lcov` 以下に生成され，例えば以下のコマンドで内容が確認できます．
 
 ```bash
-$ firefox build/lcov/index.html
+$ firefox lcov/index.html
 ```
 
-### インストール・アンインストール
+### インストール
 
-CMake では， `make uninstall` が提供されません．    
-ここでは，`make install` の説明を省略します．
+以下のコマンドで実行できます．
+
+```bash
+$ cmake -S . -B build
+$ cd build/
+$ sudo make install
+...(略)...
+Install the project...
+-- Install configuration: ""
+-- Installing: /usr/local/lib/libcmsamplelib.so
+-- Up-to-date: /usr/local/lib/cmake/cmsamplelib/cmsamplelib-config.cmake
+-- Up-to-date: /usr/local/lib/cmake/cmsamplelib/cmsamplelib-config-noconfig.cmake
+-- Up-to-date: /usr/local/lib/cmake/cmsamplelib/cmsamplelib-config-version.cmake
+-- Installing: /usr/local/bin/cmsample
+-- Set runtime path of "/usr/local/bin/cmsample" to "/usr/local/lib"
+-- Up-to-date: /usr/local/include/cpp_env_sample
+-- Up-to-date: /usr/local/include/cpp_env_sample/example.h
+```
+
+実行可能ファイル，ライブラリとヘッダファイルのインストールに成功しました．
+
+`make uninstall` は提供されないので，その場合は上記ファイルを個別に削除します．
 
 ## まとめ
 
 本ページでは，`ADD_CUSTOM_TARGET`. `ADD_CUSTOM_COMMAND` を使って，CMake プロジェクトで独自コマンドを追加する方法について説明しました．
+
+## 参考文献
+
+{{< anchor "cite:1" >}}[1] htakeuchi0, "htakeuchi0/cmake_sample: A C++ CMake sample project", https://github.com/htakeuchi0/cmake_sample, 2023/8/15 最終アクセス．    
