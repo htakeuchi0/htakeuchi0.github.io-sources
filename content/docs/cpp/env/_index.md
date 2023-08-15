@@ -20,3 +20,5 @@ weight: 1
 1. [autoconf プロジェクト (2)]({{< ref "autoconf2.md" >}})
 1. [autoconf プロジェクト (3)]({{< ref "autoconf3.md" >}})
 1. [autoconf プロジェクト (4)]({{< ref "autoconf4.md" >}})
+1. [CMake プロジェクト (1)]({{< ref "cmake.md" >}})
+1. [CMake プロジェクト (2)]({{< ref "cmake2.md" >}})
