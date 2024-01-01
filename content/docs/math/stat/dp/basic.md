@@ -117,20 +117,66 @@ weight: 2
 と定める．
 {{< /hint >}}
 
-確率密度関数が {{< katex >}}f_X(x;\sigma)=(1/(2\sigma))\exp(-|x|/\sigma){{< /katex >}} で表される確率変数 {{< katex >}}X{{< /katex >}} が従う分布を **ラプラス分布** といいます．関数 {{< katex >}}f{{< /katex >}} の結果に対して，ラプラス分布に従うノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られることが知られています．
+確率密度関数が {{< katex >}}f_X(x;\sigma)=(1/(2\sigma))\exp(-|x|/\sigma){{< /katex >}} で表される確率変数 {{< katex >}}X{{< /katex >}} が従う分布を **ラプラス分布** といいます．関数 {{< katex >}}f{{< /katex >}} の結果に対して，ラプラス分布に従うノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られます．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" >}} \\(f:\mathscr{D}\to\mathbb{R}^{k}\\) とする．確率変数 \\(X\\) の確率密度関数を \\(f_X(x;\sigma)=\prod_{i=1}^k(1/(2\sigma))\exp(-|x_i|/\sigma)\\) とする．\\(\sigma\ge\Delta f/\epsilon\\) ならば，\\(\mathscr{M}(D)=f(D)+X\\) で定めるメカニズム \\(\mathscr{M}\\) は \\(\epsilon\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" >}} \\(f:\mathscr{D}\to\mathbb{R}^{k}\\) とする．確率変数 \\(X\\) の確率密度関数を \\(f_X(x;\sigma)=\prod_{i=1}^k(1/(2\sigma))\exp(-|x_i|/\sigma)\\) とする．\\(\sigma=\Delta f/\epsilon\\) ならば，\\(\mathscr{M}(D)=f(D)+X\\) で定めるメカニズム \\(\mathscr{M}\\) は \\(\epsilon\\)-differential privacy を満たす．
 {{< /hint >}}
 
+証明は以下のとおりです．
+
+{{< katex >}}D\in\mathscr{D}{{< /katex >}} に対し，{{< katex >}}f(D)\in\mathbb{R}^k{{< /katex >}} の第{{< katex >}}i{{< /katex >}}要素を{{< katex >}}(f(D))_i{{< /katex >}}で表します．
+{{< katex >}}z\in\mathbb{R}^k{{< /katex >}} とし，{{< katex >}}f_{\mathscr{M}(D_2)}(z)\neq0{{< /katex >}} に注意すると，
+
+{{< katex display >}}
+\begin{aligned}
+&\frac{f_{\mathscr{M}(D_1)}(z)}{f_{\mathscr{M}(D_2)}(z)}\\
+&=\prod_{i=1}^k\left(\frac{\exp(-\epsilon|(f(D_1))_i-z_i|/\Delta f)}{\exp(-\epsilon|(f(D_2))_i-z_i|/\Delta f)}\right)\\
+&=\prod_{i=1}^k\exp\left(\frac{\epsilon(|(f(D_2))_i-z_i)|-|(f(D_1))_i-z_i|)}{\Delta f}\right)\\
+&\le\prod_{i=1}^k\exp\left(\frac{\epsilon|(f(D_2))_i-(f(D_1))_i|}{\Delta f}\right)\\
+&=\exp\left(\sum_{i=1}^k\frac{\epsilon|(f(D_2))_i-(f(D_1))_i|}{\Delta f}\right)\\
+&=\exp\left(\frac{\epsilon\sum_{i=1}^k|(f(D_2))_i-(f(D_1))_i|}{\Delta f}\right)\\
+&=\exp\left(\frac{\epsilon\|f(D_2)-f(D_1)\|_1}{\Delta f}\right)\\
+&\le\exp\left(\frac{\epsilon\Delta f}{\Delta f}\right)\\
+&\le\exp(\epsilon)\\
+\end{aligned}
+{{< /katex >}}
+
+が得られます．よって，{{< katex >}}f_{\mathscr{M}(D_1)}(z)\le e^{\epsilon}f_{\mathscr{M}(D_2)}(z){{< /katex >}} となります．
+
+したがって，任意の {{< katex >}}S\in\mathfrak{B}(\mathbb{R}^k){{< /katex >}} に対し，
+{{< katex display >}}
+\begin{aligned}
+  &P(\mathscr{M}(D_1)\in S)\\
+  &=\int_Sf_{\mathscr{M}(D_1)}(z)dz\\
+  &\le\int_Se^{\epsilon}f_{\mathscr{M}(D_2)}(z)dz\\
+  &=e^\epsilon P(\mathscr{M}(D_2)\in S)
+\end{aligned}
+{{< /katex >}}
+が成り立ちます．しがたって，メカニズム {{< katex >}}\mathscr{M}{{< /katex >}} は {{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たします．
+
+この事実は，データベースに関する確定的処理 {{< katex >}}f{{< /katex >}} があったとき，sensitivity をもとに大きさを決めたラプラスノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られることを示しています．
 
 ### 差分プライバシの性質
 
-差分プライバシは，メカニズムの出力に，関数による後処理を施しても性質が変わらないことが知られています．
+差分プライバシは，メカニズムの出力に，関数による後処理を施しても性質が変わらないという性質があります．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" >}} \\(\mathscr{D}\subseteq\bigcup_{n=1}^\infty\mathbb{R}^{n}\\), \\(\mathscr{D}\'\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}\'\\) とする．\\(g:\\mathbb{R}^k\to\mathbb{R}^{k\'}\\) とする．\\(\\mathscr{M}\\) が \\((\epsilon,\delta)\\)-differential privacy を満たすとき，\\(g\circ\mathscr{M}\\) も \\((\\epsilon,\\delta)\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" >}} \\(\mathscr{D}\subseteq\bigcup_{n=1}^\infty\mathbb{R}^{n}\\), \\(\mathscr{D}\'\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}\'\\) とする．\\(\\mathscr{D}\'\'\subseteq\\mathbb{R}^{k\'}\\), \\(g:\\mathscr{D}\'\to\mathscr{D}\'\'\\) とする．\\(\\mathscr{M}\\) が \\((\epsilon,\delta)\\)-differential privacy を満たすとき，\\(g\circ\mathscr{M}\\) も \\((\\epsilon,\\delta)\\)-differential privacy を満たす．
 {{< /hint >}}
+
+証明は以下のとおりです．
+
+まず，{{< katex >}}g\circ\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}''{{< /katex >}} とみなします．いま，{{< katex >}}S\in\mathfrak{B}(\mathbb{R}^{k'}){{< /katex >}} とします．{{< katex >}}T_S=\{D'\in\mathscr{D}'\mid g(D')\in S\}{{< /katex >}} とします．{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とします．このとき，{{< katex >}}T_S\in\mathfrak{B}(\mathbb{R}^k){{< /katex >}} なので，
+{{< katex display >}}
+\begin{aligned}
+  &P((g\circ\mathscr{M})(D_1)\in S)\\
+  &=P(\mathscr{M}(D_1)\in T_S)\\
+  &=e^\epsilon P(\mathscr{M}(D_2)\in T_S)+\delta\\
+  &=e^\epsilon P((g\circ\mathscr{M})(D_2)\in S)+\delta\\
+\end{aligned}
+{{< /katex >}}
+が成り立ちます．つまり，メカニズムの出力に確定的な処理を施しても，differential privacy の性質は変わらないということがわかります．
 
 また，複数のメカニズムを組み合わせた場合の性質は以下のとおりと知られています．これは，差分プライバシを満たすメカニズムを "直列に" 合成すると，{{< katex >}}\epsilon{{< /katex >}} は和になり，"並列に" 合成すると，{{< katex >}}\epsilon{{< /katex >}} は和にならない（最大値になる）ことを表しています．ここでいう並列とは，入力データが事前に互いに素な部分データに分割され，各部分データにメカニズムを適用するということを表します．
 
@@ -141,3 +187,9 @@ weight: 2
 {{< hint info >}}
 {{< theorem-label name="Theorem" >}} \\(\mathscr{D}\subseteq\bigcup_{n=1}^\infty\mathbb{R}^{n}\\) とし，\\(\\mathscr{D}=\\bigcup\_{i=1}^k\mathscr{D}\_i\\), \\(i\not=j\\) ならば \\(\mathscr{D}\_i\\cap\\mathscr{D}\_j=\\emptyset\\) であるとする．\\(\mathscr{M}\_i:\\mathscr{D}\_i\\times\\Omega\to\mathscr{D}\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:(\\prod_{i=1}^k\\mathscr{D}_i)\\times\\Omega\\to\\mathscr{D}\'\\) を \\(\\mathscr{M}(D_1,\dots,D_k)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\(\epsilon_i\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\max\_{i=1,2,\dots,k}\\epsilon\_i)\\)-differential privacy を満たす．
 {{< /hint >}}
+
+ラプラスノイズを付加することを想定すると，{{< katex >}}\epsilon{{< /katex >}} が大きくなればノイズの大きさもそれに従うので，{{< katex >>}\epsilon{{< /katex >}}の和にならない "並列な" 合成に関する規則は有用性という観点から重要といえます．
+
+## まとめ
+
+本ページでは，差分プライバシの基本事項についてまとめました．
