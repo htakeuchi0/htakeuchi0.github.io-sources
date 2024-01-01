@@ -27,12 +27,14 @@ weight: 2
 {{< /katex >}}
 とし，{{< katex >}}P([X\in S]){{< /katex >}} を {{< katex >}}P(X\in S){{< /katex >}} と略記します．
 
+また，ふたつの確率空間 {{< katex >}}(\Omega_1,\mathfrak{F}_1,P_1){{< /katex >}}, {{< katex >}}(\Omega_2,\mathfrak{F}_2,P_2){{< /katex >}} に対して，ふたつの確率変数 {{< katex >}}X:(\Omega_1,\mathfrak{F}_1)\to(\mathbb{R}^{n\times d},\mathfrak{B}(\mathbb{R}^{n\times d})){{< /katex >}}, {{< katex >}}Y:(\Omega_2,\mathfrak{F}_2)\to(\mathbb{R}^{n\times d},\mathfrak{B}(\mathbb{R}^{n\times d})){{< /katex >}} があったとき，{{< katex >}}P_1(X\in S){{< /katex >}}, {{< katex >}}P_2(Y\in S){{< /katex >}} と書くべきところを，{{< katex >}}P(X\in S){{< /katex >}}, {{< katex >}}P(Y\in S){{< /katex >}} と略記します．
+
 ただし，{{< katex >}}\mathfrak{B}(\mathbb{R}^{n\times d}){{< /katex >}} とは，{{< katex >}}\mathbb{R}^{n\times d}{{< /katex >}} の開集合全体 {{< katex >}}\mathcal{O}(\mathbb{R}^{n\times d}){{< /katex >}} について，{{< katex >}}\mathcal{O}(\mathbb{R}^{n\times d}){{< /katex >}} を含む最小の完全加法族を表します．
 
 ### \\(\epsilon\\)-indistinguishable
 
 {{< hint info >}}
-{{< theorem-label name="Definition" >}} \\(X:(\Omega,\mathfrak{F})\to(\mathbb{R}^{n\times d},\mathfrak{B}(\mathbb{R}^{n\times d}))\\), \\(Y:(\Omega,\mathfrak{F})\to(\mathbb{R}^{n\times d},\mathfrak{B}(\mathbb{R}^{n\times d}))\\) を確率変数とする．
+{{< theorem-label name="Definition" >}} \\(X:(\Omega\_1,\mathfrak{F}\_1)\to(\mathbb{R}^{n\times d},\mathfrak{B}(\mathbb{R}^{n\times d}))\\), \\(Y:(\Omega\_2,\mathfrak{F}\_2)\to(\mathbb{R}^{n\times d},\mathfrak{B}(\mathbb{R}^{n\times d}))\\) を確率変数とする．
 任意の \\(S\in\\mathfrak{B}(\mathbb{R}^{n\times d})\\) について \\(P(X\in S)\le e^\epsilon P(Y\in S)\\) かつ \\(P(Y\in S)\le e^\epsilon P(X\in S)\\) ならば，\\(X\\) と \\(Y\\) は **\\(\epsilon\\)-indistinguishable** であるといい，\\(X\approx_\epsilon Y\\) と表す．
 {{< /hint >}}
 
@@ -40,9 +42,9 @@ weight: 2
 {{< katex display >}}e^{-\epsilon}\le\frac{P(X\in S)}{P(Y\in S)}\le e^{\epsilon}{{< /katex >}}
 なので，{{< katex >}}\epsilon{{< /katex >}} は {{< katex >}}X,Y{{< /katex >}} の離れ具合を表しているといえます．
 
-特に，{{< katex >}}\epsilon=0{{< /katex >}} ならば，任意の {{< katex >}}S\in\mathfrak{B}(\mathbb{R}^{n\times d}){{< /katex >}} について {{< katex >}}P(X\in S)=P(Y\in S){{< /katex >}} なので，{{< katex >}}X=Y{{< /katex >}} となります．
+特に，{{< katex >}}\epsilon=0{{< /katex >}} ならば，任意の {{< katex >}}S\in\mathfrak{B}(\mathbb{R}^{n\times d}){{< /katex >}} について {{< katex >}}P(X\in S)=P(Y\in S){{< /katex >}} なので，{{< katex >}}X{{< /katex >}} と {{< katex >}}Y{{< /katex >}} は同一の分布に従います．
 
-{{< katex >}}\epsilon>0{{< /katex >}} ならば，{{< katex >}}X=Y{{< /katex >}} ではないまでも，{{< katex >}}P(X\in S){{< /katex >}} と {{< katex >}}P(Y\in S){{< /katex >}} の離れ具合が {{< katex >}}\epsilon{{< /katex >}} によって制限され，特に {{< katex >}}\epsilon{{< /katex >}} が小さいほど，その制限は強くなります．
+{{< katex >}}\epsilon>0{{< /katex >}} ならば，同一の分布に従わないまでも，{{< katex >}}P(X\in S){{< /katex >}} と {{< katex >}}P(Y\in S){{< /katex >}} の離れ具合が {{< katex >}}\epsilon{{< /katex >}} によって制限され，特に {{< katex >}}\epsilon{{< /katex >}} が小さいほど，その制限は強くなります．
 
 {{< hint info >}}
 {{< theorem-label name="Definition" >}} \\(\mathscr{D}\subseteq\bigcup_{n=1}^\infty\mathbb{R}^{n\times d}\\), \\(\mathscr{D}\'\subseteq\mathbb{R}^{n\'\times d}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}\'\\) とする．任意の \\(D\in\mathscr{D}\\) について，\\(\mathscr{M}(D):\Omega\to\mathscr{D}\'\\) が確率変数になるとき，\\(\mathscr{M}\\) を **メカニズム** という．
@@ -85,7 +87,7 @@ weight: 2
 
 これは，{{< katex >}}R_{\mathrm{adj}}{{< /katex >}} の対称律から明らかです．
 
-これらの準備のもと，近似的な differential privacy の定義が以下のように述べられます．
+また，近似的な differential privacy の定義が以下のように述べられます．
 
 {{< hint info >}}
 {{< theorem-label name="Definition" >}} 任意の \\((D_1,D_2)\in R_{\mathrm{adj}}\\) と \\(S\in\mathscr{B}(\mathbb{R}^{n\times d})\\)について，
