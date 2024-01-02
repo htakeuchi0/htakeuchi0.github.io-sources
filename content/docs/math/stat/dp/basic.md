@@ -62,12 +62,13 @@ weight: 2
 {{< theorem-label name="Definition" >}} \\(R_{\mathrm{neighb}}\subseteq\mathscr{D}^2\\) を
 1. \\((D_1,D_1)\in R_{\mathrm{neighb}}\\)
 1. \\((D_1,D_2)\in R_{\mathrm{neighb}}\\implies (D_2,D_1)\in R_{\mathrm{neighb}}\\)
+1. \\(\\mathscr{D}=\\bigcup\_{i=1}^k\mathscr{D}\_i\\), \\(i\not=j\\) ならば \\(\mathscr{D}\_i\\cap\\mathscr{D}\_j=\\emptyset\\) であるとする．\\(D_1,D_2\in\mathscr{D}\\) を \\(D_i=(D_{i1},\dots,D_{ik}),D_{ij}\in\mathscr{D}_j,j=1,2,\dots,k\ (i=1,2)\\) とするとき，\\((D_1,D_2)\in R\_{\mathrm{neighb}}\\) ならばある \\(j\\) が存在し，\\(D\_{1j}\not=D\_{2j}\\) かつ，\\(l\not=j\\) ならば \\(D\_{1l}=D\_{2l}\\) であるとする．
 
 を満たす \\(\mathscr{D}\\) 上の関係とする．
 {{< /hint >}}
 
-実用上は意味付けが重要ですが，ここでは単に反射律と対称律だけを課しておきます．
 "neighb" は "neighbour" の略で，隣接したデータであるという関係を表しています．
+反射律と対称律に加えて，隣接したデータ同士の差は局所的な差であることを要求しています．
 
 {{< hint info >}}
 {{< theorem-label name="Definition" >}} 任意の \\((D_1,D_2)\in R_{\mathrm{neighb}}\\) について，\\(\mathscr{M}(D_1)\approx_\epsilon\mathscr{M}(D_2)\\) であるとき，メカニズム \\(\mathscr{M}\\) は **\\(\epsilon\\)-differential privacy を満たす** という．
@@ -181,14 +182,30 @@ weight: 2
 また，複数のメカニズムを組み合わせた場合の性質は以下のとおりと知られています．これは，差分プライバシを満たすメカニズムを "直列に" 合成すると，{{< katex >}}\epsilon{{< /katex >}} は和になり，"並列に" 合成すると，{{< katex >}}\epsilon{{< /katex >}} は和にならない（最大値になる）ことを表しています．ここでいう並列とは，入力データが事前に互いに素な部分データに分割され，各部分データにメカニズムを適用するということを表します．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" >}} \\(\mathscr{D}\subseteq\bigcup_{n=1}^\infty\mathbb{R}^{n}\\), \\(\mathscr{D}\'_i\subseteq\mathbb{R}^{k_i}\\,(i=1,2\dots,k)\\) とする．\\(\mathscr{M}_i:\mathscr{D}\times\Omega\to\mathscr{D}\'_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{D}\'_i\\) を \\(\\mathscr{M}(D)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\((\epsilon_i,\delta_i)\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\sum\_{i=1}^k\\epsilon_i,\\sum\_{i=1}^k\\delta_i)\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" >}} \\(\mathscr{D}\subseteq\bigcup_{n=1}^\infty\mathbb{R}^{n}\\), \\(\mathscr{D}\'_i\subseteq\mathbb{R}^{k_i}\\,(i=1,2\dots,k)\\) とする．\\(\mathscr{M}_i:\mathscr{D}\times\Omega\to\mathscr{D}\'_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{D}\'_i\\) を \\(\\mathscr{M}(D)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\(\epsilon_i\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\sum\_{i=1}^k\\epsilon_i)\\)-differential privacy を満たす．
 {{< /hint >}}
+
+証明は以下のとおりです．
+
+{{< katex >}}D_1,D_2\in R_{\mathrm{neighb}}{{< /katex >}} とします．{{< katex >}}z\in\mathscr{D}'{{< /katex >}} とします．
+
+{{< katex >}}i=1,2,\dots,k{{< /katex >}}について，{{< katex >}}f_{M_i(D_1)}(z_i)\le e^{\epsilon_i}f_{M_i(D_2)}(z_i)\ (z_i\in\mathscr{D}'_i){{< /katex >}} です．{{< katex >}}(z_1,\dots,z_k)\in\prod_{i=1}^k\mathscr{D}'_i{{< /katex >}} のとき，
+{{< katex display >}}
+\begin{aligned}
+&f_{\mathscr{M}(D_1)}(z)\\
+&=\prod_{i=1}^kf_{M_i(D_1)}(z_i)\\
+&\le\prod_{i=1}^ke^{\epsilon_i}f_{M_i(D_2)}(z_i)\\
+&=e^{\sum_{i=1}^k\epsilon_i}\prod_{i=1}^kf_{M_i(D_2)}(z_i)\\
+&=e^{\sum_{i=1}^k\epsilon_i}f_{\mathscr{M}(D_2)}(z)
+\end{aligned}
+{{< /katex >}}
+が成り立ちます．よって，任意の {{< katex >}}S\in\mathfrak{B}(\mathbb{R}^{\sum_{i=1}^kk_i}){{< /katex >}} について，{{< katex >}}P(\mathscr{M}(D_1)\in S)=\int_Sf_{\mathscr{M}(D_1)}(z)dz\le\int_S e^{\sum_{i=1}^k\epsilon_i}f_{\mathscr{M}(D_2)}(z)dz=e^{\sum_{i=1}^k\epsilon_i}P(\mathscr{M}(D_2)\in S){{< /katex >}} となります．
 
 {{< hint info >}}
 {{< theorem-label name="Theorem" >}} \\(\mathscr{D}\subseteq\bigcup_{n=1}^\infty\mathbb{R}^{n}\\) とし，\\(\\mathscr{D}=\\bigcup\_{i=1}^k\mathscr{D}\_i\\), \\(i\not=j\\) ならば \\(\mathscr{D}\_i\\cap\\mathscr{D}\_j=\\emptyset\\) であるとする．\\(\mathscr{M}\_i:\\mathscr{D}\_i\\times\\Omega\to\mathscr{D}\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:(\\prod_{i=1}^k\\mathscr{D}_i)\\times\\Omega\\to\\mathscr{D}\'\\) を \\(\\mathscr{M}(D_1,\dots,D_k)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\(\epsilon_i\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\max\_{i=1,2,\dots,k}\\epsilon\_i)\\)-differential privacy を満たす．
 {{< /hint >}}
 
-ラプラスノイズを付加することを想定すると，{{< katex >}}\epsilon{{< /katex >}} が大きくなればノイズの大きさもそれに従うので，{{< katex >>}\epsilon{{< /katex >}}の和にならない "並列な" 合成に関する規則は有用性という観点から重要といえます．
+ラプラスノイズを付加することを想定すると，{{< katex >}}\epsilon{{< /katex >}} が大きくなればノイズの大きさもそれに従うので，{{< katex >}}\epsilon{{< /katex >}}の和にならない "並列な" 合成に関する規則は有用性という観点から重要といえます．
 
 ## まとめ
 
