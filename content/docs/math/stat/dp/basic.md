@@ -25,28 +25,28 @@ weight: 2
 {{< katex display >}}
   [X\in S]=\{\omega\in\Omega\mid X(\omega)\in S\}
 {{< /katex >}}
-とし，{{< katex >}}P([X\in S]){{< /katex >}} を {{< katex >}}P(X\in S){{< /katex >}} と略記します．ただし，{{< katex >}}\mathfrak{B}(\mathbb{R}^{k}){{< /katex >}} とは，{{< katex >}}\mathbb{R}^{k}{{< /katex >}} の開集合全体 {{< katex >}}\mathcal{O}(\mathbb{R}^{k}){{< /katex >}} について，{{< katex >}}\mathcal{O}(\mathbb{R}^{k}){{< /katex >}} を含む最小の完全加法族を表します．
+で定め，{{< katex >}}P([X\in S]){{< /katex >}} を {{< katex >}}P(X\in S){{< /katex >}} と略記します．ただし，{{< katex >}}\mathfrak{B}(\mathbb{R}^{k}){{< /katex >}} とは，{{< katex >}}\mathbb{R}^{k}{{< /katex >}} の開集合全体 {{< katex >}}\mathscr{O}(\mathbb{R}^{k}){{< /katex >}} について，{{< katex >}}\mathscr{O}(\mathbb{R}^{k}){{< /katex >}} を含む最小の完全加法族を表します．
 
 ふたつの確率空間 {{< katex >}}(\Omega_1,\mathfrak{F}_1,P_1){{< /katex >}}, {{< katex >}}(\Omega_2,\mathfrak{F}_2,P_2){{< /katex >}} に対して，ふたつの確率変数 {{< katex >}}X:(\Omega_1,\mathfrak{F}_1)\to(\mathbb{R}^{k},\mathfrak{B}(\mathbb{R}^{k})){{< /katex >}}, {{< katex >}}Y:(\Omega_2,\mathfrak{F}_2)\to(\mathbb{R}^{k},\mathfrak{B}(\mathbb{R}^{k})){{< /katex >}} があったとき，{{< katex >}}P_1(X\in S){{< /katex >}}, {{< katex >}}P_2(Y\in S){{< /katex >}} と書くべきところを，{{< katex >}}P(X\in S){{< /katex >}}, {{< katex >}}P(Y\in S){{< /katex >}} と略記します．
 
-また，本ページでは簡単のため，確率変数は連続的確率変数である場合のみを想定した論証を行います．
-
-以降では，実数全体の集合を {{< katex >}}\mathbb{R}{{< /katex >}}, 実数の {{< katex >}}k{{< /katex >}} 個の組全体の集合を {{< katex >}}\mathbb{R}^k{{< /katex >}} で表します．
+また，本ページでは簡単のため，確率変数が連続的確率変数である場合のみを想定し，論証を行います．
 
 ### \\(\epsilon\\)-indistinguishable
+
+まず，確率変数どうしの関係のひとつである，{{< katex >}}\epsilon{{< /katex >}}-indistiguishability という概念を導入します [[1]](#desfontaines:2020:1)．
 
 {{< hint info >}}
 {{< theorem-label name="Definition" >}} \\(X:(\Omega\_1,\mathfrak{F}\_1)\to(\mathbb{R}^{k},\mathfrak{B}(\mathbb{R}^{k}))\\), \\(Y:(\Omega\_2,\mathfrak{F}\_2)\to(\mathbb{R}^{k},\mathfrak{B}(\mathbb{R}^{k}))\\) を確率変数とする．
 任意の \\(S\in\\mathfrak{B}(\mathbb{R}^{k})\\) について \\(P(X\in S)\le e^\epsilon P(Y\in S)\\) かつ \\(P(Y\in S)\le e^\epsilon P(X\in S)\\) ならば，\\(X\\) と \\(Y\\) は **\\(\epsilon\\)-indistinguishable** であるといい，\\(X\approx_\epsilon Y\\) と表す．
 {{< /hint >}}
 
-{{< katex >}}P(Y\in S){{< /katex >}} ならば，
+{{< katex >}}P(Y\in S)\not=0{{< /katex >}} ならば，
 {{< katex display >}}e^{-\epsilon}\le\frac{P(X\in S)}{P(Y\in S)}\le e^{\epsilon}{{< /katex >}}
 なので，{{< katex >}}\epsilon{{< /katex >}} は {{< katex >}}X,Y{{< /katex >}} の離れ具合を表しているといえます．
 
 特に，{{< katex >}}\epsilon=0{{< /katex >}} ならば，任意の {{< katex >}}S\in\mathfrak{B}(\mathbb{R}^{k}){{< /katex >}} について {{< katex >}}P(X\in S)=P(Y\in S){{< /katex >}} なので，{{< katex >}}X{{< /katex >}} と {{< katex >}}Y{{< /katex >}} は同一の分布に従います．
 
-{{< katex >}}\epsilon>0{{< /katex >}} ならば，同一の分布に従わないまでも，{{< katex >}}P(X\in S){{< /katex >}} と {{< katex >}}P(Y\in S){{< /katex >}} の離れ具合が {{< katex >}}\epsilon{{< /katex >}} によって制限され，特に {{< katex >}}\epsilon{{< /katex >}} が小さいほど，その制限は強くなります．
+{{< katex >}}\epsilon>0{{< /katex >}} ならば，同一の分布に従わないまでも，{{< katex >}}P(X\in S){{< /katex >}} と {{< katex >}}P(Y\in S){{< /katex >}} の離れ具合が {{< katex >}}\epsilon{{< /katex >}} によって制限されます．特に {{< katex >}}\epsilon{{< /katex >}} が小さいほど，その制限は強くなります．
 
 ## 差分プライバシの定義と性質
 
@@ -55,13 +55,13 @@ weight: 2
 まずは， **メカニズム** という用語を定義します．
 
 {{< hint info >}}
-{{< theorem-label name="Definition" >}} \\(\mathscr{D}\\) を集合とし，\\(\mathscr{D}\'\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}\'\\) とする．任意の \\(D\in\mathscr{D}\\) について，\\(\mathscr{M}(D):\Omega\to\mathscr{D}\'\\) が確率変数になるとき，\\(\mathscr{M}\\) を **メカニズム** という．
+{{< theorem-label name="Definition" >}} \\(\mathscr{D}\\) を集合とし，\\(\\mathscr{O}\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\\mathscr{O}\\) とする．任意の \\(D\in\mathscr{D}\\) について，\\(\mathscr{M}(D):\Omega\to\\mathscr{O}\\) が確率変数になるとき，\\(\mathscr{M}\\) を **メカニズム** という．
 {{< /hint >}}
 
-メカニズム {{< katex >}}\mathscr{M}{{< /katex >}} は，データ {{< katex >}}D{{< /katex >}} に対する何らかの処理として導入したいものですが，確率的操作を含ませたい都合上，単なる関数でなく，上記のような定義としています．
+メカニズム {{< katex >}}\mathscr{M}{{< /katex >}} は，入力 {{< katex >}}D{{< /katex >}} に対する何らかの処理を表すものとして導入したいものですが，確率的操作を含ませたい都合上，単なる関数でなく，上記のような定義としています．
 
 {{< hint info >}}
-{{< theorem-label name="Definition" >}} \\(\mathscr{D}\\) を集合とする．\\(\\mathscr{D}=\\bigcup\_{i=1}^k\mathscr{D}\_i\\), \\(i\not=j\\) ならば \\(\mathscr{D}\_i\\cap\\mathscr{D}\_j=\\emptyset\\) となる \\(\mathscr{D}\_1,\dots,\mathscr{D}\_k\subseteq\mathscr{D}\\) について，それらと \\(\phi:\mathscr{D}\to(\mathscr{D}\_1,\dots,\mathscr{D}\_k)\\) の組 \\((\mathscr{D}\_1,\dots,\mathscr{D}\_k,\phi)\\) を，\\(\mathscr{D}\\) の分割という．このとき，\\(R_{\mathrm{neighb}}\subseteq\mathscr{D}^2\\) 以下を満たす \\(\mathscr{D}\\) 上の関係とする．
+{{< theorem-label name="Definition" >}} \\(\mathscr{D}\\) を集合とする．\\(\\mathscr{D}=\\bigcup\_{i=1}^k\mathscr{D}\_i\\), \\(i\not=j\\) ならば \\(\mathscr{D}\_i\\cap\\mathscr{D}\_j=\\emptyset\\) となる \\(\mathscr{D}\_1,\dots,\mathscr{D}\_k\subseteq\mathscr{D}\\) について，それらと \\(\phi:\mathscr{D}\to(\mathscr{D}\_1,\dots,\mathscr{D}\_k)\\) の組 \\((\mathscr{D}\_1,\dots,\mathscr{D}\_k,\phi)\\) を，\\(\mathscr{D}\\) の分割という．このとき，\\(R_{\mathrm{neighb}}\subseteq\mathscr{D}^2\\) を，以下を満たす \\(\mathscr{D}\\) 上の関係とする．
 1. \\((D_1,D_1)\in R_{\mathrm{neighb}}\\).
 1. \\((D_1,D_2)\in R_{\mathrm{neighb}}\\implies (D_2,D_1)\in R_{\mathrm{neighb}}\\).
 1. \\((D_1,D_2)\in R\_{\mathrm{neighb}}\\) ならば，\\(\phi(D_1)\not=\emptyset\\) かつ \\(\phi(D_2)\not=\emptyset\\) なる任意の分割 \\((\mathscr{D}\_1,\dots,\mathscr{D}\_k,\phi)\\) に対し，\\(\phi(D_i)=(D_{i1},\dots,D_{ik})\ (i=1,2)\\)
@@ -70,21 +70,25 @@ weight: 2
 
 "neighb" は "neighbour" の略で，隣接したデータであるという関係を表しています．
 反射律と対称律に加えて，隣接したデータ同士の差は局所的な差であることを要求しています．
-また，分割の定義は，入力空間をどのような空間に分割するかと，入力データを各分割空間に分割する方法それぞれを指定するように要求しています．
+また，分割の定義は，入力空間をどのような空間に分割するかと，入力データを各分割空間に分割する方法のそれぞれを指定するように要求しています．
+
+なお，この定義は，特に parallel composition の説明を意識したものになっており，本ページ独自の整理によるものです．
+
+ここで， [[1]](#desfontaines:2020:1) に沿って，差分プライバシ (differential privacy) という概念を導入します．
 
 {{< hint info >}}
 {{< theorem-label name="Definition" >}} 任意の \\((D_1,D_2)\in R_{\mathrm{neighb}}\\) について，\\(\mathscr{M}(D_1)\approx_\epsilon\mathscr{M}(D_2)\\) であるとき，メカニズム \\(\mathscr{M}\\) は **\\(\epsilon\\)-differential privacy を満たす** という．
 {{< /hint >}}
 
-\\(\epsilon\\) が小さいとき，\\(\mathscr{M}(D_1)\\) と \\(\mathscr{M}(D_2)\\) が確率変数としておおよそ似たようなものだということは，公開される情報が \\(\mathscr{M}(D_1)\\) や \\(\mathscr{M}(D_2)\\) の実現値であれば，公開される情報から，入力データが \\(D_1\\) であるか \\(D_2\\) であるかの区別が難しいということを主張しています．
+{{< katex >}}\mathscr{M}{{< /katex >}} が {{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすとき，\\(\mathscr{M}(D_1)\\) と \\(\mathscr{M}(D_2)\\) が確率変数としておおよそ似たようなものということになります．これは実用上，公開される情報が \\(\mathscr{M}(D_1)\\) や \\(\mathscr{M}(D_2)\\) の実現値であれば，公開される情報から，入力が \\(D_1\\) であるか \\(D_2\\) であるかの区別が難しいということを主張しています．
 
-たとえば，\\(D_1\\) と \\(D_2\\) の違いが，特定の個人に関するレコードの有無だけであれば，メカニズムの出力結果から，元データにその特定の個人が含まれているかどうかが，類推困難であるということになります．
+たとえば，{{< katex >}}D_1,D_2{{< /katex >}} がテーブルデータであり，\\(D_1\\) と \\(D_2\\) の違いが，特定の個人に関するレコードの有無だけであれば，メカニズムの出力結果から，入力データにその特定の個人が含まれているかどうかが，類推困難であるということになります．
 
-したがって，例えば，個人情報を含むデータに対するクエリ結果そのものではなく，そのクエリ結果に近い値が出力できる \\(\epsilon\\)-differential privacy を満たすメカニズムの実現値による情報を公開することで，そこに含まれる個人の情報が保護されることが期待されるため，\\(\epsilon\\)-differentai privacy は一種の安全性指標とみることができます．
+したがって，たとえば，個人に関する情報を含むデータに対するクエリ結果そのものではなく，そのクエリ結果に近い値が出力できる，\\(\epsilon\\)-differential privacy を満たすメカニズムの実現値を公開することで，そこに含まれる個人に関する情報が保護できると期待されるます．その意味で，\\(\epsilon\\)-differentai privacy は，一種の安全性指標とみることができます．
 
-この安全性指標は，計算量に基づくものではなく，統計的性質だけから主張されている点も特徴です．
+この安全性指標は，計算量に基づくものではなく，統計的性質だけから主張されている点も重要です．
 
-ところで，{{< katex >}}\epsilon{{< /katex >}}-differential privacy について，以下の性質が成り立ちます．
+ところで，{{< katex >}}\epsilon{{< /katex >}}-differential privacy について，以下の性質が成り立ちます．こちらの形の定義のほうが，よくみる形かもしれません．
 
 {{< hint info >}}
 {{< theorem-label name="Proposition" >}} メカニズム \\(\mathscr{M}\\) が \\(\epsilon\\)-differential privacy を満たすならば，任意の \\((D_1,D_2)\in R_{\mathrm{neighb}}\\) について，
@@ -98,6 +102,8 @@ weight: 2
 
 ### 差分プライバシの例
 
+まずは，sensitivity という概念を導入します．
+
 {{< hint info >}}
 {{< theorem-label name="Definition" >}} \\(f:\mathscr{D}\to\mathbb{R}^{k}\\) とする．\\(f\\) の **sensitivity** \\(\Delta f\\) を
 \\[
@@ -106,7 +112,9 @@ weight: 2
 と定める．
 {{< /hint >}}
 
-確率密度関数が {{< katex >}}f_X(x;\sigma)=(1/(2\sigma))\exp(-|x|/\sigma){{< /katex >}} で表される確率変数 {{< katex >}}X{{< /katex >}} が従う分布を **ラプラス分布** といいます．関数 {{< katex >}}f{{< /katex >}} の結果に対して，ラプラス分布に従うノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られます．
+定義から，{{< katex >}}R_{\mathrm{neighb}}{{< /katex >}} の具体的なとり方によって，{{< katex >}}\Delta f{{< /katex >}} の値が変わることがあります．
+
+確率密度関数が {{< katex >}}f_X(x;\sigma)=(1/(2\sigma))\exp(-|x|/\sigma){{< /katex >}} で表される確率変数 {{< katex >}}X{{< /katex >}} が従う分布を **ラプラス分布** といいます．関数 {{< katex >}}f{{< /katex >}} の結果に対して，ラプラス分布に従うノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られます [[2]](#dwork:2014:1)．
 
 {{< hint info >}}
 {{< theorem-label name="Theorem" >}} \\(f:\mathscr{D}\to\mathbb{R}^{k}\\) とする．確率変数 \\(X\\) の確率密度関数を \\(f_X(x;\sigma)=\prod_{i=1}^k(1/(2\sigma))\exp(-|x_i|/\sigma)\\) とする．\\(\sigma=\Delta f/\epsilon\\) ならば，\\(\mathscr{M}(D)=f(D)+X\\) で定めるメカニズム \\(\mathscr{M}\\) は \\(\epsilon\\)-differential privacy を満たす．
@@ -144,19 +152,19 @@ weight: 2
 {{< /katex >}}
 が成り立ちます．しがたって，メカニズム {{< katex >}}\mathscr{M}{{< /katex >}} は {{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たします．
 
-この事実は，データベースに関する確定的処理 {{< katex >}}f{{< /katex >}} があったとき，sensitivity をもとに大きさを決めたラプラスノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られることを示しています．
+この事実は，入力に関する確定的処理 {{< katex >}}f{{< /katex >}} があったとき，sensitivity をもとに大きさを決めたラプラスノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムによる出力が得られることを示しています．
 
 ### 差分プライバシの性質
 
-差分プライバシは，メカニズムの出力に，関数による後処理を施しても性質が変わらないという性質があります．
+差分プライバシは，メカニズムの出力に，関数による後処理を施しても性質が変わらないという性質があります [[2]](#dwork:2014:1)．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" comment="Post-process" >}} \\(\mathscr{D}\\) を集合とし，\\(\mathscr{D}\'\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}\'\\) とする．\\(\\mathscr{D}\'\'\subseteq\\mathbb{R}^{k\'}\\), \\(g:\\mathscr{D}\'\to\mathscr{D}\'\'\\) とする．\\(\\mathscr{M}\\) が \\(\epsilon\\)-differential privacy を満たすとき，\\(g\circ\mathscr{M}\\) も \\(\\epsilon\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" comment="Post-Processing" >}} \\(\mathscr{D}\\) を集合とし，\\(\\mathscr{O}\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\\mathscr{O}\\) とする．\\(\\mathscr{O}\'\subseteq\\mathbb{R}^{k\'}\\), \\(g:\\mathscr{O}\to\\mathscr{O}\'\\) とする．\\(\\mathscr{M}\\) が \\(\epsilon\\)-differential privacy を満たすとき，\\(g\circ\mathscr{M}\\) も \\(\\epsilon\\)-differential privacy を満たす．
 {{< /hint >}}
 
 証明は以下のとおりです．
 
-まず，{{< katex >}}g\circ\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}''{{< /katex >}} とみなします．いま，{{< katex >}}S\in\mathfrak{B}(\mathscr{D}''){{< /katex >}} とします．{{< katex >}}T_S=\{D'\in\mathscr{D}'\mid g(D')\in S\}{{< /katex >}} とします．{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とします．このとき，{{< katex >}}T_S\in\mathfrak{B}(\mathbb{R}^k){{< /katex >}} なので，
+まず，{{< katex >}}g\circ\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{O}'{{< /katex >}} とみなします．いま，{{< katex >}}S\in\mathfrak{B}(\mathscr{O}'){{< /katex >}} とします．{{< katex >}}T_S=\{O\in\mathscr{O}\mid g(O)\in S\}{{< /katex >}} とします．{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とします．このとき，{{< katex >}}T_S\in\mathfrak{B}(\mathscr{O}){{< /katex >}} なので，
 {{< katex display >}}
 \begin{aligned}
   &P((g\circ\mathscr{M})(D_1)\in S)\\
@@ -169,13 +177,15 @@ weight: 2
 
 また，複数のメカニズムを組み合わせた場合の性質は以下のとおりと知られています．これは，差分プライバシを満たすメカニズムを "直列に" 合成すると，{{< katex >}}\epsilon{{< /katex >}} は和になり，"並列に" 合成すると，{{< katex >}}\epsilon{{< /katex >}} は和にならない（最大値になる）ことを表しています．ここでいう並列とは，入力データが事前に互いに素な部分データに分割され，各部分データにメカニズムを適用するということを表します．
 
+まずは，"直列に" 合成する場合の性質について述べます [[2]](#dwork:2014:1)．
+
 {{< hint info >}}
-{{< theorem-label name="Theorem" comment="Sequential Composition" >}} \\(\mathscr{D}\\) を集合とし，\\(\mathscr{D}\'_i\subseteq\mathbb{R}^{k_i}\\,(i=1,2\dots,k)\\) とする．\\(\mathscr{M}_i:\mathscr{D}\times\Omega\to\mathscr{D}\'_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{D}\'_i\\) を \\(\\mathscr{M}(D)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\(\epsilon_i\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\sum\_{i=1}^k\\epsilon_i)\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" comment="Sequential Composition" >}} \\(\mathscr{D}\\) を集合とし，\\(\\mathscr{O}_i\subseteq\mathbb{R}^{k_i}\\,(i=1,2\dots,k)\\) とする．\\(\mathscr{M}_i:\mathscr{D}\times\Omega\to\\mathscr{O}_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{O}_i\\) を \\(\\mathscr{M}(D)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\(\epsilon_i\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\sum\_{i=1}^k\\epsilon_i)\\)-differential privacy を満たす．
 {{< /hint >}}
 
 証明は以下のとおりです．
 
-{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とします．{{< katex >}}i=1,2,\dots,k{{< /katex >}}について，{{< katex >}}f_{\mathscr{M}_i(D_1)}(z_i)\le e^{\epsilon_i}f_{\mathscr{M}_i(D_2)}(z_i)\ (z_i\in\mathscr{D}'_i){{< /katex >}} です．{{< katex >}}z=(z_1,\dots,z_k)\in\prod_{i=1}^k\mathscr{D}'_i{{< /katex >}} のとき，
+{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とします．{{< katex >}}i=1,2,\dots,k{{< /katex >}}について，{{< katex >}}f_{\mathscr{M}_i(D_1)}(z_i)\le e^{\epsilon_i}f_{\mathscr{M}_i(D_2)}(z_i)\ (z_i\in\mathscr{O}_i){{< /katex >}} です．{{< katex >}}z=(z_1,\dots,z_k)\in\prod_{i=1}^k\mathscr{O}_i{{< /katex >}} のとき，
 {{< katex display >}}
 \begin{aligned}
 &f_{\mathscr{M}(D_1)}(z)\\
@@ -185,12 +195,12 @@ weight: 2
 &=e^{\sum_{i=1}^k\epsilon_i}f_{\mathscr{M}(D_2)}(z)
 \end{aligned}
 {{< /katex >}}
-が成り立ちます．よって，任意の {{< katex >}}S\in\mathfrak{B}(\prod_{i=1}^k\mathscr{D}'_i){{< /katex >}} について，{{< katex >}}P(\mathscr{M}(D_1)\in S)=\int_Sf_{\mathscr{M}(D_1)}(z)dz\le\int_S e^{\sum_{i=1}^k\epsilon_i}f_{\mathscr{M}(D_2)}(z)dz=e^{\sum_{i=1}^k\epsilon_i}P(\mathscr{M}(D_2)\in S){{< /katex >}} となります．
+が成り立ちます．よって，任意の {{< katex >}}S\in\mathfrak{B}(\prod_{i=1}^k\mathscr{O}_i){{< /katex >}} について，{{< katex >}}P(\mathscr{M}(D_1)\in S)=\int_Sf_{\mathscr{M}(D_1)}(z)dz\le\int_S e^{\sum_{i=1}^k\epsilon_i}f_{\mathscr{M}(D_2)}(z)dz=e^{\sum_{i=1}^k\epsilon_i}P(\mathscr{M}(D_2)\in S){{< /katex >}} となります．
 
-次に示すのが，"並列に" 合成する場合の性質です．
+次に示すのが，"並列に" 合成する場合の性質です [[3]](#mcsherry:2009:1)．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" comment="Parallel Composition" >}} \\(\mathscr{D}\\) を集合とし，\\((\\mathscr{D}\_1,\dots,\\mathscr{D}\_k,\phi)\\) をその分割とする．\\(\mathscr{M}\_i:\\mathscr{D}\_i\\times\\Omega\to\mathscr{D}\'\_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{D}\'\_i\\) を，\\(D\in\mathscr{D}\\) について，\\(\\phi(D)=(D_1,\dots,D_k)\not=\emptyset\\) であるとき，\\(\\mathscr{M}(D)=(\\mathscr{M}_i(D_i))\_{i=1,2,\\dots,k}\\) によって定める．\\(\\mathscr{M}_i\\) が \\(\epsilon_i\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\max\_{i=1,2,\dots,k}\\epsilon\_i)\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" comment="Parallel Composition" >}} \\(\mathscr{D}\\) を集合とし，\\((\\mathscr{D}\_1,\dots,\\mathscr{D}\_k,\phi)\\) をその分割とする．\\(\mathscr{M}\_i:\\mathscr{D}\_i\\times\\Omega\to\\mathscr{O}\_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{O}\_i\\) を，\\(D\in\mathscr{D}\\) について，\\(\\phi(D)=(D_1,\dots,D_k)\not=\emptyset\\) であるとき，\\(\\mathscr{M}(D)=(\\mathscr{M}_i(D_i))\_{i=1,2,\\dots,k}\\) によって定める．\\(\\mathscr{M}_i\\) が \\(\epsilon_i\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\max\_{i=1,2,\dots,k}\\epsilon\_i)\\)-differential privacy を満たす．
 {{< /hint >}}
 
 証明は以下のとおりです．
@@ -207,11 +217,11 @@ weight: 2
 &=e^{\max_{i=1,2,\dots,k}\epsilon_i}f_{\mathscr{M}(D_2)}(z)
 \end{aligned}
 {{< /katex >}}
-が成り立ちます．よって，任意の {{< katex >}}S\in\mathfrak{B}(\prod_{i=1}^k\mathscr{D}'_i){{< /katex >}} について，{{< katex >}}P(\mathscr{M}(D_1)\in S)=\int_Sf_{\mathscr{M}(D_1)}(z)dz\le\int_S e^{\max_{i=1,2,\dots,k}\epsilon_i}f_{\mathscr{M}(D_2)}(z)dz=e^{\max_{i=1,2,\dots,k}\epsilon_i}P(\mathscr{M}(D_2)\in S){{< /katex >}} となります．
+が成り立ちます．よって，任意の {{< katex >}}S\in\mathfrak{B}(\prod_{i=1}^k\mathscr{O}_i){{< /katex >}} について，{{< katex >}}P(\mathscr{M}(D_1)\in S)=\int_Sf_{\mathscr{M}(D_1)}(z)dz\le\int_S e^{\max_{i=1,2,\dots,k}\epsilon_i}f_{\mathscr{M}(D_2)}(z)dz=e^{\max_{i=1,2,\dots,k}\epsilon_i}P(\mathscr{M}(D_2)\in S){{< /katex >}} となります．
 
 ### 近似的差分プライバシ (approximate differential privacy)
 
-近似的な differential privacy の定義が以下のように述べられます．
+近似的な differential privacy の定義が以下のように述べられます [[2]](#dwork:2014:1)．
 
 {{< hint info >}}
 {{< theorem-label name="Definition" >}} 任意の \\((D_1,D_2)\in R_{\mathrm{neighb}}\\) と \\(S\in\mathfrak{B}(\mathbb{R}^{k})\\)について，
@@ -221,17 +231,17 @@ weight: 2
 であるとき，メカニズム \\(\mathscr{M}\\) は **\\((\epsilon,\delta)\\)-differential privacy を満たす** という．
 {{< /hint >}}
 
-この定義は，メカニズム \\(\mathscr{M}\\) が {{< katex >}}1-\delta{{< /katex >}} の確率で \\(\epsilon\\)-differential privacy を満たすことと等価であることが知られています．
+この定義は，メカニズム \\(\mathscr{M}\\) が {{< katex >}}1-\delta{{< /katex >}} の確率で \\(\epsilon\\)-differential privacy を満たすことと等価であることが知られています ([[2]](#dwork:2014:1))．
 
-また，{{< katex >}}\epsilon{{< /katex >}}-differential privacy と同様の性質が成り立ちます．
+また，{{< katex >}}\epsilon{{< /katex >}}-differential privacy と同様の性質が成り立ちます [[2]](#dwork:2014:1)．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" comment="Post-process" >}} \\(\mathscr{D}\\) を集合とし，\\(\mathscr{D}\'\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}\'\\) とする．\\(\\mathscr{D}\'\'\subseteq\\mathbb{R}^{k\'}\\), \\(g:\\mathscr{D}\'\to\mathscr{D}\'\'\\) とする．\\(\\mathscr{M}\\) が \\((\epsilon,\delta)\\)-differential privacy を満たすとき，\\(g\circ\mathscr{M}\\) も \\((\\epsilon,\\delta)\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" comment="Post-Processing" >}} \\(\mathscr{D}\\) を集合とし，\\(\\mathscr{O}\subseteq\mathbb{R}^{k}\\) とする．\\(\mathscr{M}:\mathscr{D}\times\Omega\to\\mathscr{O}\\) とする．\\(\\mathscr{O}\'\subseteq\\mathbb{R}^{k\'}\\), \\(g:\\mathscr{O}\to\\mathscr{O}\'\\) とする．\\(\\mathscr{M}\\) が \\((\epsilon,\delta)\\)-differential privacy を満たすとき，\\(g\circ\mathscr{M}\\) も \\((\\epsilon,\\delta)\\)-differential privacy を満たす．
 {{< /hint >}}
 
 証明は以下のとおりです．
 
-まず，{{< katex >}}g\circ\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{D}''{{< /katex >}} とみなします．いま，{{< katex >}}S\in\mathfrak{B}(\mathbb{R}^{k'}){{< /katex >}} とします．{{< katex >}}T_S=\{D'\in\mathscr{D}'\mid g(D')\in S\}{{< /katex >}} とします．{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とします．このとき，{{< katex >}}T_S\in\mathfrak{B}(\mathbb{R}^k){{< /katex >}} なので，
+まず，{{< katex >}}g\circ\mathscr{M}:\mathscr{D}\times\Omega\to\mathscr{O}'{{< /katex >}} とみなします．いま，{{< katex >}}S\in\mathfrak{B}(\mathscr{O}'){{< /katex >}} とします．{{< katex >}}T_S=\{O\in\mathscr{O}\mid g(O)\in S\}{{< /katex >}} とします．{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とします．このとき，{{< katex >}}T_S\in\mathfrak{B}(\mathscr{O}){{< /katex >}} なので，
 {{< katex display >}}
 \begin{aligned}
   &P((g\circ\mathscr{M})(D_1)\in S)\\
@@ -242,14 +252,22 @@ weight: 2
 {{< /katex >}}
 が成り立ちます．つまり，メカニズムの出力に確定的な処理を施しても，differential privacy の性質は変わらないということがわかりますが，これは，{{< katex >}}\delta{{< /katex >}} の項が増えただけで，{{< katex >}}\epsilon{{< /katex >}}-differential privacy の議論とほとんどかわりません．
 
-"直列に" 合成する場合の性質は以下のようになります．
+"直列に" 合成する場合の性質は以下のようになります [[2]](#dwork:2014:1)．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" comment="Sequential Composition" >}} \\(\mathscr{D}\\) を集合とし，\\(\mathscr{D}\'_i\subseteq\mathbb{R}^{k_i}\\,(i=1,2\dots,k)\\) とする．\\(\mathscr{M}_i:\mathscr{D}\times\Omega\to\mathscr{D}\'_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{D}\'_i\\) を \\(\\mathscr{M}(D)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\((\epsilon\_i,\delta\_i)\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\sum\_{i=1}^k\\epsilon_i,\\sum\_{i=1}^k\\delta_i)\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" comment="Sequential Composition" >}} \\(\mathscr{D}\\) を集合とし，\\(\\mathscr{O}_i\subseteq\mathbb{R}^{k_i}\\,(i=1,2\dots,k)\\) とする．\\(\mathscr{M}_i:\mathscr{D}\times\Omega\to\\mathscr{O}_i\\,(i=1,2\dots,k)\\) とする．\\(\\mathscr{M}:\\mathscr{D}\\times\\Omega\\to\\prod\_{i=1}^k\\mathscr{O}_i\\) を \\(\\mathscr{M}(D)=(\\mathscr{M}_i(D))\_{i=1,2,\\dots,k}\\) とする．\\(\\mathscr{M}_i\\) が \\((\epsilon\_i,\delta\_i)\\)-differential privacy を満たすとき，\\(\\mathscr{M}\\) は \\((\\sum\_{i=1}^k\\epsilon_i,\\sum\_{i=1}^k\\delta_i)\\)-differential privacy を満たす．
 {{< /hint >}}
 
-こちらの証明は省略します．{{< katex >}}\epsilon{{< /katex >}}-differential privacy の議論に比べ，{{< katex >}}\delta_i{{< /katex >}} の項を工夫して処理する必要があるようです．
+こちらの証明は省略します．{{< katex >}}\epsilon{{< /katex >}}-differential privacy の議論に比べ，{{< katex >}}\delta_i{{< /katex >}} の項を工夫して処理する必要があるようです [[2]](#dwork:2014:1)．
 
 ## まとめ
 
-本ページでは，差分プライバシの基本事項についてまとめました．
+本ページでは，差分プライバシの基本事項についてまとめました．差分プライバシの概念を述べ，基本性質を述べました．各性質には簡単な証明を記載しています．
+
+## 参考文献
+
+{{< anchor "desfontaines:2020:1" >}}[1] D. Desfontaines, B. Pejó, SoK: Differential privacies, Proceedings on Privacy Enhancing Technologies, 2020.
+
+{{< anchor "dwork:2014:1" >}}[2] C. Dwork, A. Roth, The Algorithmic Foundations of Differential Privacy, Foundations and Trends(R) in Theoretical Computer Science, 2014.
+
+{{< anchor "mcsherry:2009:1" >}}[3] F. McSherry, Privacy Integrated Queries: An Extensible Platform for Privacy-Preserving Data Analysis, SIGMOD'09, 2009.
