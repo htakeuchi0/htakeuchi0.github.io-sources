@@ -25,7 +25,7 @@ weight: 2
 {{< katex display >}}
   [X\in S]=\{\omega\in\Omega\mid X(\omega)\in S\}
 {{< /katex >}}
-で定め，{{< katex >}}P([X\in S]){{< /katex >}} を {{< katex >}}P(X\in S){{< /katex >}} と略記します．ただし，{{< katex >}}\mathfrak{B}(\mathbb{R}^{k}){{< /katex >}} とは，{{< katex >}}\mathbb{R}^{k}{{< /katex >}} の開集合全体 {{< katex >}}\mathscr{O}(\mathbb{R}^{k}){{< /katex >}} について，{{< katex >}}\mathscr{O}(\mathbb{R}^{k}){{< /katex >}} を含む最小の完全加法族を表します．
+で定め，{{< katex >}}P([X\in S]){{< /katex >}} を {{< katex >}}P(X\in S){{< /katex >}} と略記します．ただし，{{< katex >}}\mathfrak{B}(\mathbb{R}^{k}){{< /katex >}} とは，{{< katex >}}\mathbb{R}^{k}{{< /katex >}} の開集合全体 {{< katex >}}\mathfrak{O}(\mathbb{R}^{k}){{< /katex >}} について，{{< katex >}}\mathfrak{O}(\mathbb{R}^{k}){{< /katex >}} を含む最小の完全加法族を表します．
 
 ふたつの確率空間 {{< katex >}}(\Omega_1,\mathfrak{F}_1,P_1){{< /katex >}}, {{< katex >}}(\Omega_2,\mathfrak{F}_2,P_2){{< /katex >}} に対して，ふたつの確率変数 {{< katex >}}X:(\Omega_1,\mathfrak{F}_1)\to(\mathbb{R}^{k},\mathfrak{B}(\mathbb{R}^{k})){{< /katex >}}, {{< katex >}}Y:(\Omega_2,\mathfrak{F}_2)\to(\mathbb{R}^{k},\mathfrak{B}(\mathbb{R}^{k})){{< /katex >}} があったとき，{{< katex >}}P_1(X\in S){{< /katex >}}, {{< katex >}}P_2(Y\in S){{< /katex >}} と書くべきところを，{{< katex >}}P(X\in S){{< /katex >}}, {{< katex >}}P(Y\in S){{< /katex >}} と略記します．
 
@@ -65,7 +65,7 @@ weight: 2
 1. \\((D_1,D_1)\in R_{\mathrm{neighb}}\\).
 1. \\((D_1,D_2)\in R_{\mathrm{neighb}}\\implies (D_2,D_1)\in R_{\mathrm{neighb}}\\).
 1. \\((D_1,D_2)\in R\_{\mathrm{neighb}}\\) ならば，\\(\phi(D_1)\not=\emptyset\\) かつ \\(\phi(D_2)\not=\emptyset\\) なる任意の分割 \\((\mathscr{D}\_1,\dots,\mathscr{D}\_k,\phi)\\) に対し，\\(\phi(D_i)=(D_{i1},\dots,D_{ik})\ (i=1,2)\\)
-とするとき，ある \\(j\\) が存在し，\\(D\_{1j}\not=D\_{2j}\\) かつ，\\(l\not=j\\) ならば \\(D\_{1l}=D\_{2l}\\) である．
+とするとき，高々1つの \\(j\\) が存在し，\\(D\_{1j}\not=D\_{2j}\\) かつ，\\(l\not=j\\) ならば \\(D\_{1l}=D\_{2l}\\) である．
 {{< /hint >}}
 
 "neighb" は "neighbour" の略で，隣接したデータであるという関係を表しています．
@@ -263,6 +263,10 @@ weight: 2
 ## まとめ
 
 本ページでは，差分プライバシの基本事項についてまとめました．差分プライバシの概念を述べ，基本性質を述べました．各性質には簡単な証明を記載しています．
+
+ところで，本ページの範囲では，{{< katex >}}R_{\mathrm{neighb}}{{< /katex >}} に意味論的に課した，入力が neighbour であるという関係が本質的に効いているのは，parallel composition のみのようです．もちろん，本文中でも言及したように，{{< katex >}}R_{\mathrm{neighb}}{{< /katex >}} の具体的なとり方によって，{{< katex >}}\Delta f{{< /katex >}} の値が変わることがあるので，標準的でない {{< katex >}}R_{\mathrm{neighb}}{{< /katex >}} のとり方をすると，sensitivity の値が不自然なものになることはありますので，なんでもよいわけではありません．しかし，post-processing と sequential composition では，その関係がどのような関係であるかは意識していませんが，parallel composition の結論は，その関係の性質に強く依存する，という違いがあります．
+
+一方で，parallel composition は，実際の応用を考えると，非常に自然かつ基本的な性質のようにも感じます．そこで本ページでは，paralle composition の性質が示せるように，{{< katex >}}R_{\mathrm{neighb}}{{< /katex >}} が満たすべき性質を定義で課す形で議論を整理しました．
 
 ## 参考文献
 
