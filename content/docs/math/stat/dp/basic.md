@@ -114,10 +114,10 @@ weight: 2
 
 定義から，{{< katex >}}R_{\mathrm{neighb}}{{< /katex >}} の具体的なとり方によって，{{< katex >}}\Delta f{{< /katex >}} の値が変わることがあります．
 
-確率密度関数が {{< katex >}}f_X(x;\sigma)=(1/(2\sigma))\exp(-|x|/\sigma){{< /katex >}} で表される確率変数 {{< katex >}}X{{< /katex >}} が従う分布を **ラプラス分布** といいます．関数 {{< katex >}}f{{< /katex >}} の結果に対して，ラプラス分布に従うノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られます [[2]](#dwork:2014:1)．
+確率密度関数が {{< katex >}}f_X(x;b)=(1/(2b))\exp(-|x|/b){{< /katex >}} で表される確率変数 {{< katex >}}X{{< /katex >}} が従う分布を **ラプラス分布** といいます．関数 {{< katex >}}f{{< /katex >}} の結果に対して，ラプラス分布に従うノイズを加えると，{{< katex >}}\epsilon{{< /katex >}}-differential privacy を満たすメカニズムが得られます [[2]](#dwork:2014:1)．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" >}} \\(f:\mathscr{D}\to\mathbb{R}^{k}\\) とする．確率変数 \\(X\\) の確率密度関数を \\(f_X(x;\sigma)=\prod_{i=1}^k(1/(2\sigma))\exp(-|x_i|/\sigma)\\) とする．\\(\sigma=\Delta f/\epsilon\\) ならば，\\(\mathscr{M}(D)=f(D)+X\\) で定めるメカニズム \\(\mathscr{M}\\) は \\(\epsilon\\)-differential privacy を満たす．
+{{< theorem-label name="Theorem" >}} \\(f:\mathscr{D}\to\mathbb{R}^{k}\\) とする．確率変数 \\(X\\) の確率密度関数を \\(f_X(x;b)=\prod_{i=1}^k(1/(2b))\exp(-|x_i|/b)\\) とする．\\(b=\Delta f/\epsilon\\) ならば，\\(\mathscr{M}(D)=f(D)+X\\) で定めるメカニズム \\(\mathscr{M}\\) は \\(\epsilon\\)-differential privacy を満たす．
 {{< /hint >}}
 
 証明は以下のとおりです．
@@ -205,7 +205,7 @@ weight: 2
 
 証明は以下のとおりです．
 
-{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とし，{{< katex >}}\phi(D_i)=(D_{i1},\dots,D_{ik})\ (i=1,2){{< /katex >}} とします．ある {{< katex >}}j{{< /katex >}} が存在し，{{< katex >}}l\not=j{{< /katex >}} ならば {{< katex >}}D_{1l}=D_{2l}{{< /katex >}} なので， {{< katex >}}\mathscr{M}_l(D_{1l})=\mathscr{M}_l(D_{2l}){{< /katex >}} であり，{{< katex >}}f_{\mathscr{M}_l(D_{1l})}=f_{\mathscr{M}_l(D_{2l})}{{< /katex >}} です．よって，
+{{< katex >}}(D_1,D_2)\in R_{\mathrm{neighb}}{{< /katex >}} とし，{{< katex >}}\phi(D_i)=(D_{i1},\dots,D_{ik})\ (i=1,2){{< /katex >}} とします．ある {{< katex >}}j{{< /katex >}} が存在し，{{< katex >}}D_{1j}\not=D_{2j}{{< /katex >}} となるとき，{{< katex >}}l\not=j{{< /katex >}} ならば {{< katex >}}D_{1l}=D_{2l}{{< /katex >}} なので， {{< katex >}}\mathscr{M}_l(D_{1l})=\mathscr{M}_l(D_{2l}){{< /katex >}} であり，{{< katex >}}f_{\mathscr{M}_l(D_{1l})}=f_{\mathscr{M}_l(D_{2l})}{{< /katex >}} です．よって，
 {{< katex display >}}
 \begin{aligned}
 &f_{\mathscr{M}(D_1)}(z)\\
@@ -217,7 +217,9 @@ weight: 2
 &=e^{\max_{i=1,2,\dots,k}\epsilon_i}f_{\mathscr{M}(D_2)}(z)
 \end{aligned}
 {{< /katex >}}
-が成り立ちます．よって，任意の {{< katex >}}S\in\mathfrak{B}(\prod_{i=1}^k\mathscr{O}_i){{< /katex >}} について，{{< katex >}}P(\mathscr{M}(D_1)\in S)=\int_Sf_{\mathscr{M}(D_1)}(z)dz\le\int_S e^{\max_{i=1,2,\dots,k}\epsilon_i}f_{\mathscr{M}(D_2)}(z)dz=e^{\max_{i=1,2,\dots,k}\epsilon_i}P(\mathscr{M}(D_2)\in S){{< /katex >}} となります．
+が成り立ちます．そのような {{< katex >}}j{{< /katex >}}が存在しなければ，{{< katex >}}f_{\mathscr{M}(D_1)}(z)=\prod_{l=1}^kf_{\mathscr{M}_l(D_{1l})}(z_l)=\prod_{l=1}^kf_{\mathscr{M}_l(D_{2l})}(z_l)=f_{\mathscr{M}(D_2)}(z)\le e^{\max_{i=1,2,\dots,k}\epsilon_i}f_{\mathscr{M}(D_2)}(z){{< /katex >}}です．
+
+よって，任意の {{< katex >}}S\in\mathfrak{B}(\prod_{i=1}^k\mathscr{O}_i){{< /katex >}} について，{{< katex >}}P(\mathscr{M}(D_1)\in S)=\int_Sf_{\mathscr{M}(D_1)}(z)dz\le\int_S e^{\max_{i=1,2,\dots,k}\epsilon_i}f_{\mathscr{M}(D_2)}(z)dz=e^{\max_{i=1,2,\dots,k}\epsilon_i}P(\mathscr{M}(D_2)\in S){{< /katex >}} となります．
 
 ### 近似的差分プライバシ (approximate differential privacy)
 
@@ -270,8 +272,9 @@ weight: 2
 
 ## 参考文献
 
-{{< anchor "desfontaines:2020:1" >}}[1] D. Desfontaines, B. Pejó, SoK: Differential privacies, Proceedings on Privacy Enhancing Technologies, 2020.
+{{< anchor "desfontaines:2020:1" >}}[1] D. Desfontaines, B. Pejó, SoK: Differential privacies, Proceedings on Privacy Enhancing Technologies Symposium 2020, 2020. https://petsymposium.org/popets/2020/popets-2020-0028.pdf , 2024/1/4 最終アクセス．
 
-{{< anchor "dwork:2014:1" >}}[2] C. Dwork, A. Roth, The Algorithmic Foundations of Differential Privacy, Foundations and Trends(R) in Theoretical Computer Science, 2014.
+{{< anchor "dwork:2014:1" >}}[2] C. Dwork, A. Roth, The Algorithmic Foundations of Differential Privacy, Foundations and Trends(R) in Theoretical Computer Science, 2014, https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf , 2024/1/4 最終アクセス．
 
-{{< anchor "mcsherry:2009:1" >}}[3] F. McSherry, Privacy Integrated Queries: An Extensible Platform for Privacy-Preserving Data Analysis, SIGMOD'09, 2009.
+
+{{< anchor "mcsherry:2009:1" >}}[3] F. D. McSherry, Privacy Integrated Queries: An Extensible Platform for Privacy-Preserving Data Analysis, SIGMOD'09, 2009, https://www.microsoft.com/en-us/research/wp-content/uploads/2009/06/sigmod115-mcsherry.pdf , 2024/1/4 最終アクセス．
