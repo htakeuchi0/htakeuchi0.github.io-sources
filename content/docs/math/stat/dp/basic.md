@@ -61,7 +61,7 @@ weight: 2
 メカニズム {{< katex >}}\mathscr{M}{{< /katex >}} は，入力 {{< katex >}}D{{< /katex >}} に対する何らかの処理を表すものとして導入したいものですが，確率的操作を含ませたい都合上，単なる関数でなく，上記のような定義としています．
 
 {{< hint info >}}
-{{< theorem-label name="Definition" >}} \\(\mathscr{D}\\) を集合とする．\\(\\mathscr{D}=\\bigcup\_{i=1}^k\mathscr{D}\_i\\), \\(i\not=j\\) ならば \\(\mathscr{D}\_i\\cap\\mathscr{D}\_j=\\emptyset\\) となる \\(\mathscr{D}\_1,\dots,\mathscr{D}\_k\subseteq\mathscr{D}\\) について，それらと \\(\phi:\mathscr{D}\to(\mathscr{D}\_1,\dots,\mathscr{D}\_k)\\) の組 \\((\mathscr{D}\_1,\dots,\mathscr{D}\_k,\phi)\\) を，\\(\mathscr{D}\\) の分割という．このとき，\\(R_{\mathrm{neighb}}\subseteq\mathscr{D}^2\\) を，以下を満たす \\(\mathscr{D}\\) 上の関係とする．
+{{< theorem-label name="Definition" >}} \\(\mathscr{D}\\) を集合とする．\\(\\mathscr{D}=\\bigoplus\_{i=1}^k\mathscr{D}\_i\\) なる直和表現があるとき，\\(\mathscr{D}\_1,\mathscr{D}\_2,\\dots,\\mathscr{D}\_k\\) と，\\(\phi:\mathscr{D}\to(\mathscr{D}\_1,\dots,\mathscr{D}\_k)\\) の組 \\((\mathscr{D}\_1,\dots,\mathscr{D}\_k,\phi)\\) を，\\(\mathscr{D}\\) の分割という．このとき，\\(R_{\mathrm{neighb}}\subseteq\mathscr{D}^2\\) を，以下を満たす \\(\mathscr{D}\\) 上の関係とする．
 1. \\((D_1,D_1)\in R_{\mathrm{neighb}}\\).
 1. \\((D_1,D_2)\in R_{\mathrm{neighb}}\\implies (D_2,D_1)\in R_{\mathrm{neighb}}\\).
 1. \\((D_1,D_2)\in R\_{\mathrm{neighb}}\\) ならば，\\(\phi(D_1)\not=\emptyset\\) かつ \\(\phi(D_2)\not=\emptyset\\) なる任意の分割 \\((\mathscr{D}\_1,\dots,\mathscr{D}\_k,\phi)\\) に対し，\\(\phi(D_i)=(D_{i1},\dots,D_{ik})\ (i=1,2)\\)
