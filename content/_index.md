@@ -24,7 +24,7 @@ draft: true
 このサイトの特徴について簡単に述べた，Twitter の投稿を引用します[^1]．
 [^1]:`tweet` ショートコードを使ってみたかったので．
 
-{{< tweet htakeuchi0 1571116553575497736 >}}
+{{< tweet user="htakeuchi0" id="1571116553575497736" >}}
 
 ## 免責事項 {#disclaimer}
 
