@@ -19,9 +19,12 @@ weight: 3
 
 ## 逆関数法
 
-{{< katex >}}X{{< /katex >}} を確率変数とし，その分布に従う乱数をサンプリングする方法として，**逆関数法** と呼ばれる方法が知られています．
+指定した分布に従う乱数をサンプリングする方法として，**逆関数法** と呼ばれる方法が知られています．
 
-{{< katex >}}F_X{{< /katex >}} を {{< katex >}}X{{< /katex >}}の累積分布関数とします．
+ラプラス分布や切断ラプラス分布に従う乱数を，この方法で生成することを考えます．まずは，逆関数法についてまとめます．
+本節の議論は，ラプラス分布や切断ラプラス分布に限らず適用できます．
+
+{{< katex >}}X{{< /katex >}} を確率変数とし，{{< katex >}}F_X{{< /katex >}} を {{< katex >}}X{{< /katex >}}の累積分布関数とします．
 {{< katex >}}F_X{{< /katex >}} は単調増加関数です．
 {{< katex >}}F_X^*:[0,1]\to\mathbb{R}{{< /katex >}} を，{{< katex >}}F_X^*(u)=\inf\{x\mid F(x)\ge u\}{{< /katex >}} とします．
 ここで，{{< katex >}}U{{< /katex >}} を区間 {{< katex >}}[0,1]{{< /katex >}} 上の一様分布とします．
@@ -55,6 +58,8 @@ weight: 3
 特に，{{< katex >}}F_X{{< /katex >}} が可逆であれば，{{< katex >}}F_X^*=F_X^{-1}{{< /katex >}} なので，{{< katex >}}x=F_X^{-1}(u){{< /katex >}} と計算できます．
 
 ## ラプラス分布からのサンプリング
+
+本節では，逆関数法を用いた，ラプラス分布からのサンプリング方法について述べます．
 
 [前ページ]({{< ref trunclap >}}) にあわせて，{{< katex >}}Y{{< /katex >}} をパラメータ {{< katex >}}\mu,b{{< /katex >}} のラプラス分布に従う確率変数とします．
 逆関数法でラプラス分布からのサンプリングを行うには，{{< katex >}}Y{{< /katex >}} の累積分布関数 {{< katex >}}F_Y{{< /katex >}} の逆関数 {{< katex >}}F_Y^{-1}{{< /katex >}} を求める必要があります．
@@ -112,7 +117,7 @@ F_Y(y;\mu,b)=\begin{cases}
 {{< katex display >}}
   y=\begin{cases}
     \mu+b\log(1+2w),&-1/2\le w\le0,\\
-    \mu-b\log(1-2w)),&0<w\le1/2
+    \mu-b\log(1-2w),&0<w\le1/2
   \end{cases}
 {{< /katex >}}
 となるので，
@@ -135,12 +140,61 @@ F_Y(y;\mu,b)=\begin{cases}
 したがって，次が成り立ちます．
 
 {{< hint info >}}
-  {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\) とする．\\(W\\) を区間 \\([-1/2,1/2]\\) 上の一様分布に従う連続型確率変数とすると，\\(Y=\mu-\mathrm{sgn}(W)b\log(1-2|W|)\\) は，パラメータ \\(\mu,b\\) のラプラス分布に従う連続型確率変数である．
+  {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\) とする．\\(W\\) を区間 \\([-1/2,1/2]\\) 上の一様分布に従う連続的確率変数とすると，\\(Y=\mu-\mathrm{sgn}(W)b\log(1-2|W|)\\) は，パラメータ \\(\mu,b\\) のラプラス分布に従う連続的確率変数である．
 {{< /hint >}}
 
 ## 切断ラプラス分布からのサンプリング
 
 [前節]({{< ref "#ラプラス分布からのサンプリング" >}})と同様に，切断ラプラス分布からのサンプリングの方法を導きます．
+
+ラプラス分布に従う確率変数の累積分布関数は，[前ページ]({{< ref trunclap >}}) で述べたとおり，
+{{< katex display >}}
+\begin{aligned}
+  &F_X(x;\mu,b,A,B)\\
+  &=\begin{cases}
+    0,&x<A,\\
+    \dfrac{F_Y(x;\mu,b)-F_Y(A;\mu,b)}{C_{\mu,b}(A,B)},&A\le x\le B\\
+    1,&x>B
+  \end{cases}
+\end{aligned}
+{{< /katex >}}
+となります．
+
+まず，{{< katex >}}x<A{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=0{{< /katex >}} なので，{{< katex >}}F_X^*(0)=-\infty{{< /katex >}} です．
+次に，{{< katex >}}x>B{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=1{{< /katex >}} なので，{{< katex >}}F_X^*(1)=B{{< /katex >}} です．
+
+ここで，{{< katex >}}0<u<1{{< /katex >}} とし，{{< katex >}}F_X(x;\mu,b,A,B)=u{{< /katex >}} となる {{< katex >}}x{{< /katex >}} を求めます．
+まず，
+{{< katex display >}}
+  \frac{F_Y(x;\mu,b)-F_Y(A;\mu,b)}{C_{\mu,b}(A,B)}=u
+{{< /katex >}}
+なので，
+{{< katex display >}}
+  F_Y(x;\mu,b)=uC_{\mu,b}(A,B)+F_Y(A;\mu,b)
+{{< /katex >}}
+です．したがって，{{< katex >}}w=uC_{\mu,b}(A,B)+F_Y(A;\mu,b)-1/2{{< /katex >}} とおくと，
+{{< katex display >}}
+  x=\mu-\mathrm{sgn}(w)b\log(1-2|w|)
+{{< /katex >}}
+となります．ここで，
+{{< katex display >}}
+  F_Y(A;\mu,b)-\frac{1}{2}<w<C_{\mu,b}(A,B)+F_Y(A;\mu,b)-\frac{1}{2}=F_Y(B;\mu,b)-\frac{1}{2}
+{{< /katex >}}
+です．
+{{< katex >}}F_X^*{{< /katex >}} の値域を {{< katex >}}[A,B]{{< /katex >}} とするため，本質的でない端点を調整し，{{< katex >}}F_X^*(0)=A{{< /katex >}} とします．
+以上をまとめると，以下の結論が得られます．
+
+{{< hint info >}}
+  {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．\\(W\\) を区間 \\([F_Y(A;\mu,b)-1/2,F_Y(B;\mu,b)-1/2]\\) 上の一様分布に従う連続的確率変数とすると，
+\\[
+  Y=\\begin{cases}
+    A,&W=F_Y(A;\mu,b)-1/2,\\\\
+    B,&W=F_Y(B;\mu,b)-1/2\\\\
+    \mu-\mathrm{sgn}(W)b\log(1-2|W|),&\mathrm{otherwise}
+  \end{cases}
+\\]
+は，パラメータ \\(\mu,b,A,B\\) の切断ラプラス分布に従う連続的確率変数である．
+{{< /hint >}}
 
 ## まとめ
 

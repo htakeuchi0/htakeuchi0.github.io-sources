@@ -140,7 +140,8 @@ C_{\mu,b}(A,B)=F_Y(B;\mu,b)-F_Y(A;\mu,b)
 
 ## 切断ラプラス分布の累積分布関数
 
-さらに，切断ラプラス分布に従う確率変数の累積分布関数は以下のように計算できます．
+切断ラプラス分布に従う確率変数の累積分布関数を求めます．
+
 {{< katex >}}A\le x\le B{{< /katex >}} ならば，
 {{< katex display >}}
 \begin{aligned}
@@ -174,7 +175,7 @@ C_{\mu,b}(A,B)=F_Y(B;\mu,b)-F_Y(A;\mu,b)
   &=\begin{cases}
     0,&x<A,\\\\
     \dfrac{F_Y(x;\mu,b)-F_Y(A;\mu,b)}{C_{\mu,b}(A,B)},&A\le x\le B\\\\
-    1,&x\ge B
+    1,&x>B
   \end{cases}
 \end{aligned}
 \\]
