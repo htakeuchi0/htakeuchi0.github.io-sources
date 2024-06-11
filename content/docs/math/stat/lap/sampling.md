@@ -26,7 +26,7 @@ weight: 3
 
 {{< katex >}}X{{< /katex >}} を確率変数とし，{{< katex >}}F_X{{< /katex >}} を {{< katex >}}X{{< /katex >}}の累積分布関数とします．
 {{< katex >}}F_X{{< /katex >}} は単調増加関数です．
-{{< katex >}}F_X^*:[0,1]\to\mathbb{R}{{< /katex >}} を，{{< katex >}}F_X^*(u)=\inf\{x\mid F(x)\ge u\}{{< /katex >}} とします．
+{{< katex >}}F_X^*:[0,1]\to\mathbb{R}{{< /katex >}} を，{{< katex >}}F_X^*(u)=\inf\{x\mid F(x)\ge u\}{{< /katex >}} とします[^1]．
 ここで，{{< katex >}}U{{< /katex >}} を区間 {{< katex >}}[0,1]{{< /katex >}} 上の一様分布とします．
 つまり，
 {{< katex display >}}
@@ -53,6 +53,8 @@ weight: 3
 \end{aligned}
 {{< /katex >}}
 となり，{{< katex >}}Z{{< /katex >}} の累積分布関数は {{< katex >}}X{{< /katex >}} の累積分布関数に一致します．
+
+[^1]: [[1]](#wiki:1) で述べられている定め方です．
 
 したがって，{{< katex >}}u{{< /katex >}} を区間 {{< katex >}}[0,1]{{< /katex >}} 上の一様分布に従う乱数とし，{{< katex >}}x=F_X^*(u){{< /katex >}} と変換すると，{{< katex >}}X{{< /katex >}} の従う分布からのサンプリングができることになります．
 特に，{{< katex >}}F_X{{< /katex >}} が可逆であれば，{{< katex >}}F_X^*=F_X^{-1}{{< /katex >}} なので，{{< katex >}}x=F_X^{-1}(u){{< /katex >}} と計算できます．
@@ -181,20 +183,68 @@ F_Y(y;\mu,b)=\begin{cases}
   F_Y(A;\mu,b)-\frac{1}{2}<w<C_{\mu,b}(A,B)+F_Y(A;\mu,b)-\frac{1}{2}=F_Y(B;\mu,b)-\frac{1}{2}
 {{< /katex >}}
 です．
-{{< katex >}}F_X^*{{< /katex >}} の値域を {{< katex >}}[A,B]{{< /katex >}} とするため，本質的でない端点を調整し，{{< katex >}}F_X^*(0)=A{{< /katex >}} とします．
-以上をまとめると，以下の結論が得られます．
+
+さて，{{< katex >}}w=F_Y(A;\mu,b)-1/2,F_Y(B;\mu,b)-1/2{{< /katex >}} であるとき，それぞれ {{< katex >}}x=A,B{{< /katex >}} であることがわかります[^2]．
+[^2]:前者は {{< katex >}}A<\mu,A\ge\mu{{< /katex >}} で場合分けして整理すると得られます．後者も同様です．
+
+そこで，{{< katex >}}F_X^*(0)=A{{< /katex >}} と定義し直すと[^3]，以下の結論が得られます．
+[^3]:{{< katex >}}F_X^*(0)=-\infty{{< /katex >}}として，{{< katex >}}Z=F_X^*(U){{< /katex >}} としてつくる確率変数 {{< katex >}}Z{{< /katex >}}と，{{< katex >}}F_X^*(0)=A{{< /katex >}}として，{{< katex >}}Z'=F_X^*(U){{< /katex >}} としてつくる確率変数 {{< katex >}}Z'{{< /katex >}} は，ほとんど至るところ等しいので，本質的な違いはありません．
 
 {{< hint info >}}
-  {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．\\(W\\) を区間 \\([F_Y(A;\mu,b)-1/2,F_Y(B;\mu,b)-1/2]\\) 上の一様分布に従う連続的確率変数とすると，
-\\[
-  Y=\\begin{cases}
-    A,&W=F_Y(A;\mu,b)-1/2,\\\\
-    B,&W=F_Y(B;\mu,b)-1/2\\\\
-    \mu-\mathrm{sgn}(W)b\log(1-2|W|),&\mathrm{otherwise}
-  \end{cases}
-\\]
-は，パラメータ \\(\mu,b,A,B\\) の切断ラプラス分布に従う連続的確率変数である．
+  {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．\\(W\\) を区間 \\([F_Y(A;\mu,b)-1/2,F_Y(B;\mu,b)-1/2]\\) 上の一様分布に従う連続的確率変数とすると，\\(Y=\mu-\mathrm{sgn}(W)b\log(1-2|W|)\\) は，パラメータ \\(\mu,b,A,B\\) の切断ラプラス分布に従う連続的確率変数である．
 {{< /hint >}}
 
+## 数値実験
+
+実際に切断ラプラス分布に従う乱数を生成してみます．
+ヒストグラムを作成した結果は以下のとおりで，各パラメータにしたがった分布をなしていることがわかります．
+
+1. {{< katex >}}\mu=0,b=1,A=-1,B=1{{< /katex >}}
+
+{{< figure src="/images/docs/math/stat/lap/hist1.png" title="Figure 1. \(\mu=0, b=1, A=-1, B=1\)のヒストグラム" class="text-center" >}}
+
+1. {{< katex >}}\mu=0.5,b=1,A=-1,B=1{{< /katex >}}
+
+{{< figure src="/images/docs/math/stat/lap/hist2.png" title="Figure 2. \(\mu=0.5, b=1, A=-1, B=1\)のヒストグラム" class="text-center" >}}
+
+1. {{< katex >}}\mu=0,b=2,A=-1,B=1{{< /katex >}}
+
+{{< figure src="/images/docs/math/stat/lap/hist3.png" title="Figure 3. \(\mu=0, b=2, A=-1, B=1\)のヒストグラム" class="text-center" >}}
+
+1. {{< katex >}}\mu=0.5,b=2.0,A=1,B=3{{< /katex >}}
+
+{{< figure src="/images/docs/math/stat/lap/hist4.png" title="Figure 4. \(\mu=0.5, b=2, A=1, B=3\)のヒストグラム" class="text-center" >}}
+
+Python による乱数生成実行関数の実装例は以下のとおりです．
+パラメータに従った乱数生成ができているようにみえます．
+また，本数値実験は，以下の実装で行いました．
+
+```python
+def trunclap(loc=0.0, scale=1.0, low=-1.0, high=1.0, size=None):
+    uniform_low = stats.laplace.cdf(low, loc, scale) - 1/2
+    uniform_high = stats.laplace.cdf(high, loc, scale) - 1/2
+    w = np.random.default_rng().uniform(low=uniform_low, high=uniform_high, size=size)
+    r = loc - np.sign(w) * scale * np.log(1 - 2*np.abs(w))
+    return r
+```
+
+なお，ヒストグラムは以下の方法で作成しています．
+
+```python
+def hist(random_values):
+    plt.hist(random_values, bins=100, density=True)
+    plt.show()
+```
+
+
 ## まとめ
+
+本ページでは，ラプラス分布や切断ラプラス分布からのサンプリングの方法についてまとめました．
+切断ラプラス分布に従う乱数も，通常のラプラス分布に従う乱数と同様に，ある区間上の一様乱数を変換することで得られることがわかりました．
+
+## 参考文献
+
+{{< anchor "wiki:1" >}}[1] Wikipedia，“逆関数法 - Wikipedia”, https://ja.wikipedia.org/wiki/%E9%80%86%E9%96%A2%E6%95%B0%E6%B3%95, 2024/6/5 最終アクセス．
+
+
 

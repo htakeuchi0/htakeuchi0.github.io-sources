@@ -35,7 +35,7 @@ weight: 1
 {{< theorem-label name="Definition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．連続的確率変数 \\(X:(\Omega,\mathfrak{F})\to(\mathbb{R},\mathfrak{B}[\mathbb{R}])\\) の確率密度関数 \\(f_X\\) が
 \\[
   f_X(x;\mu,b,A,B)=\begin{cases}
-   \dfrac{1}{2bC}\exp\left(-\dfrac{|y-\mu|}{b}\right),&A\le x\le B,\\\\
+   \dfrac{1}{2bC}\exp\left(-\dfrac{|x-\mu|}{b}\right),&A\le x\le B,\\\\
    0,&\text{otherwise}
   \end{cases}
 \\]
