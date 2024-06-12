@@ -194,32 +194,30 @@ F_Y(y;\mu,b)=\begin{cases}
   {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．\\(W\\) を区間 \\([F_Y(A;\mu,b)-1/2,F_Y(B;\mu,b)-1/2]\\) 上の一様分布に従う連続的確率変数とすると，\\(Y=\mu-\mathrm{sgn}(W)b\log(1-2|W|)\\) は，パラメータ \\(\mu,b,A,B\\) の切断ラプラス分布に従う連続的確率変数である．
 {{< /hint >}}
 
-## 数値実験
+## 数値例
 
 実際に切断ラプラス分布に従う乱数を生成してみます．
-ヒストグラムを作成した結果は以下のとおりで，各パラメータにしたがった分布をなしていることがわかります．
+サンプリング数 {{< katex >}}N=100000{{< /katex >}} で，相対度数によるヒストグラムを作成します．
 
-1. {{< katex >}}\mu=0,b=1,A=-1,B=1{{< /katex >}}
+その結果は以下のとおりで，各パラメータにしたがった分布をなしていることがわかります．
+例えば，
+* Figs. 1--4 では，区間 {{< katex >}}[A,B]{{< /katex >}} で分布が切断されていることがわかります．
+* Figs. 1, 2 を比較すると，切断点は変わらないまま，Fig. 2の方が値がばらついていることがわかります．これは，Fig. 2の方が，パラメータ {{< katex >}}b{{< /katex >}} の値が大きいからです．
 
 {{< figure src="/images/docs/math/stat/lap/hist1.png" title="Figure 1. \(\mu=0, b=1, A=-1, B=1\)のヒストグラム" class="text-center" >}}
 
-1. {{< katex >}}\mu=0.5,b=1,A=-1,B=1{{< /katex >}}
-
 {{< figure src="/images/docs/math/stat/lap/hist2.png" title="Figure 2. \(\mu=0.5, b=1, A=-1, B=1\)のヒストグラム" class="text-center" >}}
-
-1. {{< katex >}}\mu=0,b=2,A=-1,B=1{{< /katex >}}
 
 {{< figure src="/images/docs/math/stat/lap/hist3.png" title="Figure 3. \(\mu=0, b=2, A=-1, B=1\)のヒストグラム" class="text-center" >}}
 
-1. {{< katex >}}\mu=0.5,b=2.0,A=1,B=3{{< /katex >}}
-
 {{< figure src="/images/docs/math/stat/lap/hist4.png" title="Figure 4. \(\mu=0.5, b=2, A=1, B=3\)のヒストグラム" class="text-center" >}}
 
-Python による乱数生成実行関数の実装例は以下のとおりです．
-パラメータに従った乱数生成ができているようにみえます．
 また，本数値実験は，以下の実装で行いました．
 
 ```python
+import numpy as np
+import scipy.stats as stats
+
 def trunclap(loc=0.0, scale=1.0, low=-1.0, high=1.0, size=None):
     uniform_low = stats.laplace.cdf(low, loc, scale) - 1/2
     uniform_high = stats.laplace.cdf(high, loc, scale) - 1/2
@@ -231,16 +229,21 @@ def trunclap(loc=0.0, scale=1.0, low=-1.0, high=1.0, size=None):
 なお，ヒストグラムは以下の方法で作成しています．
 
 ```python
+import matplotlib.pyplot as plt
+
 def hist(random_values):
     plt.hist(random_values, bins=100, density=True)
     plt.show()
 ```
 
-
 ## まとめ
 
 本ページでは，ラプラス分布や切断ラプラス分布からのサンプリングの方法についてまとめました．
 切断ラプラス分布に従う乱数も，通常のラプラス分布に従う乱数と同様に，ある区間上の一様乱数を変換することで得られることがわかりました．
+
+数値例では，実際に切断ラプラス分布に従う乱数が生成できることを確認しましたが，目視での確認はできるものの，実際に指定したパラメータで乱数生成ができているかまで確認できませんでした．
+{{< katex >}}A,B.\mu{{< /katex >}} はよいですが，{{< katex >}}b{{< /katex >}} が困難です．
+次ページでは，その部分的な解決策を与えます．
 
 ## 参考文献
 
