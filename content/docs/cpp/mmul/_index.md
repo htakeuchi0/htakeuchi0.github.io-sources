@@ -21,3 +21,6 @@ weight: 4
 1. [行列を表現するデータ構造と行列積の計算時間]({{< ref "./basic.md" >}})
 1. [行列積の計算時間のOpenMPによる高速化]({{< ref "./openmp.md" >}})
 1. [行列積の計算時間のCPU拡張命令による高速化]({{< ref "./avx.md" >}})
+
+実験用に使ったプログラムは以下に配置しています．
+* https://github.com/htakeuchi0/mmul-gcc-sample

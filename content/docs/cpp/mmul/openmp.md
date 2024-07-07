@@ -19,6 +19,9 @@ gcc コンパイラは OpenMP に対応しているため，ソースコード�
 
 本ページでは，[前ページ]({{< ref "./basic.md" >}}) の結果に対し，OpenMP を用いることで，行列積演算の実行時間が短縮できることを確認します．
 
+実験用に使ったプログラムは以下に配置しています．
+* https://github.com/htakeuchi0/mmul-gcc-sample
+
 ## OpenMP の利用
 
 生の2次元配列で行列を表現する方式 (`mdim_raw_array`) は，以下の実装としています．
