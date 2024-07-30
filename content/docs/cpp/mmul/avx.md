@@ -1,5 +1,5 @@
 ---
-title: "行列の計算時間のCPU拡張命令による高速化"
+title: "行列積の計算時間のCPU拡張命令による高速化"
 weight: 3
 # bookFlatSection: false
 # bookToc: true
@@ -9,7 +9,7 @@ weight: 3
 # bookSearchExclude: false
 ---
 
-# 行列の計算時間のCPU拡張命令による高速化
+# 行列積の計算時間のCPU拡張命令による高速化
 
 ## 概要
 

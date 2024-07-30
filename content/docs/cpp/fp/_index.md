@@ -19,3 +19,4 @@ weight: 2
 2. [メンバ関数ポインタとその周辺]({{< ref "mfp.md" >}})
 3. [std::function とその周辺]({{< ref "stdfunc.md" >}})
 4. [関数への参照]({{< ref "fref.md" >}})
+5. [関数ポインタを返却する関数]({{< ref "retfp.md" >}})
