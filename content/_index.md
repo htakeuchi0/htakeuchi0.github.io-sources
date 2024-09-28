@@ -45,7 +45,7 @@ Google アナリティクスでデータが収集される仕組みは，Google 
 ## お問い合わせ
 
 * E-mail: htakeuchi0gh&lt;atsign&gt;gmail.com
-* Twitter: [@htakeuchi0](https://twitter.com/htakeuchi0)
+* X (Twitter): [@htakeuchi0](https://x.com/htakeuchi0)
 
 ## 参考文献
 
