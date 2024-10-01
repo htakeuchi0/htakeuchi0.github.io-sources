@@ -80,6 +80,7 @@ weight: 1
 
 この制約条件は {{< katex >}}S^{n-1}=\{x\in\mathbb{R}^n\mid x^Tx=1\}{{< /katex >}} によって，{{< katex >}}x\in S^1{{< /katex >}} と表すことができます．
 {{< katex >}}S^{n-1}{{< /katex >}} は {{< katex >}}(n-1){{< /katex >}}次元球面と呼ばれる多様体です．
+{{< katex >}}n=2{{< /katex >}} のとき，つまり {{< katex >}}S^1{{< /katex >}} は **半径1の円周** を表します．
 
 以上より，本ページで対象とする最適化問題を，以下の表に表現しておきます．
 
@@ -197,7 +198,9 @@ weight: 1
 目的関数の等高線は以下 (Fig. 1) の通りで，▲は上記で計算した最小解です．
 {{< figure src="/images/docs/math/optim/manopt/contour.png" title="Figure 1. 目的関数の等高線．太い円が等式制約，▲が最小解，●が最大解．" class="text-center" >}}
 
-図からも，これより値が小さくなる点が存在しないことが読み取れるので，正しく計算できていることがわかります．
+図から，これより値が小さくなる点が存在しないことがわかるので，正しく計算できていることがわかります．
+また，最小解も最大解も，制約式のグラフと等高線のグラフの接点であることもわかります．
+実は，ラグランジュの未定乗数法は，そのような点を計算していたのでした．
 
 ## 数値解法
 
@@ -208,6 +211,72 @@ weight: 1
 無制約最適化問題の解法としては，通常のユークリッド空間では，直線探索に基づく手法が典型的です．
 これは，その時点で得られている近似解に対して，目的関数値が減少する方向に少しずつ解を更新し，最適解を求める方法です．
 
+ユークリッド空間の場合，無制約最適化問題の数値解法は，得られている近似解 {{< katex >}}x_k\in\mathbb{R}^n{{< /katex >}} に対し，探索方向 {{< katex >}}d_k\in\mathbb{R}^n{{< /katex >}} とステップ幅 {{< katex >}}t_k>0{{< /katex >}} を計算し，{{< katex >}}x_{k+1}=x_k+t_kd_k{{< /katex >}} によって解を更新する方法が標準的です．
+この {{< katex >}}d_k{{< /katex >}} や {{< katex >}}t_k{{< /katex >}} は，目的関数の値が下がると期待される方向や量で決めます．
+例えば，目的関数が {{< katex >}}f:\mathbb{R}^n\to\mathbb{R}{{< /katex >}} のとき，{{< katex >}}d_k=-\nabla f(x_k){{< /katex >}}，{{< katex >}}t_k{{< /katex >}} は **strong Wolfe 条件** と呼ばれる条件を満たすようにとる方法があります．ここで，{{< katex >}}\nabla{{< /katex >}} は勾配を表します．
+
+リーマン多様体の場合も同様の考え方で近似解を更新して求めます．
+リーマン多様体では，勾配 {{< katex >}}\nabla{{< /katex >}} の代わりに，リーマン計量から定まる勾配（リーマン勾配）{{< katex >}}\mathrm{grad}{{< /katex >}} によって，{{< katex >}}-\mathrm{grad}\ f(x_k){{< /katex >}} を考えることができるので，{{< katex >}}d_k=-\mathrm{grad}\ f(x_k){{< /katex >}} と計算できます．
+また，ステップ幅 {{< katex >}}t_k>0{{< /katex >}} に対して，{{< katex >}}t_kd_k{{< /katex >}} を考えることもできます．
+しかし，一般のリーマン多様体では，{{< katex >}}x_k{{< /katex >}} と {{< katex >}}d_k{{< /katex >}} は異なる空間のものなので，{{< katex >}}x_k+t_kd_k{{< /katex >}} というものを考えることができません．
+したがって，これに相当する概念が必要となります．
+この概念があれば，strong Wolfe 条件もリーマン多様体上の条件に拡張できます．
+
+リーマン多様体を {{< katex >}}\mathcal{M}{{< /katex >}} と表すと，ユークリッド空間の勾配に相当する **リーマン勾配** は接束 {{< katex >}}T\mathcal{M}{{< /katex >}} と呼ばれる空間に属します．
+{{< katex >}}x_k\in\mathcal{M}{{< /katex >}} と {{< katex >}}t_kd_k\in T\mathcal{M}{{< /katex >}} の和が定義できないので，勾配 {{< katex >}}d_k\in T\mathcal{M}{{< /katex >}} を多様体 {{< katex >}}\mathcal{M}{{< /katex >}}上の曲線に対応させ，{{< katex >}}x_k+t_kd_k{{< /katex >}} の代わりに， **多様体上の点 {{< katex >}}x_k{{< /katex >}} を通る多様体 {{< katex >}}\mathcal{M}{{< /katex >}} 上の曲線に沿って {{< katex >}}d_k{{< /katex >}} 方向に {{< katex >}}t_k{{< /katex >}} の幅だけ進む**，ということを考えます．
+これには，{{< katex >}}R:T\mathcal{M}\to\mathcal{M}{{< /katex >}} という，接ベクトルと多様体上の
+点を対応させる写像があればよく，{{< katex >}}x_{k+1}=x_k+t_kd_k{{< /katex >}} の代わりに {{< katex >}}x_{k+1}=R_{x_k}(t_kd_k){{< /katex >}} の形で近似解を更新することを考えます．
+この写像 {{< katex >}}R{{< /katex >}} を **レトラクション** といいます．
+
+さて，本ページの問題の場合の具体的な計算方法について考えます．
+まず，{{< katex >}}x_k\in S^1{{< /katex >}} に対する {{< katex >}}d_k=-\mathrm{grad}\ f(x_k){{< /katex >}} は，{{< katex >}}\mathrm{grad}\ f(x)=(I-xx^T)\nabla f(x){{< /katex >}} によって具体的に計算できます．
+ここで，{{< katex >}}I{{< /katex >}} は恒等行列です．
+
+目的関数 {{< katex >}}f{{< /katex >}} を
+{{< katex display >}}
+  f(x)=x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x
+{{< /katex >}}
+とした場合の，{{< katex >}}x_0=(1/\sqrt{2},1/\sqrt{2})\in S^1{{< /katex >}} に対する {{< katex >}}\nabla f(x_0){{< /katex >}} と {{< katex >}}\mathrm{grad}\ f(x_0){{< /katex >}} は以下のようになります．
+
+{{< figure src="/images/docs/math/optim/manopt/grad.png" title="Figure 2. \(\nabla f(x_0)\) と \(\mathrm{grad}\ f(x_0)\)" class="text-center" >}}
+
+{{< katex >}}d_k=-\mathrm{grad}\ f(x_k){{< /katex >}} とすると {{< katex >}}d_k\sub\mathbb{R}^2{{< /katex >}} にはなりますが，{{< katex >}}x_k+t_kd_k\in\mathbb{R}^2{{< /katex >}} は一般に {{< katex >}}S^1{{< /katex >}} に属しませんので，やはり単純には解の更新はできません．そこでレトラクションにより {{< katex >}}x_{k+1}=R_{x_k}(t_kd_k){{< /katex >}} と更新することを考えます．
+
+本ページでは，レトラクション {{< katex >}}R{{< /katex >}} を
+{{< katex display >}}
+  R_x(d)=\frac{x+d}{\|x+d\|_2}
+{{< /katex >}}
+と定義します．
+
+これがレトラクションの定義を満たすことは確認できますが，ここでは {{< katex >}}T\mathcal{M}{{< /katex >}} も {{< katex >}}R{{< /katex >}} も定義していないので，詳しく述べません．
+また，このレトラクションは，単に **正規化しているだけのもの** といえますが，これ以外のレトラクションも考えられます．
+
+先ほどの例において，{{< katex >}}t_0=0.2{{< /katex >}} とした場合の {{< katex >}}x_0+t_0d_0{{< /katex >}} と {{< katex >}}R_{x_0}(t_0d_0){{< /katex >}} は以下のようになります．
+{{< katex >}}x_0+t_0d_0{{< /katex >}} は {{< katex >}}S^1{{< /katex >}} の外に出てしまうので，レトラクションによって，正規化して {{< katex >}}x_1\in S^1{{< /katex >}} を求めているということがわかります．
+
+{{< figure src="/images/docs/math/optim/manopt/retract.png" title="Figure 3. レトラクションの例" class="text-center" >}}
+
+とにかくこれで，本ページの問題
+{{< katex display >}}
+\begin{aligned}
+  &\mathrm{Minimize}\ x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x\\
+  &\mathrm{subject\ to}\ x\in S^1
+\end{aligned}
+{{< /katex >}}
+を，リーマン多様体の無制約最適化問題とみて数値計算ができるようになりました．
+
+具体的には以下の手順となります．
+
+* Input: {{< katex >}}x_0\in S^1{{< /katex >}}    
+* Output: 最適化問題の近似解
+1. for {{< katex >}}k=0,1,2,\dots{{< /katex >}} do
+2. {{< katex >}}\quad d_k\leftarrow-2(I-x_kx_k^T)\begin{pmatrix}5&2\\2&3\end{pmatrix}x_k{{< /katex >}}
+3. {{< katex >}}\quad t_k>0{{< /katex >}} を決める．
+4. {{< katex >}}\quad x_{k+1}\leftarrow(x_k+t_kd_k)/\|x_k+t_kd_k\|_2{{< /katex >}}
+5. {{< katex >}}\quad{{< /katex >}}収束判定条件を満たすなら {{< katex >}}x_{k+1}{{< /katex >}} を返して終了．
+6. end for
+
+## 数値例
 
 ## 参考文献
 
