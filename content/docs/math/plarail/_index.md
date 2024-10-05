@@ -1,6 +1,6 @@
 ---
 title: "プラレールのある数学的定式化について"
-weight: 5
+weight: 6
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false

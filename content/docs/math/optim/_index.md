@@ -1,6 +1,6 @@
 ---
 title: "数理最適化"
-weight: 1
+weight: 3
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
