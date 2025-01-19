@@ -48,6 +48,8 @@ weight: 1
 * 外生変数：モデルの外から与える変数（時間的変化を許す）
 * 内生変数：未知数に相当する変数
 
+以下，外から与えられるものを {{< katex >}}\bar{\cdot}{{< /katex >}} と上線を付けた記号で表します．
+
 ## 第2章 マクロ経済学の計測
 
 **GDP** とは国内生産とのことです．
@@ -358,7 +360,7 @@ I_t=\bar{s}Y_t
 {{< katex display=true >}}
   K^*=\left(\frac{\bar{s}\bar{A}}{\bar{d}}\right)^{3/2}\bar{L}
 {{< /katex >}}
-であることがわかった．
+であることがわかりました．
 
 同様に，
 {{< katex display=true >}}
@@ -376,6 +378,325 @@ y^*=\frac{Y^*}{L^*}=\bar{A}^{3/2}\left(\frac{\bar{s}}{\bar{d}}\right)^{1/2}
 {{< /katex >}}
 です．
 
+ソロー・モデルからは **移行過程の動学原理** と呼ばれる原理が導かれます．
+これは，定常状態より低い所得水準にあればあるほど成長率は大きいという原理です．
+この原理は資本蓄積方程式から導かれます．
+
+資本蓄積方程式から {{< katex >}}\Delta K_{t+1}=I_t-\bar{d}K_t{{< /katex >}} ですが，{{< katex >}}I_t=\bar{s}Y_t{{< /katex >}} なので，
+
+{{< katex display=true >}}
+\frac{\Delta K_{t+1}}{K_t}=\bar{s}\frac{Y_t}{K_t}-\bar{d}
+{{< /katex >}}
+
+となります（ただし {{< katex >}}K_t>0{{< /katex >}} とします）．
+
+さらに，{{< katex >}}\bar{s}Y^*=\bar{d}K^*{{< /katex >}} なので，
+
+{{< katex display=true >}}
+\begin{aligned}
+&\frac{\Delta K_{t+1}}{K_t}=\bar{s}\frac{Y_t}{K_t}-\bar{d}\\
+&=\bar{S}\left(\frac{Y_t}{K_t}-\frac{Y^*}{K^*}\right)\\
+&=\bar{s}\frac{Y^*}{K^*}\left(\frac{Y_t/K_t}{Y^*/K^*}-1\right)\\
+&=\bar{s}\frac{Y^*}{K^*}\left(\frac{\bar{A}K_t^{1/3}\bar{L}^{2/3}/K_t}{\bar{A}{K^*}^{1/3}\bar{L}^{2/3}/K^*}-1\right)\\
+&=\bar{s}\frac{Y^*}{K^*}\left(\frac{K_t^{-2/3}}{{K^*}^{-2/3}}-1\right)\\
+&=\bar{s}\frac{Y^*}{K^*}\left(\frac{{K^*}^{2/3}}{K_t^{2/3}}-1\right)
+\end{aligned}
+{{< /katex >}}
+
+となります．
+
+よって {{< katex >}}K_t < K^*{{< /katex >}} ならば資本ストック {{< katex >}}K_{t+1}{{< /katex >}} は増加し，その成長率は {{< katex >}}K_t\ll K^*{{</katex >}} の方が大きくなります．
+
+## 第6章 アイディアと経済成長
+
+ソロー・モデルには，長期的な成長を説明する理論的な枠組みが欠けている欠点があります．
+そこで，モノに加えて **アイディア** も考えることで，そのような理論が構築できることが知られています．
+アイディアは競合性がないことが重要です．
+そのモデルは **ローマー・モデル** と呼ばれています．
+
+ローマー・モデルを次のように構築します．
+まず，以下の方程式を考えます．
+
+{{< katex display=true >}}
+Y_t=A_tL_{yt}.
+{{< /katex >}}
+
+ただし，
+* {{< katex >}}Y_t{{< /katex >}}: 生産量
+* {{< katex >}}A_t{{< /katex >}}: **知識ストック**
+* {{< katex >}}L_t{{< /katex >}}: 労働投入量
+
+を表します．
+
+労働ストックの変化を以下のように表します．
+
+{{< katex display=true >}}
+\Delta A_{t+1}=\bar{z}A_tL_{at}.
+{{< /katex >}}
+
+ただし，
+* {{< katex >}}\bar{z}{{< /katex >}}: **生産性パラメータ**
+* {{< katex >}}L_{at}{{< /katex >}}: アイディア開発のために投入される労働量
+
+を表します．また，
+
+{{< katex display=true >}}
+\begin{aligned}
+  &L_{yt}+L_{at}=\bar{L},\\
+  &L_{at}=\bar{\ell}\bar{L}
+\end{aligned}
+{{< /katex >}}
+
+とします．
+ただし，
+* {{< katex >}}\bar{\ell}{{< /katex >}}: アイディア開発に従事する労働量の割合
+
+を表します．
+
+以上をまとめると以下のようになります．
+{{< katex display=true >}}
+\begin{cases}
+  Y_t=A_tL_{yt},\\
+  \Delta A_{t+1}=\bar{z}A_tL_{at},\\
+  L_{yt}+L_{at}=\bar{L},\\
+  L_{at}=\bar{\ell}\bar{L}
+\end{cases}
+{{< /katex >}}
+
+これを **ローマー・モデル** といいます．
+
+ローマー・モデルの解を求めます．
+
+{{< katex >}}y_t=Y_t/\bar{L}{{< /katex >}} とすると，
+
+{{< katex display=true >}}
+\begin{aligned}
+y_t&=\frac{Y_t}{\bar{L}}\\
+&=\frac{A_tL_{yt}}{\bar{L}}\\
+&=\frac{A_t(1-\bar{\ell})\bar{L}}{\bar{L}}\\
+&=A_t(1-\bar{\ell})
+\end{aligned}
+{{< /katex >}}
+
+となるので，1人あたりの生産量は {{< katex >}}A_t{{< /katex >}} に比例することがわかります．
+また，
+
+{{< katex display=true >}}
+\frac{\Delta A_{t+1}}{A_t}=\bar{z}L_{at}=\bar{z}\bar{\ell}\bar{L}
+{{< /katex >}}
+
+なので，{{< katex >}}\bar{g}=\bar{z}\bar{\ell}\bar{L}{{< /katex >}} とおくと
+
+{{< katex display=true >}}
+A_t=\bar{A}_0(1+\bar{g})^t
+{{< /katex >}}
+
+となり，
+
+{{< katex display=true >}}
+y_t=\bar{A}_0(1-\bar{\ell})(1+\bar{g})^t
+{{< /katex >}}
+
+と表せます．
+
+さて，ソロー・モデルは以下のようなもので，アイディアが考慮されていないモデルでした．
+
+{{< katex display=true >}}
+\begin{cases}
+  Y_t=F(K_t,L_t)=\bar{A}K_t^{1/3}L_t^{2/3},\\
+  \Delta K_{t+1}=I_t-\bar{d}K_t,\\
+  L_t=\bar{L},\\
+  C_t+I_t=Y_t,\\
+  I_t=\bar{s}Y_t.
+\end{cases}
+{{< /katex >}}
+
+ローマー・モデルは以下のようなもので，アイディアは考慮しますが資産については省略したモデルでした．
+
+{{< katex display=true >}}
+\begin{cases}
+  Y_t=A_tL_{yt},\\
+  \Delta A_{t+1}=\bar{z}A_tL_{at},\\
+  L_{yt}+L_{at}=\bar{L},\\
+  L_{at}=\bar{\ell}\bar{L}
+\end{cases}
+{{< /katex >}}
+
+そこで，これらを統合し，資産とアイディアを両方考慮するモデルが考えられます．
+このモデルを **ソロー=ローマー統合モデル** と呼びます．
+
+ソロー=ローマー統合モデルは以下のように表されます．
+
+{{< katex display=true >}}
+\begin{cases}
+  Y_t=\bar{A}K_t^{1/3}L_{yt}^{2/3},\\
+  \Delta K_{t+1}=\bar{s}Y_t-\bar{d}K_t,\\
+  \Delta A_{t+1}=\bar{z}A_tL_{at},\\
+  L_{yt}+L_{at}=\bar{L},\\
+  L_{at}=\bar{\ell}\bar{L}.
+\end{cases}
+{{< /katex >}}
+
+ソロー=ローマー統合モデルの解を求めます．
+
+変数 {{< katex >}}X=(X_t){{< /katex >}} について，{{< katex >}}t{{< /katex >}} における成長率 {{< katex >}}g_{X_t}{{< /katex >}} を
+
+{{< katex display=true >}}
+g_{X_t}=\frac{\Delta X_{t+1}}{X_t}
+{{< /katex >}}
+
+で定めます．
+すると，
+{{< katex display=true >}}
+\begin{aligned}
+  &g_{Y_t}=g_{A_t}+\frac{1}{3}g_{K_t}+\frac{2}{3}g_{L_{yt}},\\
+  &g_{A_t}=\frac{\Delta A_{t+1}}{A_t}=\bar{z}\bar{\ell}\bar{L}=\bar{g},\\
+  &g_{K_t}=\frac{\Delta K_{t+1}}{K_t}=\bar{s}\frac{Y_t}{K_t}-\bar{d}
+\end{aligned}
+{{< /katex >}}
+が得られます．
+
+よって，資本ストック {{< katex >}}K_t{{< /katex >}} の成長率 {{< katex >}}g_{K_t}{{< /katex >}} が一定になる場合を考えると，{{< katex >}}Y_t/K_t{{< /katex >}} が一定となる必要があることがわかります．
+つまり，{{< katex >}}g_K^*=g_Y^*{{< /katex >}} です．
+
+また，労働量が一定である仮定をおくと {{< katex >}}g_{L_{yt}}=0{{< /katex >}} となります．
+このとき，
+{{< katex display=true >}}
+g_Y^*=\bar{g}+\frac{1}{3}g_K^*+\frac{2}{3}\cdot0=\bar{g}+\frac{1}{3}g_Y^*
+{{< /katex >}}
+なので，
+{{< katex display=true >}}
+g_Y^*=\frac{3}{2}\bar{g}
+{{< /katex >}}
+となります．
+
+さて，{{< katex>}}g_K^*=g_Y^*{{< /katex >}} なので，
+{{< katex display=true >}}
+\frac{K_t^*}{Y_t^*}=\frac{\bar{s}}{g_K^*+\bar{d}}=\frac{\bar{s}}{g_Y^*+\bar{d}}
+{{< /katex >}}
+です．
+そして，
+{{< katex display=true >}}
+Y_t^*=A_t^*\left(\frac{\bar{s}Y_t^*}{g_Y^*+\bar{d}}\right)^{1/3}L_{yt}^{2/3}
+{{< /katex >}}
+なので，
+{{< katex display=true >}}
+{Y_t^*}^{2/3}=A_t^*\left(\frac{\bar{s}}{g_Y^*+\bar{d}}\right)^{1/3}L_{yt}^{2/3}
+{{< /katex >}}
+より，
+{{< katex display=true >}}
+\begin{aligned}
+Y_t^*&={A_t^*}^{3/2}\left(\frac{\bar{s}}{g_Y^*+\bar{d}}\right)^{1/2}L_{yt}\\
+&={A_t^*}^{3/2}\left(\frac{\bar{s}}{g_Y^*+\bar{d}}\right)^{1/2}\bar{L}(1-\bar{\ell})
+\end{aligned}
+{{< /katex >}}
+です．
+よって，
+{{< katex display=true >}}
+\begin{aligned}
+y_t^*&=\frac{Y_t^*}{\bar{L}}\\
+&={A_t^*}^{3/2}\left(\frac{\bar{s}}{g_Y^*+\bar{d}}\right)^{1/2}(1-\bar{\ell})
+\end{aligned}
+{{< /katex >}}
+と求まります．
+
+## 第7章 労働市場，賃金，および失業
+
+失業は以下のように分けられます．
+
+{{< katex display=true >}}
+\text{失業}=\text{自然的}+\text{循環的}=(\text{摩擦的}+\text{構造的})+\text{循環的}
+{{< /katex >}}
+
+* 摩擦的：経済環境の変化により労働者が食を変更するための失業
+* 構造的：労働者と企業のマッチングによる失業
+* 循環的：短期変動に関連した失業
+
+以下を **バスタブ・モデル** と呼ぶ．
+
+{{< katex display=true >}}
+\begin{cases}
+  E_t+U_t=\bar{L},\\
+  \Delta U_{t+1}=\bar{s}E_t+\bar{f}U_t
+\end{cases}
+{{< /katex >}}
+
+ただし，
+* {{< katex >}}E_t{{< /katex >}}: 就業者
+* {{< katex >}}U_t{{< /katex >}}: 失業者
+* {{< katex >}}\bar{s}{{< /katex >}}: 離職率
+* {{< katex >}}\bar{f}{{< /katex >}}: 新規就職率
+
+という意味です．
+
+定常状態は {{< katex >}}\Delta U_{t+1}=0{{< /katex >}} の状態です．
+このとき，
+{{< katex display=true >}}
+\begin{aligned}
+  0&=\bar{s}E_t-\bar{f}U_t\\
+  &=\bar{s}(\bar{L}-U_t)-\bar{f}U_t\\
+  &=\bar{s}\bar{L}-(\bar{f}+\bar{s})U_t
+\end{aligned}
+{{< /katex >}}
+なので，
+{{< katex display=true >}}
+U^*=\frac{\bar{s}\bar{L}}{\bar{f}+\bar{s}}
+{{< /katex >}}
+となります．
+または，
+{{< katex display=true >}}
+u^*=\frac{U^*}{\bar{L}}=\frac{\bar{s}}{\bar{f}+\bar{s}}
+{{< /katex >}}
+といえます．
+
+## 第8章 インフレーション
+
+**貨幣数量説** は以下で表されます．
+
+{{< katex display=true >}}
+M_tV_t=P_tY_t
+{{< /katex >}}
+
+ただし，
+* {{< katex >}}M_t{{< /katex >}}: 貨幣量
+* {{< katex >}}V_t{{< /katex >}}: 貨幣の流通速度
+* {{< katex >}}P_t{{< /katex >}}: 物価水準
+* {{< katex >}}Y_t{{< /katex >}}: 実質GDP
+
+を表します．
+
+ここで，{{< katex >}}Y_t=\bar{Y}_t,V_t=\bar{V},M_t=\bar{M}_t{{< /katex >}} は所与としてよいと考えられるので，
+
+{{< katex display=true >}}
+  P_t^*=\frac{\bar{M}_t\bar{V}}{\bar{Y}_t}
+{{< /katex >}}
+
+と表せます．
+
+ここで，{{< katex >}}\bar{g}_M+\bar{g}_V=\bar{g}_P+\bar{g}_Y{{< /katex >}} としたとき，流通速度一定とすると {{< katex >}}\bar{g}_V=0{{< /katex >}} となります．
+
+インフレ率を {{< katex >}}\pi{{< /katex >}} で表すことが多いので，そのように表すと，
+{{< katex display=true >}}
+  \pi=\bar{g}_M-\bar{g}_Y
+{{< /katex >}}
+と書けます．
+
+{{< katex >}}\text{名目GDP}=\text{価格水準}\times\text{実質GDP}{{< /katex >}} より，
+{{< katex display=true >}}
+\text{名目利子率}=\text{実質利子率}+\text{インフレ率}
+{{< /katex >}}
+となり，次の記号で表されます．
+{{< katex display=true >}}
+i=R+\pi.
+{{< /katex >}}
+
+## まとめ
+
+本ページでは，作成者が『ジョーンズ マクロ経済学Ⅰ 長期成長編』[[1]](#cite:1) を初読した際のメモをまとめました．
+
+本文中にもあるように，マクロ経済学は数式のみから議論・検討を行う学問ではありませんので，本ページの内容だけでは，概観を掴むためにも不十分と思いますが，マクロ経済学がどのようなモデルで経済を解釈・分析しようとしているかはわかるかもしれません．
+
 ## 参考文献
 
 {{< anchor "cite:1" >}}[1] チャールズ I.ジョーンズ（宮川努，荒井信幸，大久保正勝，釣雅雄，徳井丞次，細谷圭：訳），ジョーンズ マクロ経済学Ⅰ長期成長編，東洋経済新報社，2011.
+
