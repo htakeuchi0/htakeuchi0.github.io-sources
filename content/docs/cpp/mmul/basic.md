@@ -15,8 +15,8 @@ weight: 1
 
 {{< katex >}}A=(a_{ij}){{< /katex >}}, {{< katex >}}B=(b_{ij}){{< /katex >}} を {{< katex >}}n{{< /katex >}} 次正方行列とします．
 行列 {{< katex >}}A{{< /katex >}}, {{< katex >}}B{{< /katex >}} の積 {{< katex >}}AB{{< /katex >}} は
-{{< katex display >}}
-(AB)_{ij}=\sum_{k=0}^{n-1}a_{ik}b_{kj},\quad0\le i<n,\quad0\le j<n
+{{< katex display=true >}}
+(AB)_{ij}=\sum_{k=0}^{n-1}a_{ik}b_{kj},\quad 0\le i < n,\quad 0\le j < n
 {{< /katex >}}
 と定義されます[^1]．ただし，行列 {{< katex >}}M{{< /katex >}} に対して，{{< katex >}}(M)_{ij}{{< /katex >}} で {{< katex >}}M{{< /katex >}} の第 {{< katex >}}(i,j){{< /katex >}} 成分を表します．
 [^1]: C++の仕様との兼ね合いで，本ページでは，添字は0から始まるものとします．
@@ -73,8 +73,8 @@ C++では列指向と呼ばれる格納方法が一般的と思います．
 さて，C++では，配列の飛び飛びの要素にアクセスするより，ひとつずつ参照先を進めていくようなアクセスの方が高速です．
 
 ここで，行列積の定義は，
-{{< katex display >}}
-(AB)_{ij}=\sum_{k=0}^{n-1}a_{ik}b_{kj},\quad0\le i<n,\quad0\le j<n
+{{< katex display=true >}}
+(AB)_{ij}=\sum_{k=0}^{n-1}a_{ik}b_{kj},\quad0\le i < n,\quad0\le j < n
 {{< /katex >}}
 であり，{{< katex >}}b_{kj}{{< /katex >}} は，"ひとつずつ参照先を進めていくようなアクセス" となりますが，{{< katex >}}a_{ik}{{< /katex >}} はそうなりません．
 
@@ -83,8 +83,8 @@ C++では列指向と呼ばれる格納方法が一般的と思います．
 2. {{< katex >}}C\leftarrow A'^TB{{< /katex >}}
 
 とすると，{{< katex >}}a_{ik}=(A)_{ik}=(A')_{ki}{{< /katex >}} なので，
-{{< katex display >}}
-(AB)_{ij}=\sum_{k=0}^{n-1}a_{ik}b_{kj}=\sum_{k=0}^{n-1}(A')_{ki}b_{kj},\quad0\le i<n,\quad0\le j<n
+{{< katex display=true >}}
+(AB)_{ij}=\sum_{k=0}^{n-1}a_{ik}b_{kj}=\sum_{k=0}^{n-1}(A')_{ki}b_{kj},\quad0\le i < n,\quad0\le j < n
 {{< /katex >}}
 と書けるため，行列積の演算を "ひとつずつ参照先を進めていくようなアクセス" のみで実現できます．
 これは，ライブラリの機能でいえば，{{< katex >}}(A,B)\mapsto AB{{< /katex >}} という関数の代わりに，{{< katex >}}(A,B)\mapsto A^TB{{< /katex >}} という関数を公開することと同じです．

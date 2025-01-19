@@ -29,7 +29,7 @@ weight: 3
 {{< katex >}}F_X^*:[0,1]\to\mathbb{R}{{< /katex >}} を，{{< katex >}}F_X^*(u)=\inf\{x\mid F(x)\ge u\}{{< /katex >}} とします[^1]．
 ここで，{{< katex >}}U{{< /katex >}} を区間 {{< katex >}}[0,1]{{< /katex >}} 上の一様分布とします．
 つまり，
-{{< katex display >}}
+{{< katex display=true >}}
   f_U(u)=\begin{cases}
     1,& 0\le u\le 1,\\
     0,&\text{otherwise}
@@ -37,14 +37,14 @@ weight: 3
 {{< /katex >}}
 とします．
 {{< katex >}}Z=F_X^*(U){{< /katex >}} とすると，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   F_Z(z)&=P([Z\le z])\\
   &=P([F^*_X(U)\le z])\\
 \end{aligned}
 {{< /katex >}}
 となりますが，{{< katex >}}F^*_X(u)\le z{{< /katex >}} であることと {{< katex >}}u\le F_X(z){{< /katex >}} であることは同じことなので，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   F_Z(z)&=P([F^*_X(U)\le z])\\
   &=P([U\le F_X(z)])\\
@@ -68,7 +68,7 @@ weight: 3
 ここで，{{< katex >}}F_Y{{< /katex >}} は狭義単調増加関数であることに注意してください．
 
 ラプラス分布に従う確率変数の累積分布関数は，[前ページ]({{< ref trunclap >}}) で述べたとおり，
-{{< katex display >}}
+{{< katex display=true >}}
 F_Y(y;\mu,b)=\begin{cases}
 \dfrac{1}{2}\exp\left(-\dfrac{|y-\mu|}{b}\right),&y<\mu,\\
 1-\dfrac{1}{2}\exp\left(-\dfrac{|y-\mu|}{b}\right),&y\ge\mu
@@ -78,109 +78,120 @@ F_Y(y;\mu,b)=\begin{cases}
 
 {{< katex >}}0\le u\le 1/2{{< /katex >}} とします．
 {{< katex >}}y<\mu{{< /katex >}} において，
-{{< katex display >}}
+{{< katex display=true >}}
   \frac{1}{2}\exp\left(-\dfrac{|y-\mu|}{b}\right)=u
 {{< /katex >}}
 を満たす {{< katex >}}y{{< /katex >}} を求めると，
-{{< katex display >}}
+{{< katex display=true >}}
   |y-\mu|=-b\log 2u
 {{< /katex >}}
 となりますが，{{< katex >}}y<\mu{{< /katex >}} なので，
-{{< katex display >}}
+{{< katex display=true >}}
   y=\mu+b\log 2u
 {{< /katex >}}
 となります．
 
 次に，{{< katex >}}1/2<u\le 1{{< /katex >}} とします．
 {{< katex >}}y\ge\mu{{< /katex >}} において，
-{{< katex display >}}
+{{< katex display=true >}}
   1-\frac{1}{2}\exp\left(-\frac{|y-\mu|}{b}\right)=u
 {{< /katex >}}
 を満たす {{< katex >}}y{{< /katex >}} を求めると，
-{{< katex display >}}
+{{< katex display=true >}}
   |y-\mu|=-b\log 2(1-u)
 {{< /katex >}}
 となりますが，{{< katex >}}y\ge\mu{{< /katex >}} なので，
-{{< katex display >}}
+{{< katex display=true >}}
   y=\mu-b\log 2(1-u)
 {{< /katex >}}
 となります．
 
 よって，
-{{< katex display >}}
+
+{{< katex display=true >}}
   y=\begin{cases}
     \mu+b\log 2u,&0\le u\le1/2,\\
-    \mu-b\log 2(1-u),&1/2<u\le1
+    \mu-b\log 2(1-u),&1/2 < u\le1
   \end{cases}
 {{< /katex >}}
+
 となります．
 
 ここで，{{< katex >}}w=u-1/2{{< /katex >}} とすると，
-{{< katex display >}}
+
+{{< katex display=true >}}
   y=\begin{cases}
     \mu+b\log(1+2w),&-1/2\le w\le0,\\
-    \mu-b\log(1-2w),&0<w\le1/2
+    \mu-b\log(1-2w),&0 < w\le1/2
   \end{cases}
 {{< /katex >}}
+
 となるので，
-{{< katex display >}}
+
+{{< katex display=true >}}
   \mathrm{sgn}(w)=\begin{cases}
     +1,\quad w\ge0,\\
     -1,\quad w<0
   \end{cases}
 {{< /katex >}}
+
 とすると，
-{{< katex display >}}
+
+{{< katex display=true >}}
   \begin{aligned}
   y&=\mu-\mathrm{sgn}(w)b\log(1-2\mathrm{sgn}(w)w)\\
   &=\mu-\mathrm{sgn}(w)b\log(1-2|w|)\\
   \end{aligned}
 {{< /katex >}}
+
 と書けます．
 ここで，{{< katex >}}\mathrm{sgn}(w)w=|w|{{< /katex >}} を使いました．
 
 したがって，次が成り立ちます．
 
-{{< hint info >}}
+{{% hint info %}}
   {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\) とする．\\(W\\) を区間 \\([-1/2,1/2]\\) 上の一様分布に従う連続的確率変数とすると，\\(Y=\mu-\mathrm{sgn}(W)b\log(1-2|W|)\\) は，パラメータ \\(\mu,b\\) のラプラス分布に従う連続的確率変数である．
-{{< /hint >}}
+{{% /hint %}}
 
 ## 切断ラプラス分布からのサンプリング
 
 [前節]({{< ref "#ラプラス分布からのサンプリング" >}})と同様に，切断ラプラス分布からのサンプリングの方法を導きます．
 
 ラプラス分布に従う確率変数の累積分布関数は，[前ページ]({{< ref trunclap >}}) で述べたとおり，
-{{< katex display >}}
+
+{{< katex display=true >}}
 \begin{aligned}
   &F_X(x;\mu,b,A,B)\\
   &=\begin{cases}
-    0,&x<A,\\
+    0,&x < A,\\
     \dfrac{F_Y(x;\mu,b)-F_Y(A;\mu,b)}{C_{\mu,b}(A,B)},&A\le x\le B\\
-    1,&x>B
+    1,&x > B
   \end{cases}
 \end{aligned}
 {{< /katex >}}
+
 となります．
 
-まず，{{< katex >}}x<A{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=0{{< /katex >}} なので，{{< katex >}}F_X^*(0)=-\infty{{< /katex >}} です．
+まず，{{< katex >}}x < A{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=0{{< /katex >}} なので，{{< katex >}}F_X^*(0)=-\infty{{< /katex >}} です．
 次に，{{< katex >}}x>B{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=1{{< /katex >}} なので，{{< katex >}}F_X^*(1)=B{{< /katex >}} です．
 
-ここで，{{< katex >}}0<u<1{{< /katex >}} とし，{{< katex >}}F_X(x;\mu,b,A,B)=u{{< /katex >}} となる {{< katex >}}x{{< /katex >}} を求めます．
+ここで，{{< katex >}}0 < u < 1{{< /katex >}} とし，{{< katex >}}F_X(x;\mu,b,A,B)=u{{< /katex >}} となる {{< katex >}}x{{< /katex >}} を求めます．
 まず，
-{{< katex display >}}
+{{< katex display=true >}}
   \frac{F_Y(x;\mu,b)-F_Y(A;\mu,b)}{C_{\mu,b}(A,B)}=u
 {{< /katex >}}
 なので，
-{{< katex display >}}
+{{< katex display=true >}}
   F_Y(x;\mu,b)=uC_{\mu,b}(A,B)+F_Y(A;\mu,b)
 {{< /katex >}}
 です．したがって，{{< katex >}}w=uC_{\mu,b}(A,B)+F_Y(A;\mu,b)-1/2{{< /katex >}} とおくと，
-{{< katex display >}}
+{{< katex display=true >}}
   x=\mu-\mathrm{sgn}(w)b\log(1-2|w|)
 {{< /katex >}}
 となります．ここで，
-{{< katex display >}}
-  F_Y(A;\mu,b)-\frac{1}{2}<w<C_{\mu,b}(A,B)+F_Y(A;\mu,b)-\frac{1}{2}=F_Y(B;\mu,b)-\frac{1}{2}
+
+{{< katex display=true >}}
+  F_Y(A;\mu,b)-\frac{1}{2} < w < C_{\mu,b}(A,B)+F_Y(A;\mu,b)-\frac{1}{2}=F_Y(B;\mu,b)-\frac{1}{2}
 {{< /katex >}}
 です．
 
@@ -190,9 +201,9 @@ F_Y(y;\mu,b)=\begin{cases}
 そこで，{{< katex >}}F_X^*(0)=A{{< /katex >}} と定義し直すと[^3]，以下の結論が得られます．
 [^3]:{{< katex >}}F_X^*(0)=-\infty{{< /katex >}}として，{{< katex >}}Z=F_X^*(U){{< /katex >}} としてつくる確率変数 {{< katex >}}Z{{< /katex >}}と，{{< katex >}}F_X^*(0)=A{{< /katex >}}として，{{< katex >}}Z'=F_X^*(U){{< /katex >}} としてつくる確率変数 {{< katex >}}Z'{{< /katex >}} は，ほとんど至るところ等しいので，本質的な違いはありません．
 
-{{< hint info >}}
+ {{% hint info %}}
   {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．\\(W\\) を区間 \\([F_Y(A;\mu,b)-1/2,F_Y(B;\mu,b)-1/2]\\) 上の一様分布に従う連続的確率変数とすると，\\(Y=\mu-\mathrm{sgn}(W)b\log(1-2|W|)\\) は，パラメータ \\(\mu,b,A,B\\) の切断ラプラス分布に従う連続的確率変数である．
-{{< /hint >}}
+{{% /hint %}}
 
 ## 数値例
 

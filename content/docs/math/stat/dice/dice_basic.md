@@ -19,10 +19,7 @@ weight: 1
 
 確率の定義は以下の通りです．
 
-{{< hint info >}}
-{{< theorem-label name="Definition" >}}
-
-1. \\(X\\) を集合とする．\\(\mathfrak{F}\subset2^X\\) が \\(X\\) の完全加法族であるとは，次の1--3を満たすことである．ただし，\\(A^c=X-A=\\{x\in X\mid x\notin a\\}\\), \\(2^X=\\{A\mid A\subset X\\}\\) とする．
+{{% hint info %}}{{< theorem-label name="Definition" >}} 1. \\(X\\) を集合とする．\\(\mathfrak{F}\subset2^X\\) が \\(X\\) の完全加法族であるとは，次の1--3を満たすことである．ただし，\\(A^c=X-A=\{x\in X\mid x\notin a\}\\), \\(2^X=\{A\mid A\subset X\}\\) とする．
     1. \\(\emptyset\in\mathfrak{F}\\),
     2. \\(A\in\mathfrak{F}\\) ならば \\(A^c\in\mathfrak{F}\\),
     3. 任意の \\(i\in\mathbb{N}\\) について \\(A_i\in\mathfrak{F}\\) ならば \\(\bigcup_{i=1}^{\infty}A_i\in\mathfrak{F}\\).
@@ -32,7 +29,7 @@ weight: 1
     2. \\(P(\Omega)=1\\),
     3. \\(A_1,A_2,\dots\in\mathfrak{F}\\) が互いに素ならば，\\(P(\sum_{i=1}^{\infty}A_i)=\sum_{i=1}^{\infty}P(A_i)\\).
 4. \\(\Omega\\) を集合とし，\\(\mathfrak{F}\\) を \\(\Omega\\) の完全加法族とする．関数 \\(P:\mathfrak{F}\to\mathbb{R}\\) を確率とする．このとき，\\((\Omega,\mathfrak{F},P)\\) を**確率空間**という．
-{{< /hint >}}
+{{% /hint %}}
 
 ## 偏りのないサイコロを1回だけ投げる試行の確率モデル
 

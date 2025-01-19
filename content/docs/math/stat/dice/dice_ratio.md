@@ -36,9 +36,9 @@ weight: 2
 よって，以下のことがいえそうです．
 
 {{< hint info >}}
-{{< theorem-label name="Proposition" >}} 偏りのないサイコロを \\(N\\) 回投げて \\(k\\) 回だけ1の目が出る確率は
+{{< theorem-label name="Proposition" >}} 偏りのないサイコロを {{< katex >}}N{{< /katex >}} 回投げて {{< katex >}}k{{< /katex >}} 回だけ1の目が出る確率は
 
-{{< katex display >}}
+{{< katex display=true >}}
 \binom{N}{k}\frac{5^{N-k}}{6^N}
 {{< /katex >}}
 となる．
@@ -50,7 +50,7 @@ Prop. 1 を使って，**ちょうど** 6回に1回の割合で1の目が出る�
 
 Prop. 1 より，{{< katex >}}N{{< /katex >}} 回サイコロを投げて，ちょうど {{< katex >}}\lfloor N/6\rfloor{{< /katex >}} 回1の目が出る確率 {{< katex >}}p(N){{< /katex >}}は，
 
-{{< katex display >}}
+{{< katex display=true >}}
   p(N)=\binom{N}{\lfloor N/6\rfloor}\frac{5^{N-\lfloor N/6\rfloor}}{6^N}
 {{< /katex >}}
 

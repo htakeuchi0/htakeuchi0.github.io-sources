@@ -20,18 +20,18 @@ weight: 1
 まずは，ラプラス分布を定義します．
 切断ラプラス分布に従う確率変数に {{< katex >}}X{{< /katex >}} の文字を使うため，ラプラス分布に従う確率変数には {{< katex >}}Y{{< /katex >}} を使います．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Definition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\) とする．
 連続的確率変数 \\(Y:(\Omega,\mathfrak{F})\to(\mathbb{R},\mathfrak{B}[\mathbb{R}])\\) の確率密度関数 \\(f_Y\\) が
 \\[
   f_Y(y;\mu,b)=\frac{1}{2b}\exp\left(-\frac{|y-\mu|}{b}\right)
 \\]
 と表されるとき，\\(Y\\) を **ラプラス分布** に従う確率変数であるという．
-{{< /hint >}}
+{{% /hint %}}
 
 ラプラス分布はどのような実数でもとり得る分布ですが，これを区間 {{< katex >}}[A,B]\,(A\le B){{< /katex >}} に制限した分布を **切断ラプラス分布** といいます．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Definition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．連続的確率変数 \\(X:(\Omega,\mathfrak{F})\to(\mathbb{R},\mathfrak{B}[\mathbb{R}])\\) の確率密度関数 \\(f_X\\) が
 \\[
   f_X(x;\mu,b,A,B)=\begin{cases}
@@ -40,7 +40,7 @@ weight: 1
   \end{cases}
 \\]
 と表されるとき，\\(X\\) を **切断ラプラス分布** に従う確率変数であるという．
-{{< /hint >}}
+{{% /hint %}}
 
 ## 切断ラプラス分布の確率密度関数
 
@@ -50,7 +50,7 @@ weight: 1
 まず，{{< katex >}}Y{{< /katex >}} をパラメータ {{< katex >}}\mu,b{{< /katex >}} であるラプラス分布に従う確率変数としたとき，その累積分布関数 {{< katex >}}F_Y(y;\mu,b){{< /katex >}} を求めます．
 
 累積分布関数の定義より，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   F_Y(y;\mu,b)&=\int_{-\infty}^yf_Y(t;\mu,b)dt\\
   &=\int_{-\infty}^y\frac{1}{2b}\exp\left(-\frac{|t-\mu|}{b}\right)dt
@@ -59,8 +59,8 @@ weight: 1
 となります．
 積分範囲を {{< katex >}}y<\mu{{< /katex >}}, {{< katex >}}y\ge\mu{{< /katex >}} に分けて計算を行います．
 
-まず {{< katex >}}y<\mu{{< /katex >}} のとき，{{< katex >}}t<y{{< /katex >}} ならば {{< katex >}}t-\mu<y-\mu<0{{< /katex >}} なので，
-{{< katex display >}}
+まず {{< katex >}}y<\mu{{< /katex >}} のとき，{{< katex >}}t < y{{< /katex >}} ならば {{< katex >}}t-\mu < y-\mu<0{{< /katex >}} なので，
+{{< katex display=true >}}
 \begin{aligned}
   F_Y(y;\mu,b)&=\int_{-\infty}^y\frac{1}{2b}\exp\left(\frac{t-\mu}{b}\right)dt\\
   &=\left[\frac{1}{2}\exp\left(\frac{t-\mu}{b}\right)\right]_{-\infty}^y\\
@@ -71,7 +71,7 @@ weight: 1
 となります．
 
 一方，{{< katex >}}y\ge\mu{{< /katex >}} のとき，{{< katex >}}t\ge\mu{{< /katex >}} ならば {{< katex >}}t-\mu\ge0{{< /katex >}} なので，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   F_Y(y;\mu,b)&=\int_{-\infty}^\mu\frac{1}{2b}\exp\left(\frac{t-\mu}{b}\right)dt+\int_\mu^y\frac{1}{2b}\exp\left(-\frac{t-\mu}{b}\right)dt\\
   &=\left.\frac{1}{2}\exp\left(\frac{y-\mu}{b}\right)\right|_{y=\mu}+\left[-\frac{1}{2}\exp\left(-\frac{t-\mu}{b}\right)\right]_\mu^y\\
@@ -83,7 +83,7 @@ weight: 1
 となります．
 
 よって，
-{{< katex display >}}
+{{< katex display=true >}}
 F_Y(y;\mu,b)=\begin{cases}
 \dfrac{1}{2}\exp\left(-\dfrac{|y-\mu|}{b}\right),&y<\mu,\\
 1-\dfrac{1}{2}\exp\left(-\dfrac{|y-\mu|}{b}\right),&y\ge\mu
@@ -92,13 +92,13 @@ F_Y(y;\mu,b)=\begin{cases}
 となります．
 
 {{< katex >}}X{{< /katex >}} がパラメータ {{< katex >}}\mu,b,A,B{{< /katex >}} の切断ラプラス分布に従う確率変数であるなら，
-{{< katex display >}}
+{{< katex display=true >}}
   \int_{-\infty}^\infty f_X(x;\mu,b,A,B)dx=1
 {{< /katex >}}
 を満たします．
 
 ここで，{{< katex >}}Y{{< /katex >}} を（{{< katex >}}X{{< /katex >}} と同じ）パラメータ {{< katex >}}\mu,b{{< /katex >}} のラプラス分布に従う確率変数とすると，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 1&=\int_{-\infty}^{\infty}\frac{1}{2bC}\exp\left(-\frac{|x-\mu|}{b}\right)dx\\
 &=\frac{1}{C}\int_A^B\frac{1}{2b}\exp\left(-\frac{|x-\mu|}{b}\right)dx\\
@@ -107,18 +107,18 @@ F_Y(y;\mu,b)=\begin{cases}
 {{< /katex >}}
 となります．
 よって，
-{{< katex display >}}
+{{< katex display=true >}}
 C=F_Y(B;\mu,b)-F_Y(A;\mu,b)
 {{< /katex >}}
 とわかります．
 パラメータ {{< katex >}}\mu,b,A,B{{< /katex >}} を明示して書くと，
-{{< katex display >}}
+{{< katex display=true >}}
 C_{\mu,b}(A,B)=F_Y(B;\mu,b)-F_Y(A;\mu,b)
 {{< /katex >}}
 です．
 
 以上より，次のことがわかります．
-{{< hint info >}}
+{{% hint info %}}
   {{< theorem-label name="Proposition" >}} \\(\mu,b\in\mathbb{R}\\), \\(b>0\\), \\(A,B\in\mathbb{R}\\), \\(A\le B\\) とする．
   \\[
     C_{\mu,b}(A,B)=\begin{cases}
@@ -143,7 +143,7 @@ C_{\mu,b}(A,B)=F_Y(B;\mu,b)-F_Y(A;\mu,b)
 切断ラプラス分布に従う確率変数の累積分布関数を求めます．
 
 {{< katex >}}A\le x\le B{{< /katex >}} ならば，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &F_X(x;\mu,b,A,B)\\
   &=\int_{-\infty}^xf_X(t;\mu,b,A,B)dt\\
@@ -153,11 +153,11 @@ C_{\mu,b}(A,B)=F_Y(B;\mu,b)-F_Y(A;\mu,b)
 {{< /katex >}}
 です．
 ただし，{{< katex >}}F_Y(y;\mu,b){{< /katex >}} は，パラメータ {{< katex >}}\mu,b{{< /katex >}} のラプラス分布に従う確率変数の累積分布関数です．
-そして，{{< katex >}}x<A{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=0{{< /katex >}}, {{< katex >}}x>B{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=1{{< /katex >}} です．
+そして，{{< katex >}}x < A{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=0{{< /katex >}}, {{< katex >}}x>B{{< /katex >}} ならば {{< katex >}}F_X(x;\mu,b,A,B)=1{{< /katex >}} です．
 
 通常のラプラス分布とあわせてまとめると以下のようになります．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Proposition" >}} 
 1. \\(Y\\) をパラメータ \\(\mu,b\\) のラプラス分布に従う確率変数とする．\\(Y\\) の累積分布関数 \\(F_Y(y;\mu,b)\\) は，
 \\[
@@ -180,7 +180,7 @@ C_{\mu,b}(A,B)=F_Y(B;\mu,b)-F_Y(A;\mu,b)
 \end{aligned}
 \\]
 と表される．
-{{< /hint >}}
+{{% /hint %}}
 
 ## まとめ
 

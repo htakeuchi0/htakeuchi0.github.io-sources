@@ -25,13 +25,12 @@ weight: 4
 
 まずは，確率変数の定義について述べます．
 
-{{< hint info >}}
-{{< theorem-label name="Definition" >}}
+{{% hint info %}} {{< theorem-label name="Definition" >}}
 1. \\(A\\) を集合，\\(\mathfrak{F}\\) をその完全加法族とする．一般に，\\((A,\mathfrak{F})\\) を **可測空間** という．また，\\((A,\mathfrak{F}),(B,\mathfrak{G})\\) を可測空間とするとき，関数 \\(F:A\to B\\) を \\(F:(A,\mathfrak{F})\to(B,\mathfrak{B})\\) と表す．
 2. \\((A,\mathfrak{F}),(B,\mathfrak{G})\\) を可測空間とする．関数 \\(F:(A,\mathfrak{F})\to (B,\mathfrak{F})\\) が，任意の \\(b\in B\\) について \\(F^{-1}(b)=\\{a\in A\mid F(a)=b\\}\in\mathfrak{F}\\) であるとき，関数 \\(F\\) を**可測関数**と呼ぶ．
 3. \\(\mathbb{R}\\) の開集合全体の集合を \\(\mathfrak{O}(\mathbb{R})\\) と表す．\\(\mathfrak{O}(\mathbb{R})\\) を含む最小の完全加法族を \\(\mathfrak{B}(\mathbb{R})\\) と表す．
 4. \\(\Omega,\mathfrak{F}\\) を標本空間とする，\\(X:(\Omega,\mathfrak{F})\to(\mathbb{R},\mathfrak{B}(\mathbb{R}))\\) が可測関数のとき，\\(X\\) を**確率変数**という．
-{{< /hint >}}
+{{% /hint %}}
 
 なお，可測空間も標本空間も集合とその完全加法族の組なので，実質的には同じものですが，数理統計の文脈では，可測空間のことを標本空間と呼ぶ，という理解でよいです．また，本来は {{< katex >}}\mathfrak{B}(\mathbb{R}){{< /katex >}} の存在を示す必要がありますが，ここでは認めるものとします．
 
@@ -45,37 +44,37 @@ weight: 4
 
 このとき，以下の式が成り立つことが知られています．
 
-{{< hint info >}}
-{{< theorem-label name="Theorem" comment="Chebyshev の不等式" >}} 任意の \\(\epsilon>0\\) について，次の式が成り立つ．
+{{% hint info %}}
+{{< theorem-label name="Theorem" comment="Chebyshev の不等式" >}} 任意の {{< katex >}}\epsilon>0{{< /katex >}} について，次の式が成り立つ．
 
-{{< katex display >}}P(|X-\mathbb{E}[X]|\ge\epsilon)\le\frac{\mathbb{V}[X]}{\epsilon^2}{{< /katex >}}
-{{< /hint >}}
+{{< katex display=true >}}P(|X-\mathbb{E}[X]|\ge\epsilon)\le\frac{\mathbb{V}[X]}{\epsilon^2}{{< /katex >}}
+{{% /hint %}}
 
 ## 確率変数の導入
 
 前ページの確率空間 {{< katex >}}(\Omega_N,\mathfrak{F}_N,P_N){{< /katex >}} を考えます．本ページでは，{{< katex >}}N{{< /katex >}}を省略し，{{< katex >}}(\Omega,\mathfrak{F},P){{< /katex >}} と表すことにします．1の目が出た回数だけが問題のため，以下のような可測関数 {{< katex >}}X:(\Omega,\mathfrak{F})\to(\mathbb{R},\mathfrak{B}(\mathbb{R})){{< /katex >}} を考えます．
-{{< katex display >}}
+{{< katex display=true >}}
 X(\omega^1,\omega^2,\dots,\omega^N)=|\{i\mid \omega^i=\omega_1\}|.
 {{< /katex >}}
 このとき，{{< katex >}}x\notin\{0,1,\dots,N\}{{< /katex >}} ならば {{< katex >}}X^{-1}(x)=\emptyset\in\mathfrak{F}{{< /katex >}} であり，{{< katex >}}k\in\{0,1,\dots,N\}{{< /katex >}} ならば {{< katex >}}X^{-1}(k)=\{(\omega^i)\in\Omega\mid |\{i\mid \omega^i=\omega_1\}|=k\}\in 2^{\Omega}=\mathfrak{F}{{< /katex >}} なので {{< katex >}}X{{< /katex >}} は確率変数です．
 
 ここまで定めた記号で以下が成り立ちます．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Proposition" >}} 以下が成り立つ．
 
-{{< katex display >}}
+{{< katex display=true >}}
 f_X(x)=\begin{cases}
   \displaystyle\binom{N}{x}\frac{5^{N-x}}{6^N},&x=0,1,\dots,N,\\
   0,&\mathrm{otherwise}.
 \end{cases}
 {{< /katex >}}
-{{< /hint >}}
+{{% /hint %}}
 
 ## 二項分布の導入
 
 一般に，確率変数 {{< katex >}}X{{< /katex >}} の確率質量関数が
-{{< katex display >}}
+{{< katex display=true >}}
 f_X(x)=\begin{cases}
   \displaystyle\binom{N}{x}p^x(1-p)^{N-x},&x=0,1,\dots,N,\\
   0,&\mathrm{otherwise}
@@ -87,12 +86,12 @@ f_X(x)=\begin{cases}
 
 二項分布については以下が成り立つことが知られています．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Theorem" >}} 以下が成り立つ．
-1. \\(\mathbb{E}\[X\]=Np\\).
-2. \\(\mathbb{V}\[X\]=Np^2\\).
+1. \\(\mathbb{E}[X]=Np\\).
+2. \\(\mathbb{V}[X]=Np^2\\).
 3. \\(f_X(x)\\) が最大になる \\(x\\) は，\\((N+1)p\\) が整数のとき \\((N+1)p-1,(N+1)p\\), そうでないとき \\(\lfloor(N+1)p\rfloor\\) である．
-{{< /hint >}}
+{{% /hint %}}
 
 確率関数が Prop. 2 となる確率変数は，パラメータ {{< katex >}}p{{< /katex >}} が {{< katex >}}1/6{{< /katex >}} である二項分布に従うといえます．
 
@@ -102,11 +101,11 @@ f_X(x)=\begin{cases}
 
 さらに，Thm. 2 より，以下を示すことができます．ただし，パラメータ{{< katex >}}(N,1/6){{< /katex >}} の二項分布に従う確率変数を{{< katex >}}X_N{{< /katex >}} と表します．
 
-{{< hint info >}}
-{{< theorem-label name="Theorem" >}} 任意の \\(\epsilon>0\\) について，以下が成り立つ．
+{{% hint info %}}
+{{< theorem-label name="Theorem" >}} 任意の {{< katex >}}\epsilon>0{{< /katex >}} について，以下が成り立つ．
 
-{{< katex display >}}\lim_{N\to\infty}P\left(\left|\frac{X_N}{N}-\frac{1}{6}\right|\ge\epsilon\right)=0{{< /katex >}}
-{{< /hint >}}
+{{< katex display=true >}}\lim_{N\to\infty}P\left(\left|\frac{X_N}{N}-\frac{1}{6}\right|\ge\epsilon\right)=0{{< /katex >}}
+{{% /hint %}}
 
 これは，例えば {{< katex >}}\epsilon=10^{-10}{{< /katex >}} のような小さな値をとったとしても，{{< katex >}}N{{< /katex >}}を十分大きくとると，サイコロを {{< katex >}}N{{< /katex >}}回投げて1の目が出た割合 {{< katex >}}X_N/N{{< /katex >}} と {{< katex >}}1/6{{< /katex >}} が {{< katex >}}\epsilon=10^{-10}{{< /katex >}} 以上になる確率（{{< katex >}}1/6{{< /katex >}} からほんの少しでもずれる確率）は0に近づく（ほとんど起こらなくなる）ということなので，サイコロを投げる回数 {{< katex >}}N{{< /katex >}} を十分大きくとると，**サイコロを {{< katex >}}N{{< /katex >}}回投げたときおよそ6回に1回程度の割合で1の目が出る** ことを示しています．
 
@@ -116,11 +115,11 @@ Thm. 5 が，サイコロを {{< katex >}}N{{< /katex >}}回投げたときお�
 
 ただし，Thm. 5 は**確率収束**と呼ばれる収束性を用いて説明されますが，さらに強く，**概収束**と呼ばれる収束性を用いて説明できることが知られています．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Theorem" >}} 以下が成り立つ．
 
-{{< katex display >}}P\left(\lim_{n\to\infty}\frac{X_N}{N}=\frac{1}{6}\right)=1{{< /katex >}}
-{{< /hint >}}
+{{< katex display=true >}}P\left(\lim_{n\to\infty}\frac{X_N}{N}=\frac{1}{6}\right)=1{{< /katex >}}
+{{% /hint %}}
 
 これは，サイコロを {{< katex >}}N{{< /katex >}}回投げて1の目が出た割合 {{< katex >}}X_N/N{{< /katex >}} の {{< katex >}}N{{< /katex >}} を大きくすると，ほとんど確実に {{< katex >}}1/6{{< /katex >}} に収束することを表しています．これもかなり直接的に，**サイコロを {{< katex >}}N{{< /katex >}}回投げたときおよそ6回に1回程度の割合で1の目が出る** ことを示しています．
 

@@ -60,9 +60,9 @@ Hugo は markdown で記事を作成できますが，markdown の簡潔に記�
 ショートコードの定義としてはよいのですが，定理環境はみやすさのため，`hint` ショートコードで定理全体を囲いたいと思います．つまり，以下のように `hint` ショートコードのブロック内で `theorem-label` ショートコードを利用することになります．
 
 ```md
-{{</* hint info */>}}
+{{%/* hint info */%}}
 {{</* theorem-label name="Theorem" */>}} 定理の例．
-{{</* /hint */>}}
+{{%/* /hint */%}}
 ```
 
 しかし，Hugo で現在利用されている markdown パーサは HTML 形式の直接記述をデフォルトでは認めていません．この仕様により，上記のようにショートコードをネストする場合にも影響があり，上記でいえば，"Theorem 1" 部分が太字になりません．
@@ -85,24 +85,24 @@ Hugo は markdown で記事を作成できますが，markdown の簡潔に記�
 以上のようにしておくと，本文内では以下のように呼び出して，以下のような結果が得られます．
 
 ```md
-{{</* hint info */>}}
+{{%/* hint info */%}}
 {{</* theorem-label name="Theorem" */>}} 定理の例．
-{{</* /hint */>}}
+{{%/* /hint */%}}
 
-{{</* hint info */>}}
+{{%/* hint info */%}}
 {{</* theorem-label name="Proposition" */>}} 命題の例．
-{{</* /hint */>}}
+{{%/* /hint */%}}
 ```
 
 結果は以下のとおりです．定理番号が自動で連番で発行されることがわかります．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Theorem" >}} 定理の例．
-{{< /hint >}}
+{{% /hint %}}
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Proposition" >}} 命題の例．
-{{< /hint >}}
+{{% /hint %}}
 
 ## まとめ
 
@@ -111,13 +111,13 @@ Hugo は markdown で記事を作成できますが，markdown の簡潔に記�
 上記呼び出し例を，
 
 ```md
-{{</* theorem name="Theorem" */>}}
+{{%/* theorem name="Theorem" */%}}
   定理の例．
-{{</* /theorem */>}}
+{{%/* /theorem */%}}
 
-{{</* theorem name="Proposition" */>}}
+{{%/* theorem name="Proposition" */%}}
   命題の例．
-{{</* /theorem */>}}
+{{%/* /theorem */%}}
 ```
 
 のように簡潔に書ける `theorem` 環境の定義は今後の課題とします．

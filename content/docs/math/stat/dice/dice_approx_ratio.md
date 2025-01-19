@@ -48,7 +48,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 
 となるので，**隣り合う項の比を計算することで，頂点がわかるだろうと考えられます**．
 
-{{< katex display >}}
+{{< katex display=true >}}
   \begin{aligned}
   &\frac{p(N,k+1)}{p(N,k)}\\
   &=\frac{\binom{N}{k+1}5^{N-(k+1)}/6^N}{\binom{N}{k}5^{N-k}/6^N}\\
@@ -60,7 +60,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
   \end{aligned}
 {{< /katex >}}
 が成り立ちます．よって，
-{{< katex display >}}
+{{< katex display=true >}}
   \frac{p(N,k+1)}{p(N,k)}\begin{cases}
     >1&\mathrm{if}\ k<(N+1)/6-1,\\
     =1&\mathrm{if}\ k=(N+1)/6-1,\\
@@ -72,14 +72,14 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 ## 平均的にN/6回程度1の目が出ることの確認
 
 {{< katex >}}A_k{{< /katex >}}を前に定めたとおりとします．このとき，{{< katex >}}A_k{{< /katex >}}は，サイコロを {{< katex >}}N{{< /katex >}}回投げて1の目が {{< katex >}}k{{< /katex >}}回出る事象を表し，{{< katex >}}\sum_{k=0}^NA_k=\Omega{{< /katex >}} すなわち {{< katex >}}\sum_{k=0}^NP(A_k)=P(\sum_{k=0}^NA_k)=P(\Omega)=1 {{< /katex >}} なので，
-{{< katex display >}}
+{{< katex display=true >}}
   \mu_N=\sum_{k=0}^NkP(A_k)=\sum_{k=0}^Nk\binom{N}{k}\frac{5^{N-k}}{6^N}
 {{< /katex >}}
 を計算することで，平均的に何回程度1の目が出るかを計算できそうです．
 
 試しに，{{< katex >}}N=1,2,3{{< /katex >}} のときを計算します．
 
-{{< katex display >}}
+{{< katex display=true >}}
 
 \begin{aligned}
 \mu_1&=\sum_{k=0}^1k\binom{1}{k}\frac{5^{1-k}}{6^1}=\frac{1}{6},\\
@@ -101,7 +101,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 以下，{{< katex >}}\binom{N+1}{k}=\binom{N}{k}+\binom{N}{k-1}{{< /katex >}}であることを使います．また，{{< katex >}}\binom{N}{N+1}=\binom{N}{-1}=0{{< /katex >}}と解釈することとします．
 
 まず，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 \mu_{N+1}&=\sum_{k=0}^{N+1}k\binom{N+1}{k}\frac{5^{(N+1)-k}}{6^{N+1}}\\
 &=\sum_{k=0}^{N+1}k\left(\binom{N}{k}+\binom{N}{k-1}\right)\frac{5^{(N+1)-k}}{6^{N+1}}\\
@@ -112,7 +112,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 となります．
 
 第1項は，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\sum_{k=0}^{N+1}k\binom{N}{k}\frac{5^{(N+1)-k}}{6^{N+1}}\\
 &=\frac{5}{6}\sum_{k=0}^Nk\binom{N}{k}\frac{5^{N-k}}{6^N}\\
@@ -122,7 +122,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 です．
 
 第2項は，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\sum_{k=0}^{N+1}k\binom{N}{k-1}\frac{5^{(N+1)-k}}{6^{N+1}}\\
 &=\sum_{k=1}^{N+1}k\binom{N}{k-1}\frac{5^{(N+1)-k}}{6^{N+1}}\\
@@ -133,7 +133,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 です．
 
 この第1項は，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\sum_{k=0}^Nk\binom{N}{k}\frac{5^{N-k}}{6^{N+1}}\\
 &=\frac{1}{6}\sum_{k=0}^Nk\binom{N}{k}\frac{5^{N-k}}{6^N}\\
@@ -141,7 +141,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 \end{aligned}
 {{< /katex >}}
 で，第2項は，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\sum_{k=0}^N\binom{N}{k}\frac{5^{N-k}}{6^{N+1}}\\
 &=\frac{5^N}{6^{N+1}}\sum_{k=0}^N\binom{N}{k}5^{-k}\\
@@ -154,7 +154,7 @@ Figs. 1--3 より，{{< katex >}}k=k_0{{< /katex >}} で {{< katex >}}p(N,k){{< 
 なので，あわせて {{< katex >}}N/6^2+1/6{{< /katex >}} となります．
 
 したがって，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 \mu_{N+1}&=\sum_{k=0}^{N+1}k\binom{N+1}{k}\frac{5^{(N+1)-k}}{6^{N+1}}\\
 &=\frac{5N}{6^2}+\left(\frac{N}{6^2}+\frac{1}{6}\right)\\

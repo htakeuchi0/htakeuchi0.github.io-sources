@@ -64,7 +64,7 @@ weight: 1
 
 本ページでは，以下の形の問題を解くことを考えます．
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\mathrm{Minimize}\ x^TAx\\
   &\mathrm{subject\ to}\ x^Tx=1.
@@ -76,7 +76,7 @@ weight: 1
 
 本ページでは特に，{{< katex >}}n=2{{< /katex >}} を考え，具体的には以下の問題を解くことにします．{{< katex >}}x\in\mathbb{R}^2{{< /katex >}} です．
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\mathrm{Minimize}\ x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x\\
   &\mathrm{subject\ to}\ x^Tx=1.
@@ -89,7 +89,7 @@ weight: 1
 
 以上より，本ページで対象とする最適化問題を，以下のように表現しておきます．
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\mathrm{Minimize}\ x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x\\
   &\mathrm{subject\ to}\ x\in S^1.
@@ -104,7 +104,7 @@ weight: 1
 この解析的な方法はユークリッド空間上で考えればよく，多様体を意識する必要はありません．
 
 この問題の場合，ラグランジュの未定乗数法によると，{{< katex >}}x^*{{< /katex >}} が局所的最適解であるとき，{{< katex >}}\lambda^*\in\mathbb{R}{{< /katex >}} が存在し，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\left.\frac{\partial}{\partial x_1}\left(x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x+\lambda(x^Tx-1)\right)\right|_{x=x^*, \lambda=\lambda^*}=0,\\
   &\left.\frac{\partial}{\partial x_2}\left(x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x+\lambda(x^Tx-1)\right)\right|_{x=x^*, \lambda=\lambda^*}=0,\\
@@ -115,7 +115,7 @@ weight: 1
 ただし，{{< katex >}}x{{< /katex >}}の第{{< katex >}}i{{< /katex >}}要素を{{< katex >}}x_i{{< /katex >}}と表します．
 
 よって，以下の方程式を解くと，解の候補が得られることになります．
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &10x_1+4x_2+2\lambda x_1=0,\\
   &4x_1+6x_2+2\lambda x_2=0,\\
@@ -123,14 +123,14 @@ weight: 1
 \end{aligned}
 {{< /katex >}}
 上2つの式は，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &(10+2\lambda)x_1+4x_2=0,\\
   &4x_1+(6+2\lambda)x_2=0
 \end{aligned}
 {{< /katex >}}
 と書けて，それぞれの両辺を2で割って，第2式の {{< katex >}}(-1/2)(5+\lambda){{< /katex >}} を第1式にたすと，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\left(2-\frac{1}{2}(3+\lambda)(5+\lambda)\right)x_2=0,\\
   &2x_1+(3+\lambda)x_2=0
@@ -139,14 +139,14 @@ weight: 1
 となります．
 
 これが解をもつには，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &2-\frac{1}{2}(3+\lambda)(5+\lambda)=0,\\
   &2x_1+(3+\lambda)x_2=0
 \end{aligned}
 {{< /katex >}}
 が必要なので，復号同順で
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\lambda=-4\pm\sqrt{5},\\
   &x_2=-\frac{1\pm\sqrt{5}}{2}x_1
@@ -155,15 +155,15 @@ weight: 1
 が得られます．
 
 次に，{{< katex >}}x_1^2+x_2^2=1{{< /katex >}} なので，
-{{< katex display >}}
+{{< katex display=true >}}
   1=x_1^2+x_2^2=x_1^2+\left(-\frac{1\pm\sqrt{5}}{2}x_1\right)^2
 {{< /katex >}}
 から，
-{{< katex display >}}
+{{< katex display=true >}}
   x_1=\sqrt{\frac{5\pm\sqrt{5}}{10}},-\sqrt{\frac{5\pm\sqrt{5}}{10}}
 {{< /katex >}}
 が得られ，{{< katex >}}(x_1,x_2){{< /katex >}} としては，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\left(\sqrt{\frac{5-\sqrt{5}}{10}},-\frac{1+\sqrt{5}}{2}\sqrt{\frac{5-\sqrt{5}}{10}}\right),\\
   &\left(-\sqrt{\frac{5-\sqrt{5}}{10}},\frac{1+\sqrt{5}}{2}\sqrt{\frac{5-\sqrt{5}}{10}}\right),\\
@@ -173,29 +173,29 @@ weight: 1
 {{< /katex >}}
 が得られます．
 また，複号同順で
-{{< katex display >}}
+{{< katex display=true >}}
   (x_1,x_2)=\left(\pm\sqrt{\frac{5-\sqrt{5}}{10}},\mp\frac{1+\sqrt{5}}{2}\sqrt{\frac{5-\sqrt{5}}{10}}\right)
 {{< /katex >}}
 のとき，
-{{< katex display >}}
+{{< katex display=true >}}
   x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x=4-\sqrt{5}
 {{< /katex >}}
 で，複号同順で
-{{< katex display >}}
+{{< katex display=true >}}
   (x_1,x_2)=\left(\pm\sqrt{\frac{5+\sqrt{5}}{10}},\mp\frac{1-\sqrt{5}}{2}\sqrt{\frac{5+\sqrt{5}}{10}}\right)
 {{< /katex >}}
 のとき，
-{{< katex display >}}
+{{< katex display=true >}}
   x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x=4+\sqrt{5}
 {{< /katex >}}
 です．
 
 以上より，最小解は
-{{< katex display >}}
+{{< katex display=true >}}
   (x_1,x_2)=\left(\pm\sqrt{\frac{5-\sqrt{5}}{10}},\mp\frac{1+\sqrt{5}}{2}\sqrt{\frac{5-\sqrt{5}}{10}}\right)
 {{< /katex >}}
 であって，そのときの目的関数の値は
-{{< katex display >}}
+{{< katex display=true >}}
   x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x=4-\sqrt{5}
 {{< /katex >}}
 となります．
@@ -239,7 +239,7 @@ Fig. 1より，▲における関数値より値が小さくなる点が存在�
 ここで，{{< katex >}}I{{< /katex >}} は恒等行列です．
 
 例として，目的関数 {{< katex >}}f{{< /katex >}} を
-{{< katex display >}}
+{{< katex display=true >}}
   f(x)=x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x
 {{< /katex >}}
 とした場合の，{{< katex >}}x_0=(1/\sqrt{2},1/\sqrt{2})\in S^1{{< /katex >}} に対する {{< katex >}}\nabla f(x_0){{< /katex >}} と {{< katex >}}\mathrm{grad}\ f(x_0){{< /katex >}} は以下のようになります．
@@ -249,7 +249,7 @@ Fig. 1より，▲における関数値より値が小さくなる点が存在�
 {{< katex >}}d_k=-\mathrm{grad}\ f(x_k){{< /katex >}} とすると {{< katex >}}d_k\sub\mathbb{R}^2{{< /katex >}} にはなりますが，{{< katex >}}x_k+t_kd_k\in\mathbb{R}^2{{< /katex >}} は一般に {{< katex >}}S^1{{< /katex >}} に属しませんので，やはり単純には解の更新はできません．そこでレトラクションにより {{< katex >}}x_{k+1}=R_{x_k}(t_kd_k){{< /katex >}} と更新することを考えます．
 
 本ページでは，レトラクション {{< katex >}}R{{< /katex >}} を
-{{< katex display >}}
+{{< katex display=true >}}
   R_x(d)=\frac{x+d}{\|x+d\|_2}
 {{< /katex >}}
 と定義します．
@@ -265,7 +265,7 @@ Fig. 1より，▲における関数値より値が小さくなる点が存在�
 {{< figure src="/images/docs/math/optim/manopt/retract.png" title="Figure 3. レトラクションの例" class="text-center" >}}
 
 とにかくこれで，本ページの問題
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\mathrm{Minimize}\ x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x\\
   &\mathrm{subject\ to}\ x\in S^1
@@ -288,7 +288,7 @@ Fig. 1より，▲における関数値より値が小さくなる点が存在�
 
 本節では，以下の問題を数値的に解いた場合の例を示します．
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\mathrm{Minimize}\ x^T\begin{pmatrix}5&2\\2&3\end{pmatrix}x\\
   &\mathrm{subject\ to}\ x\in S^1.
@@ -315,7 +315,7 @@ Fig. 1より，▲における関数値より値が小さくなる点が存在�
 {{< figure src="/images/docs/math/optim/manopt/solve.png" title="Figure 4. 実行例" class="text-center" >}}
 
 すでに計算した結果から，このときの収束先 {{< katex >}}x^*{{< /katex >}} は
-{{< katex display >}}
+{{< katex display=true >}}
   x^*=\left(-\sqrt{\frac{5-\sqrt{5}}{10}},\frac{1+\sqrt{5}}{2}\sqrt{\frac{5-\sqrt{5}}{10}}\right)
 {{< /katex >}}
 と考えられます．

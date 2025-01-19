@@ -26,12 +26,12 @@ weight: 2
 **正規分布** とは，連続型確率変数のしたがう確率分布のひとつで，様々な場面で用いられます．
 
 平均 {{< katex >}}\mu{{< /katex >}}, 分散 {{< katex >}}\sigma^2{{< /katex >}} の正規分布の **確率密度関数** は，
-{{< katex display >}}
+{{< katex display=true >}}
 f_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
 {{< /katex >}}
 と表されます．
 ここで，
-{{< katex display >}}
+{{< katex display=true >}}
 F_X(x)=\int_{-\infty}^xf_X(x)dx
 {{< /katex >}}
 とおくと，{{< katex >}}F_X(x){{< /katex >}} は，正規分布に従う確率変数 {{< katex >}}X{{< /katex >}} が {{< katex >}}x{{< /katex >}} 以下である確率を表します．
@@ -40,11 +40,11 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 ## 正規分布の累積分布関数と誤差関数
 
 いま，
-{{< katex display >}}
+{{< katex display=true >}}
 -\frac{(x-\mu)^2}{2\sigma^2}=-\frac{1}{2\sigma^2}x^2+\frac{\mu}{\sigma^2}x-\frac{\mu^2}{2\sigma^2}
 {{< /katex >}}
 なので，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &a=-\frac{1}{2\sigma^2},\\
   &b=\frac{\mu}{\sigma^2},\\
@@ -52,7 +52,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 \end{aligned}
 {{< /katex >}}
 として，[指数関数の定積分の定積分3]({{< ref "/docs/math/exp.md#定積分3" >}})を適用すると，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\frac{\sqrt{\pi}}{2\sqrt{-a}}=\frac{\sqrt{\pi}}{2\sqrt{1/(2\sigma^2)}}
 =\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}},\\
@@ -63,7 +63,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 \end{aligned}
 {{< /katex >}}
 より，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha}^{\beta}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
 &=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\\
@@ -71,7 +71,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 \end{aligned}
 {{< /katex >}}
 となります．特に，{{< katex >}}\beta=x{{< /katex >}}, {{< katex >}}\alpha\to-\infty{{< /katex >}} のとき，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{-\infty}^x\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
 &=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\left(2-\mathrm{erfc}\left(\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)\right)
@@ -80,7 +80,7 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 です．
 
 ところで，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &2-\mathrm{erfc}(z)\\
 &=\frac{2}{\sqrt{\pi}}\left(\int_{-\infty}^{\infty}-\int_z^{\infty}\right)\exp(-t^2)dt\\
@@ -90,14 +90,14 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 \end{aligned}
 {{< /katex >}}
 なので，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{-\infty}^x\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
 &=\frac{\sqrt{\pi}\sqrt{\sigma^2}}{\sqrt{2}}\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right)
 \end{aligned}
 {{< /katex >}}
 より，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &F_X(x)\\
 &=\frac{1}{\sqrt{2\pi\sigma^2}}\int_{-\infty}^x\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)dx\\
@@ -110,14 +110,10 @@ F_X(x)=\int_{-\infty}^xf_X(x)dx
 
 本ページでは，正規分布の累積分布関数と相補誤差関数の関係式を求めました．結果は，以下のとおりです．
 
-{{< hint info >}}
-{{< theorem-label name="Proposition" >}} \\(X\\) を平均 \\(\mu\\), 分散 \\(\sigma^2\\) の正規分布に従う確率変数とする．\\(F_X\\) を \\(X\\) の累積分布関数，\\(\mathrm{erfc}(x)=(2/\sqrt{\pi})\int_x^{\infty}\exp(-t^2)dt\\) とする．このとき，以下の式が成り立つ．
+{{% hint info %}} {{< theorem-label name="Proposition" >}} \\(X\\) を平均 \\(\mu\\), 分散 \\(\sigma^2\\) の正規分布に従う確率変数とする．\\(F_X\\) を \\(X\\) の累積分布関数，\\(\mathrm{erfc}(x)=(2/\sqrt{\pi})\int_x^{\infty}\exp(-t^2)dt\\) とする．このとき，以下の式が成り立つ．
 
-{{< katex display >}}
-\begin{aligned}
-&F_X(x)\\
-&=\frac{1}{2}\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right).
-\end{aligned}
+{{< katex display=true >}}
+F_X(x)=\frac{1}{2}\mathrm{erfc}\left(-\frac{1}{\sqrt{2\sigma^2}}(x-\mu)\right).
 {{< /katex >}}
 
-{{< /hint >}}
+{{% /hint %}}

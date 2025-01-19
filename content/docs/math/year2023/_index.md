@@ -16,17 +16,17 @@ weight: 5
 今年は西暦2023年です．Twitter で知ったのですが[^1]，2023という数について，以下の式が成り立つのだそうです．
 [^1]: "2^2+0^2+2^2+3^2" で検索をかけると言及されている方が多くいらっしゃることがわかります．
 
-{{< katex display >}}2023=(2+0+2+3)(2^2+0^2+2^2+3^2)^2.{{< /katex >}}
+{{< katex display=true >}}2023=(2+0+2+3)(2^2+0^2+2^2+3^2)^2.{{< /katex >}}
 
 指数まで対応しておりとてもきれいですね．
 
 このような整数はレアケースすぎるので，少しだけ一般化した以下の問題を考えます．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Problem" >}} 整数 \\(x=\sum_{j=0}^{n-1}a_j10^j\\) \\((0\le a_j\le 9,j=0,1,\dots,n-1)\\) に対して，
 \\[ \prod_{k=1}^K\sum_{j=0}^{n-1}a_j^{i_k}=x \\]
 を満たす整数 \\(K\ge1\\), \\(1\le i_1\le\cdots\le i_K\\) が存在するかを判定せよ．存在する場合はこの方程式を満たす \\((i_1,i_2,\dots,i_K)\\) をひとつ求めよ．
-{{< /hint >}}
+{{% /hint %}}
 
 たとえば，{{< katex >}}x=2023{{< /katex >}} の場合，{{< katex >}}(a_0,a_1,a_2,a_3)=(3,2,0,2){{< /katex >}} であり，{{< katex >}}(i_1,i_2,i_3)=(1,2,2){{< /katex >}} です．
 
@@ -40,7 +40,7 @@ weight: 5
 
 具体的にいえば，以下の手続きで {{< katex >}}\mathtt{Solve}(a,x,1){{< /katex >}} が {{< katex >}}\emptyset{{< /katex >}} であれば解なし，そうでなければその戻り値が解のひとつになります．
 
-{{< hint info >}} {{< theorem-label name="Algorithm" >}} \\(\mathtt{Solve}(a, x, i)\\) の擬似コードを以下で定める．ただし，\\((a_1,\dots,a_n)\in\mathbb{N}^n,(b_1,\dots,b_m)\in\mathbb{N}^m\\) に対して，\\(\mathtt{append}(a,b)=(a_1,\dots,a_n,b_1,\dots,b_m)\in\mathbb{N}^{n+m}\\) とする．
+{{% hint info %}} {{< theorem-label name="Algorithm" >}} \\(\mathtt{Solve}(a, x, i)\\) の擬似コードを以下で定める．ただし，\\((a_1,\dots,a_n)\in\mathbb{N}^n,(b_1,\dots,b_m)\in\mathbb{N}^m\\) に対して，\\(\mathtt{append}(a,b)=(a_1,\dots,a_n,b_1,\dots,b_m)\in\mathbb{N}^{n+m}\\) とする．
 * Input: \\(a\in\mathbb{N}^n,x\in\mathbb{N},i\in\mathbb{N}\\)
 * Output: \\(\prod_{k=1}^K\sum_{j=0}^{n-1}a_j^{i_k}=x,i\le i_1\le\dots\le i_K\\) を満たす \\((i_1,i_2,\dots,i_K)\\)
 1. if \\(\max(a)\le1\\) then
@@ -58,7 +58,7 @@ weight: 5
 1. &nbsp;&nbsp;&nbsp;&nbsp;else return \\(\mathtt{append}((i'),L)\\)
 1. &nbsp;&nbsp;end if
 1. end for
-{{< /hint >}}
+{{% /hint %}}
 
 Python 3.x による実装例は以下のとおりです．実行には NumPy が必要です．
 

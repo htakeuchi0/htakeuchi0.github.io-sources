@@ -27,7 +27,7 @@ Newton 法とは，導関数が既知である実数値関数の零点を求め�
 
 具体的にいえば，初期値を {{< katex >}}x_0{{< /katex >}} としたとき，近似解の更新式は，
 
-{{< katex "display" >}}
+{{< katex display=true >}}
 x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)},\quad k=0,1,\dots
 {{< /katex >}}
 

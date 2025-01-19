@@ -26,12 +26,12 @@ weight: 3
 いま，{{< katex >}}X_1,X_2,\dots,X_N{{< /katex >}} を，独立にパラメータ {{< katex >}}\mu,b{{< /katex >}} のラプラス分布に従う確率変数とし，{{< katex >}}\mu=0{{< /katex >}} とします．
 
 このとき，
-{{< katex display >}}
+{{< katex display=true >}}
   f_{X_1,X_2,\dots,X_N}(x_1,x_2,\dots,x_N;b)=\prod_{i=1}^N\frac{1}{2b}\exp\left(-\frac{|x_i|}{b}\right)
 {{< /katex >}}
 と表されます．
 {{< katex >}}\mathcal{L}_{x_1,\dots,x_N}(b)=\log f_{X_1,X_2,\dots,X_N}(x_1,x_2,\dots,x_N;b){{< /katex >}} とおくと，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   \mathcal{L}_{x_1,\dots,x_N}(b)&=\log\prod_{i=1}^N\frac{1}{2b}\exp\left(-\frac{|x_i|}{b}\right)\\
   &=\sum_{i=1}^N\left(\log\frac{1}{2b}+\log\exp\left(-\frac{|x_i|}{b}\right)\right)\\
@@ -41,7 +41,7 @@ weight: 3
 となります．
 
 ここで，{{< katex >}}\mathcal{L}_{x_1,\dots,x_N}(b){{< /katex >}} が最大となるような {{< katex >}}b{{< /katex >}} を求めます．
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 \frac{d\mathcal{L}_{x_1,\dots,x_N}}{db}(b)&=-\frac{N}{b}+\frac{1}{b^2}\sum_{i=1}^N|x_i|\\
 &=-\frac{N}{b^2}\left(b-\frac{1}{N}\sum_{i=1}^N|x_i|\right),\\
@@ -59,7 +59,7 @@ weight: 3
 ## \\(\mu=0\\) である対称な切断ラプラス分布のパラメータ推定
 
 いま，{{< katex >}}X_1,X_2,\dots,X_N{{< /katex >}} を，独立に同一の分布に従う確率変数とし，その確率密度関数が，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &f_{X_i}(x;b,A)=\begin{cases}
    \dfrac{1}{2bC_{b}(A)}\exp\left(-\dfrac{|x|}{b}\right),&-A\le x\le A,\\
@@ -72,7 +72,7 @@ weight: 3
 これは，切断ラプラス分布の特殊な場合ものです．
 
 前節と同様に，{{< katex >}}\mathcal{L}_{x_1,\dots,x_N}(b,A)=\log f_{X_1,X_2,\dots,X_N}(x_1,x_2,\dots,x_N;b,A){{< /katex >}} とおくと，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   \mathcal{L}_{x_1,\dots,x_N}(b,A)&=\log\prod_{i=1}^N\frac{1}{2bC_b(A)}\exp\left(-\frac{|x_i|}{b}\right)\\
   &=\sum_{i=1}^N\left(\log\frac{1}{2bC_b(A)}+\log\exp\left(-\frac{|x_i|}{b}\right)\right)\\
@@ -87,7 +87,7 @@ weight: 3
 次に，{{< katex >}}b{{< /katex >}} について考えます．
 偏導関数に着目すると，
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\frac{\partial\mathcal{L}_{x_1,\dots,x_N}}{\partial b}(b,A)\\
   &\quad=-\frac{N}{b^2}\left(b-\frac{A}{\exp(A/b)-1}-\frac{1}{N}\sum_{i=1}^N|x_i|\right),\\
@@ -110,12 +110,12 @@ weight: 3
 さらに，{{< katex >}}b\to+\infty{{< /katex >}} のとき，{{< katex >}}\mathcal{L}_{x_1,\dots,x_N}(b,A)\to-N\log 2A{{< /katex >}} であることに注意すると，{{< katex >}}b^*{{< /katex >}} が存在し，かつ {{< katex >}}\mathcal{L}_{x_1,\dots,x_N}(b^*,A)\ge-N\log 2A{{< /katex >}} のとき {{< katex >}}b^*{{< /katex >}} をパラメータ {{< katex >}}b{{< /katex >}} の推定値とできることがわかります．
 
 ただし，解くべき以下の方程式は，一般に解析的に解けないので，数値的に解く必要があります．
-{{< katex display >}}
+{{< katex display=true >}}
   b=\frac{A}{\exp(A/b)-1}+\frac{1}{N}\sum_{i=1}^N|x_i|
 {{< /katex >}}
 
 なお，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
   &\frac{\partial^2\mathcal{L}_{x_1,\dots,x_N}}{\partial b^2}(b,A)\\
   &\quad=\frac{N}{b^4}\left(\frac{A^2\exp(A/b)}{(\exp(A/b)-1)^2}-\frac{2Ab}{\exp(A/b)-1}+b\left(b-\frac{2}{N}\sum_{i=1}^N|x_i|\right)\right)

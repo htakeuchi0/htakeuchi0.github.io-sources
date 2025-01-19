@@ -22,33 +22,33 @@ weight: 3
 
 問題の定式化を考える前に，まず準備として記号の定義を追加します．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Definition" >}} \\(\sigma\\) を \\(\\mathbb{R}^3\\) 上の直交変換とする．
 
 1. \\(\phi\in\Phi\\) に対して \\(\phi^\sigma\\) を，\\(\phi^\sigma(\theta)=\phi(\theta)^\sigma\,(0<\theta<1)\\) で定める．
 2. レール \\(r=(\phi_1,\dots,\phi_n,t_1,\dots,t_m,\psi,u_1,\dots,u_{n-1})\in\mathcal{R}\\) に対して \\(r^\sigma\\) を，\\(r^\sigma=(\phi^\sigma_1,\dots,\phi^\sigma_n,t_1,\dots,t_m,\psi,u_1^\sigma,\dots,u_{n-1}^\sigma)\\) で定める．
 {{< katex >}}{{< /katex >}}
-{{< /hint >}}
+{{% /hint %}}
 
 {{< katex >}}\sigma{{< /katex >}} は3次元空間上の回転を表すので，これはレールの回転を表すための記号です．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Definition" >}} \\(N\\) を1以上の整数とし，\\(r_1,\dots,r_N\\) をレール，\\(n_1,\dots,n_N\\) を1以上の整数とする．レイアウト \\(R=(r\'_1,\dots,r\'_n,c_1,\dots,c_m)\\) について，各 \\(i=1,2,\dots,n\\) について，\\(j_i\\) と，ある \\(\mathbb{R}^3\\) 上の直交変換 \\(\sigma_i\\) が存在し，\\(r\'\_i=r\_{j_i}^{\sigma_i}\\) であり，\\(|\\{j\mid \exists \sigma\\,(r_i={r\'_j}^\sigma\\}|\le n_i\\) であるとき，レイアウト \\(R\\) は \\(r\'_1,\dots,r\'_n,c_1,\dots,c_m\\) で **実現可能** であるといい，このレイアウト全体を \\(\\mathcal{A}\_{r\_1,\dots,r_N,n_1,\dots,n_N}\\) で表す．
 
-{{< /hint >}}
+{{% /hint %}}
 
 実現可能という定義は，手元のレールセットでレイアウトが組めるものを指します．
 
 このとき，以下の問題が考えられます．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Problem" >}} \\(N\\) を1以上の整数とし，\\(r_1,\dots,r_N\\) をレール，\\(n_1,\dots,n_N\\) を1以上の整数とする．
 
 1. \\(R\in\\mathcal{A}\_{r\_1,\dots,r_N,n_1,\dots,n_N}\\) であり，\\(R\\) が完全レイアウトであるものを一つ求めよ．
 2. \\(R\in\\mathcal{A}\_{r\_1,\dots,r_N,n_1,\dots,n_N}\\) であり，\\(R\\) が完全レイアウトであるのうち，\\(R=(r_1,\dots,r_n,c_1,\dots,c_m)\\) における \\(n\\) が最大になるレイアウト \\(R\\) を一つ求めよ．
 3. \\(\epsilon>0\\), \\(\epsilon'>0\\) とする．\\(R\in\\mathcal{A}\_{r\_1,\dots,r_N,n_1,\dots,n_N}\\) として，\\(R\\) が \\((\delta,\delta\')\\)-レイアウトのとき，すべての \\(i\\) について \\(\delta_i<\epsilon\\), すべての \\(i\\) について \\(\delta\'_i<\epsilon\'\\) であるものを1つ求めよ．
 3. \\(\epsilon>0\\), \\(\epsilon'>0\\) とする．\\(R\in\\mathcal{A}\_{r\_1,\dots,r_N,n_1,\dots,n_N}\\) として，\\(R\\) が \\((\delta,\delta\')\\)-レイアウトのとき，すべての \\(i\\) について \\(\delta_i<\epsilon\\), すべての \\(i\\) について \\(\delta\'_i<\epsilon\'\\) であるもののうち，\\(R=(r_1,\dots,r_n,c_1,\dots,c_m)\\) における \\(n\\) が最大となるレイアウトを一つ求めよ．
-{{< /hint >}}
+{{% /hint %}}
 
 Prob. 3. について，1, 2 はプラレールで環状のレイアウトを作る問題で，1に対して2はより大きい（より多くのレールを使う）レイアウトを求める問題です．3, 4 はそれにいわゆる **なじませつなぎ** を許容して，環状のレイアウトを求める問題です．
 

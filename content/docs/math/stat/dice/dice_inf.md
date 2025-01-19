@@ -20,9 +20,9 @@ weight: 5
 
 [既に述べたとおり]({{< ref dice_basic.md >}}#確率の定義)，{{< katex >}}\Omega{{< /katex >}} を集合，{{< katex >}}\mathfrak{F}{{< /katex >}} を {{< katex >}}\Omega{{< /katex >}} の完全加法族としたとき，以下を満たす関数 {{< katex >}}P:\mathfrak{F}\to\mathbb{R}{{< /katex >}} を確率と呼ぶのでした．
 
-1. \\(A\in\mathfrak{F}\\) ならば \\(P(A)\ge0\\),
-2. \\(P(\Omega)=1\\),
-3. \\(A_1,A_2,\dots\in\mathfrak{F}\\) が互いに素ならば，\\(P(\sum_{i=1}^{\infty}A_i)=\sum_{i=1}^{\infty}P(A_i)\\).
+1. {{< katex >}}A\in\mathfrak{F}{{< /katex >}} ならば {{< katex >}}P(A)\ge0{{< /katex >}},
+2. {{< katex >}}P(\Omega)=1{{< /katex >}},
+3. {{< katex >}}A_1,A_2,\dots\in\mathfrak{F}{{< /katex >}} が互いに素ならば，{{< katex >}}P(\sum_{i=1}^{\infty}A_i)=\sum_{i=1}^{\infty}P(A_i){{< /katex >}}.
 
 また，{{< katex >}}(\Omega,\mathfrak{F},P){{< /katex >}} を確率空間と呼ぶのでした．
 
@@ -30,11 +30,11 @@ weight: 5
 
 以降では，サイコロを無限回投げる場合を表す確率空間 {{< katex >}}(\Omega_{\infty},\mathfrak{F}_{\infty},P_{\infty}){{< /katex >}} を具体的に構成します．
 
-### \\(\Omega_\infty\\) の構成
+### {{< katex >}}\Omega_\infty{{< /katex >}} の構成
 
 {{< katex >}}\Omega_1=\{\omega_1,\omega_2,\dots,\omega_6\}{{< /katex >}} とし，{{< katex >}}\Omega_{\infty}{{< /katex >}} を，
 
-{{< katex display >}}
+{{< katex display=true >}}
 \Omega_{\infty}=\{(\omega^i)_{i\in\mathbb{N}}\mid\forall i\in\mathbb{N}\,(\omega^i\in\Omega_1)\}
 {{< /katex >}}
 
@@ -42,24 +42,24 @@ weight: 5
 [^1]:一般に，集合 {{< katex >}}A,B{{< /katex >}} について，{{< katex >}}A^B{{< /katex >}} で {{< katex >}}B{{< /katex >}} から {{< katex >}}A{{< /katex >}} への写像全体を表します．
 [^2]:{{< katex >}}\omega^i{{< /katex >}} は {{< katex >}}\omega{{< /katex >}} の {{< katex >}}i{{< /katex >}} 乗ではありません．
 
-### \\(\mathfrak{F}\_{\infty},P\_{\infty}\\) の構成
+### {{< katex >}}\mathfrak{F}_{\infty},P_{\infty}{{< /katex >}} の構成
 
 {{< katex >}}\mathfrak{F}_{\infty},P_{\infty}{{< /katex >}} を定めるには準備が必要です．
 まず，{{< katex >}}1\le k\in\mathbb{N}{{< /katex >}} について，
-{{< katex display >}}
-N^{(k)}=\{(n_1,n_2,\dots,n_k)\in\mathbb{N}^k\mid 1\le n_1<\dots<n_k\}
+{{< katex display=true >}}
+N^{(k)}=\{(n_1,n_2,\dots,n_k)\in\mathbb{N}^k\mid 1\le n_1<\dots < n_k\}
 {{< /katex >}}
 
 とし，{{< katex >}}N^{(0)}=\{\emptyset\}{{< /katex >}} とします．
 
 次に，{{< katex >}}1\le k\in\mathbb{N}{{< /katex >}} に対し，{{< katex >}}\Omega\in2^{\Omega_1^k},n\in N^{(k)}{{< /katex >}} に対して，
-{{< katex display >}}
+{{< katex display=true >}}
 F_{k,\Omega,n}=\{\omega\in\Omega_{\infty}\mid(\omega^{n_1},\omega^{n_2},\dots,\omega^{n_k})\in\Omega\}
 {{< /katex >}}
 とし，{{< katex >}}F_{0,\{\emptyset\},n}=\Omega_{\infty},F_{0,\emptyset,n}=\emptyset{{< /katex >}} とします．
 
 ここで，{{< katex >}}\mathfrak{F}_{\infty}^0\subset2^{\Omega_{\infty}}{{< /katex >}} を，
-{{< katex display >}}
+{{< katex display=true >}}
 \mathfrak{F}_{\infty}^0=\{F_{k,\Omega,n}\mid\Omega\in2^{\Omega_1^k},n\in N^{(k)},k\in\mathbb{N}\}
 {{< /katex >}}
 とします．
@@ -67,16 +67,16 @@ F_{k,\Omega,n}=\{\omega\in\Omega_{\infty}\mid(\omega^{n_1},\omega^{n_2},\dots,\o
 {{< katex >}}\mathfrak{F}_{\infty}^0{{< /katex >}} は以下の性質を満たします．
 
 {{< hint info >}}
-{{< theorem-label name="Lemma" >}} \\(\mathfrak{F}_{\infty}^0\\) は以下の性質を満たす．
-1. \\(\emptyset\in\mathfrak{F}_{\infty}^0\\),
-2. \\(A\in\mathfrak{F}\_{\infty}^0\\) ならば \\(A^c\in\mathfrak{F}\_{\infty}^0\\),
-3. \\(A,B\in\mathfrak{F}\_{\infty}^0\\) ならば \\(A\cup B\in\mathfrak{F}\_{\infty}^0\\),
+{{< theorem-label name="Lemma" >}} {{< katex >}}\mathfrak{F}_{\infty}^0{{< /katex >}} は以下の性質を満たす．
+1. {{< katex >}}\emptyset\in\mathfrak{F}_{\infty}^0{{< /katex >}},
+2. {{< katex >}}A\in\mathfrak{F}_{\infty}^0{{< /katex >}} ならば {{< katex >}}A^c\in\mathfrak{F}_{\infty}^0{{< /katex >}},
+3. {{< katex >}}A,B\in\mathfrak{F}_{\infty}^0{{< /katex >}} ならば {{< katex >}}A\cup B\in\mathfrak{F}_{\infty}^0{{< /katex >}},
 {{< /hint >}}
 
 Lem.1 を示します．まず，1 を示します．{{< katex >}}k=1{{< /katex >}} とし，{{< katex >}}\emptyset\in2^{\Omega_1^1}{{< /katex >}}, {{< katex >}}n=(1)\in N^{(1)}{{< /katex >}} とします．このとき，{{< katex >}}\omega\in F_{1,\emptyset,(1)}{{< /katex >}} が存在するとすると，{{< katex >}}(\omega_1)\in\emptyset{{< /katex >}} となり矛盾します．よって，背理法によって，{{< katex >}}F_{1,\emptyset,(1)}=\emptyset{{< /katex >}} となります．したがって，{{< katex >}}\emptyset=F_{1,\emptyset,(1)}\in\mathfrak{F}_{\infty}^0{{< /katex >}} です．
 
 2 を示します．{{< katex >}}A\in\mathfrak{F}_{\infty}^0{{< /katex >}} ならば，{{< katex >}}\Omega\in2^{\Omega_1^k},n\in N^{(k)}{{< /katex >}} が存在し，{{< katex >}}A=F_{k,\Omega,n}{{< /katex >}} となります．このとき，
-{{< katex display >}}
+{{< katex display=true >}}
 A^c=F_{k,\Omega,n}^c=\{\omega\in\Omega_{\infty}\mid(\omega^{n_1},\omega^{n_2},\dots,\omega^{n_k})\in\Omega^c\}
 {{< /katex >}}
 ですが，{{< katex >}}\Omega^c\in2^{\Omega_1^k}{{< /katex >}} なので，{{< katex >}}A^c=F_{k,\Omega,n}^c=F_{k,\Omega^c,n}\in\mathfrak{F}_{\infty}^0{{< /katex >}} が成り立ちます．
@@ -88,7 +88,7 @@ A^c=F_{k,\Omega,n}^c=\{\omega\in\Omega_{\infty}\mid(\omega^{n_1},\omega^{n_2},\d
 いま，{{< katex >}}n^{(1)}=(n_1,n_2,\dots,n_{k_1}){{< /katex >}} とし，単射 {{< katex >}}I:\{1,2,\dots,k_1\}\to\{1,2,\dots,k_3\}{{< /katex >}} を，{{< katex >}}n_k=n'_{I(k)}\,(k=1,2,\dots,k_1){{< /katex >}} が成り立つように定めます．
 
 さらに，{{< katex >}}\omega=(\omega^1,\omega^2,\dots,\omega^{k_1})\in\Omega^{(1)}{{< /katex >}} に対し，{{< katex >}}\bar{\omega}\in 2^{\Omega_1^{k_3}}{{< /katex >}} を以下のように定めます．
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\bar{\omega}=\prod_{k=1}^{k_3}\Omega^{[k]},\\
 &\Omega^{[k]}=\begin{cases}
@@ -102,7 +102,7 @@ A^c=F_{k,\Omega,n}^c=\{\omega\in\Omega_{\infty}\mid(\omega^{n_1},\omega^{n_2},\d
 {{< katex >}}\Omega^{(3)}=\bar{\Omega}^{(1)}\cup\bar{\Omega}^{(2)}{{< /katex >}} とすると，{{< katex >}}\Omega^{(3)}\in2^{\Omega_1^{k_3}}{{< /katex >}} が成り立ちます．
 
 このとき，
-{{< katex display >}}
+{{< katex display=true >}}
 A\cup B=\{\omega\in\Omega_{\infty}\mid(\omega^{n'_1},\omega^{n'_2},\dots,\omega^{n'_{k_3}})\in\Omega^{(3)}\}
 {{< /katex >}}
 が成り立ちますので，{{< katex >}}A\cup B=F_{k_3,\Omega^{(3)},n^{(3)}}\,(\Omega^{(3)}\in2^{\Omega_1^{k_3}},n^{(3)}\in N^{(k_3)}){{< /katex >}} と表せます．したがって，{{< katex >}}A\cup B\in\mathfrak{F}_{\infty}^0{{< /katex >}} が成り立ちます．
@@ -113,7 +113,7 @@ Lem. 1 により，**{{< katex >}}\mathfrak{F}_{\infty}^0{{< /katex >}} は {{< 
 [^3]:集合 {{< katex >}}X{{< /katex >}} の部分集合の族 {{< katex >}}\mathfrak{F}{{< /katex >}} が，(1) {{< katex >}}\emptyset\in\mathfrak{F}{{< /katex >}}, (2) {{< katex >}}A\in\mathfrak{F}{{< /katex >}} ならば {{< katex >}}A^c\in\mathfrak{F}{{< /katex >}}, (3) {{< katex >}}A,B\in\mathfrak{F}{{< /katex >}} ならば {{< katex >}}A\cup B\in\mathfrak{F}{{< /katex >}}, を満たすとき，{{< katex >}}\mathfrak{F}{{< /katex >}} は有限加法族であるといいます．
 
 次に，{{< katex >}}P_{\infty}^0:\mathfrak{F}_{\infty}^0\to\mathbb{R}{{< /katex >}} を，
-{{< katex display >}}
+{{< katex display=true >}}
 P_{\infty}^0(F_{k,\Omega,n})=\frac{|\Omega|}{6^k}
 {{< /katex >}}
 で定めます．
@@ -121,12 +121,12 @@ P_{\infty}^0(F_{k,\Omega,n})=\frac{|\Omega|}{6^k}
 {{< katex >}}P_{\infty}^0{{< /katex >}} は以下の性質を満たします．
 
 {{< hint info >}}
-{{< theorem-label name="Lemma" >}} \\(P_{\infty}^0\\) は以下の性質を満たす．
-1. \\(P_{\infty}^0(\emptyset)=0\\),
-2. \\(A\in\mathfrak{F}\_{\infty}^0\\) ならば \\(0\le P_{\infty}^0(A)\le\infty\\),
-3. \\(n\ge2\\) に対し，\\(A_1,A_2,\dots,A_n\in\mathfrak{F}_{\infty}^0\\) が互いに素なら，以下が成り立つ．
+{{< theorem-label name="Lemma" >}} {{< katex >}}P_{\infty}^0{{< /katex >}} は以下の性質を満たす．
+1. {{< katex >}}P_{\infty}^0(\emptyset)=0{{< /katex >}},
+2. {{< katex >}}A\in\mathfrak{F}_{\infty}^0{{< /katex >}} ならば {{< katex >}}0\le P_{\infty}^0(A)\le\infty{{< /katex >}},
+3. {{< katex >}}n\ge2{{< /katex >}} に対し，{{< katex >}}A_1,A_2,\dots,A_n\in\mathfrak{F}_{\infty}^0{{< /katex >}} が互いに素なら，以下が成り立つ．
 
-{{< katex display >}}
+{{< katex display=true >}}
 P_{\infty}^0\left(\sum_{i=1}^nA_i\right)=\sum_{i=1}^nP_{\infty}^0(A_i)
 {{< /katex >}}
 
@@ -144,7 +144,7 @@ Lem.2 を示します．1 は {{< katex >}}\emptyset=F_{1,\emptyset,(1)}{{< /kat
 Lem.1 の証明と同様に，{{< katex >}}\bar{\Omega}^{(1)},\bar{\Omega}^{(2)}{{< /katex >}} をつくると，{{< katex >}}A\cap B=\emptyset{{< /katex >}} ならば {{< katex >}}\bar{\Omega}^{(1)}\cap\bar{\Omega}^{(2)}=\emptyset{{< /katex >}} であることがわかります．
 
 {{< katex >}}A\cap B=\emptyset{{< /katex >}} ならば，{{< katex >}}A+B=F_{k_3,\bar{\Omega}^{(1)}+\bar{\Omega}^{(2)},n^{(3)}}{{< /katex >}} と表せるため，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 P_{\infty}^0(A+B)&=\frac{|\bar{\Omega}^{(1)}+\bar{\Omega}^{(2)}|}{6^{k_3}}\\
 &=\frac{|\bar{\Omega}^{(1)}|+|\bar{\Omega}^{(2)}|}{6^{k_3}}\\
@@ -179,7 +179,7 @@ Lem. 2 より，{{< katex >}}P_{\infty}^0{{< /katex >}} は **測度空間 {{< k
 したがって，以下が成り立ちます．
 
 {{< hint info >}}
-{{< theorem-label name="Lemma" >}} \\(X_n\in\mathfrak{F}\_{\infty}^0\,(n=1,2,\dots)\\) が \\(X_n\supset X\_{n+1}\\) かつ \\(\bigcap_{n=1}^{\infty}X\_n=\emptyset\\) を満たすとする．このとき，\\(\lim_{n\to\infty}P_{\infty}^0(X_n)=0\\) である．
+{{< theorem-label name="Lemma" >}} {{< katex >}}X_n\in\mathfrak{F}_{\infty}^0\,(n=1,2,\dots){{< /katex >}} が {{< katex >}}X_n\supset X\_{n+1}{{< /katex >}} かつ {{< katex >}}\bigcap_{n=1}^{\infty}X\_n=\emptyset{{< /katex >}} を満たすとする．このとき，{{< katex >}}\lim_{n\to\infty}P_{\infty}^0(X_n)=0{{< /katex >}} である．
 {{< /hint >}}
 
 これは既に述べたことから，ある {{< katex >}}N{{< /katex >}} が存在し，{{< katex >}}n\ge N{{< /katex >}} ならば {{< katex >}}X_n=\emptyset{{< /katex >}} なので，{{< katex >}}n\ge N{{< /katex >}} ならば {{< katex >}}P_{\infty}^0(X_n)=0{{< /katex >}} であることから従います．
@@ -187,9 +187,9 @@ Lem. 2 より，{{< katex >}}P_{\infty}^0{{< /katex >}} は **測度空間 {{< k
 この事実を使うと，以下が示せます．
 
 {{< hint info >}}
-{{< theorem-label name="Lemma" >}} \\((\Omega\_{\infty},\mathfrak{F}\_{\infty}^0,P\_{\infty}^0)\\) は以下を満たす．
+{{< theorem-label name="Lemma" >}} {{< katex >}}(\Omega_{\infty},\mathfrak{F}_{\infty}^0,P_{\infty}^0){{< /katex >}} は以下を満たす．
 
-* \\(A\_k\in\mathfrak{F}\_{\infty}^0\,(k=1,2,\dots)\\) が互いに素ならば，\\(P_{\infty}^0(\sum\_{k=1}^{\infty}A_k)=\sum_{k=1}^{\infty}P_{\infty}^0(A_k)\\) である．
+* {{< katex >}}A\_k\in\mathfrak{F}_{\infty}^0\,(k=1,2,\dots){{< /katex >}} が互いに素ならば，{{< katex >}}P_{\infty}^0(\sum\_{k=1}^{\infty}A_k)=\sum_{k=1}^{\infty}P_{\infty}^0(A_k){{< /katex >}} である．
 {{< /hint >}}
 
 これは，Lem. 3 と同値であることが知られています [[2]](#cite:2)．
@@ -197,8 +197,8 @@ Lem. 2 より，{{< katex >}}P_{\infty}^0{{< /katex >}} は **測度空間 {{< k
 また，以下も満たします．
 
 {{< hint info >}}
-{{< theorem-label name="Lemma" >}} \\((\Omega\_{\infty},\mathfrak{F}\_{\infty}^0,P\_{\infty}^0)\\) は以下を満たす．
-* \\(\Omega=\bigcup\_{k=1}^{\infty}A_k,A_k\in\mathfrak{F}\_{\infty}^0,P\_{\infty}^0(A_k)<\infty\\) を満たす \\(A_k\ (k=1,2,\dots)\\) が存在する．
+{{< theorem-label name="Lemma" >}} {{< katex >}}(\Omega_{\infty},\mathfrak{F}_{\infty}^0,P_{\infty}^0){{< /katex >}} は以下を満たす．
+* {{< katex >}}\Omega=\bigcup\_{k=1}^{\infty}A_k,A_k\in\mathfrak{F}_{\infty}^0,P_{\infty}^0(A_k)<\infty{{< /katex >}} を満たす {{< katex >}}A_k\ (k=1,2,\dots){{< /katex >}} が存在する．
 {{< /hint >}}
 
 たとえば，{{< katex >}}A=F_{1,\{\omega_1\},(1)},B=F_{1,\Omega_1-\{\omega_1\},(1)}{{< /katex >}} とすれば，{{< katex >}}P_{\infty}^0(A)=1/6<\infty,P_{\infty}^0(B)=5/6<\infty,A\cup B=\Omega_{\infty}{{< /katex >}} です．
@@ -218,7 +218,7 @@ Lem. 4, 5 より **{{< katex >}}P_{\infty}^0{{< /katex >}} は {{< katex >}}\mat
 以上より，次の定理が成り立ちます．
 
 {{< hint info >}}
-{{< theorem-label name="Theorem" >}} \\((\Omega\_{\infty},\mathfrak{F}\_{\infty}^0)\\) 上の有限加法的測度 \\(P\_{\infty}^0\\) は，\\((\Omega\_{\infty},\mathfrak{F}\_{\infty})\\) 上の完全加法的測度 \\(P_{\infty}\\) に一意に拡張できる．
+{{< theorem-label name="Theorem" >}} {{< katex >}}(\Omega_{\infty},\mathfrak{F}_{\infty}^0){{< /katex >}} 上の有限加法的測度 {{< katex >}}P_{\infty}^0{{< /katex >}} は，{{< katex >}}(\Omega_{\infty},\mathfrak{F}_{\infty}){{< /katex >}} 上の完全加法的測度 {{< katex >}}P_{\infty}{{< /katex >}} に一意に拡張できる．
 {{< /hint >}}
 
 これは，Lem. 4, 5 から，E. Hopf の拡張定理 （例えば，[[2]](#cite:2)） が適用できるため，成り立ちます．

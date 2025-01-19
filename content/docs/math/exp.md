@@ -15,7 +15,7 @@ weight: 1
 
 本ページでは，指数関数に関するいくつかの定積分の求め方と結果を説明します．
 指数関数 {{< katex >}}\exp:\mathbb{R}\to\mathbb{R}{{< /katex >}}とは，
-{{< katex display >}}
+{{< katex display=true >}}
 \exp(x)=\sum_{k=0}^n\frac{x^k}{k!}
 {{< /katex >}}
 で定められる関数であり，{{< katex >}}\exp'(x)=\exp(x){{< /katex >}}が成り立つことが知られています．
@@ -27,20 +27,18 @@ weight: 1
 
 ただし，以下の関数を既知とします．この関数は，**相補誤差関数**と呼ばれ，たとえば C++ の標準ライブラリで `std::erfc` として定義されています．
 
-{{< hint info >}}
+{{% hint info %}}
 {{< theorem-label name="Definition" >}} 相補誤差関数 \\(\mathrm{erfc}:\mathbb{R}\to\mathbb{R}\\) を以下のように定める．
-
-{{< katex display >}}
+{{< katex display=true >}}
 \mathrm{erfc}(x)=\frac{2}{\sqrt{\pi}}\int_x^{\infty}\exp(-t^2)dt.
 {{< /katex >}}
-
-{{< /hint >}}
+{{% /hint %}}
 
 ## 定積分1
 
 まず，{{< katex >}}\int_{\alpha}^{\beta}\exp(x)dx{{< /katex >}} を計算します．
 これは，{{< katex >}}\exp'(x)=\exp(x){{< /katex >}}なので，
-{{< katex display >}}
+{{< katex display=true >}}
 \int_{\alpha}^{\beta}\exp(x)dx=\exp(\beta)-\exp(\alpha)
 {{< /katex >}}
 です．
@@ -50,21 +48,18 @@ weight: 1
 次に，{{< katex >}}\int_{\alpha}^{\beta}\exp(ax+b)dx\ (a\not=0){{< /katex >}} を計算します．    
 これには，[[1, 定理5.6]](#cite:1) を利用します．
 
-{{< hint info >}}
-
+{{% hint info %}}
 {{< theorem-label name="Theorem" option="変数変換公式 [[1, 定理5.6]](#cite:1)" >}} 関数 \\(f,\phi\\) が次の 1--4 を満たすと仮定する．
-1. \\(f(x)\\) は区間 \\(I=[a,b]\\) で連続，
+1. \\(f(x)\\) は区間 \\(I=[a,b]\\)\\) で連続，
 2. \\(\phi(t)\\) は区間 \\(J=[\alpha,\beta]\\) で微分可能，
 3. \\(\phi\'(t)\\) は \\(J\\) で有界可積分（例えば連続），
 4. \\(\phi(J)\subset I\\), \\(\phi(\alpha)=a\\), \\(\phi(\beta)=b\\).
 
 このとき，次の等式が成り立つ．
-
 \\[
 \int_a^bf(x)dx=\int_{\alpha}^{\beta}f(\phi(t))\phi\'(t)dt.
 \\]
-
-{{< /hint >}}
+{{% /hint %}}
 
 いま，{{< katex >}}y=ax+b{{< /katex >}}とすると，
 * {{< katex >}}x=(y-b)/a{{< /katex >}},
@@ -75,7 +70,7 @@ weight: 1
 
 なので，
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha}^{\beta}\exp(ax+b)dx\\
 &=\int_{a\alpha+b}^{a\beta+b}\exp(y)\frac{dx}{dy}dy\\
@@ -90,12 +85,12 @@ weight: 1
 
 最後に{{< katex >}}\int_{\alpha}^{\beta}\exp(ax^2+bx+c)dx\ (a<0){{< /katex >}} を計算します．
 {{< katex >}}a\not=0{{< /katex >}} より，
-{{< katex display >}}
+{{< katex display=true >}}
 ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 {{< /katex >}}
 です．
 よって，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha}^{\beta}\exp(ax^2+bx+c)dx\\
 &=\int_{\alpha}^\beta\exp\left(a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}\right)dx\\
@@ -112,7 +107,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 
 なので，
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha}^\beta\exp\left(a\left(x+\frac{b}{2a}\right)^2\right)dx\\
 &=\int_{\alpha+b/(2a)}^{\beta+b/(2a)}\exp(ay^2)\frac{dx}{dy}dy\\
@@ -120,7 +115,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 \end{aligned}
 {{< /katex >}}
 ですが，{{< katex >}}a<0{{< /katex >}}より，{{< katex >}}a=-(\sqrt{-a})^2{{< /katex >}}なので，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha+b/(2a)}^{\beta+b/(2a)}\exp(ay^2)dy\\
 &=\int_{\alpha+b/(2a)}^{\beta+b/(2a)}\exp(-(\sqrt{-a}\,y)^2)dy
@@ -137,7 +132,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 
 なので，
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha+b/(2a)}^{\beta+b/(2a)}\exp(-(\sqrt{-a}\,y)^2)dy\\
 &=\int_{\sqrt{-a}(\alpha+b/(2a))}^{\sqrt{-a}(\beta+b/(2a))}\exp(-s^2)\frac{dy}{ds}ds\\
@@ -148,7 +143,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 となります．
 
 したがって，
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha}^{\beta}\exp(ax^2+bx+c)dx\\
 &=\frac{\sqrt{\pi}}{2\sqrt{-a}}\exp\left(-\frac{b^2-4ac}{4a}\right)\\
@@ -166,19 +161,19 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 
 結果は以下のとおりです．
 
-{{< hint info >}}
+{{% hint info %}}
 
 {{< theorem-label name="Proposition" >}}  以下が成り立つ．
 
 1. 次の式が成り立つ．
 
-{{< katex display >}}
+{{< katex display=true >}}
 \int_{\alpha}^{\beta}\exp(x)dx=\exp(\beta)-\exp(\alpha).
 {{< /katex >}}
 
 2. 次の式が成り立つ．
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha}^{\beta}\exp(ax+b)dx\\
 &=\frac{1}{a}(\exp(a\beta+b)-\exp(a\alpha+b)).
@@ -187,7 +182,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 
 3. \\(a<0\\) のとき，次の式が成り立つ．
 
-{{< katex display >}}
+{{< katex display=true >}}
 \begin{aligned}
 &\int_{\alpha}^{\beta}\exp(ax^2+bx+c)dx\\
 &=\frac{\sqrt{\pi}}{2\sqrt{-a}}\exp\left(-\frac{b^2-4ac}{4a}\right)\\
@@ -195,7 +190,7 @@ ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}
 \end{aligned}
 {{< /katex >}}
 
-{{< /hint >}}
+{{% /hint %}}
 
 ## 参考文献
 
