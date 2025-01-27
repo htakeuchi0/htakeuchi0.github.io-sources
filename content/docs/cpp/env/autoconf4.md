@@ -23,7 +23,7 @@ weight: 5
 
 https://github.com/htakeuchi0/autoconf_sample
 
-本ページは CC BY-ND 4.0 のもとで提供していますが，このリポジトリはMITライセンスで公開しています．    
+本ページは CC BY 4.0 のもとで提供していますが，このリポジトリはMITライセンスで公開しています．    
 
 ## 準備
 

@@ -86,21 +86,14 @@ enableGitInfo = true
 
 ## クリエイティブ・コモンズ・ライセンスの表示
 
-本サイトの各ページは，断らない限り CC BY-ND 4.0 で公開します．     
+本サイトの各ページは，断らない限り CC BY 4.0 で公開します．     
 そこで [[1]](#cite:1) を参考に，以下の内容のファイルを `layouts/partials/docs/inject/content-after.html` として作成しています．    
 テーマ側のファイルを書き換えないようにしています．
 
 ```html
 <hr>
 
-<p>
-  <small>
-    <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx">
-      <img src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" />
-    </a><br />
-    本ページは <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx">クリエイティブ・コモンズ 表示 - 改変禁止 4.0 国際ライセンス (CC BY-ND 4.0)</a> の下に提供されています。
-  </small>
-</p>
+<p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p>
 ```
 
 Book テーマでは，`layouts/partials/docs/inject/footer.html` に上記を記載すると，画像がつぶれてしまう[^1]ので，コンテンツの最後につけるようにしています．

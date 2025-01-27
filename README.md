@@ -170,17 +170,13 @@ $ hugo new docs/cpp/_index.md
 
 ### クリエイティブ・コモンズ・ライセンスの表示
 
-本ページは CC BY-ND 4.0 で公開する．     
+本ページは CC BY 4.0 で公開する．     
 そこで `layouts/partials/docs/inject/content-after.html` に以下を追加する．
 
 ```html
 <hr>
 
-<p>
-<small>
-<a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx"><img src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" /></a><br />本ページは <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/deed.ja?_fsi=E6fL9iEx">クリエイティブ・コモンズ 表示 - 改変禁止 4.0 国際ライセンス (CC BY-ND 4.0)</a> の下に提供されています。
-</small>
-</p>
+<p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p>
 ```
 
 `layouts/partials/docs/inject/footer.html` もあるが，ここに上記を記載すると，画像がつぶれてしまうので，コンテンツの最後につけるようにした．

@@ -23,7 +23,7 @@ weight: 1
 
 https://github.com/htakeuchi0/cpp_env_sample
 
-本ページは CC BY-ND 4.0 のもとで提供していますが，このリポジトリはMITライセンスで公開しています．    
+本ページは CC BY 4.0 のもとで提供していますが，このリポジトリはMITライセンスで公開しています．    
 
 ## 動作環境
 
