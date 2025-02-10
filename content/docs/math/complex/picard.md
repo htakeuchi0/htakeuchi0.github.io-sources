@@ -392,13 +392,13 @@ Theorem 1 を示します．
 すると，Lemma 9 より，{{< katex >}}g_\nu{{< /katex >}} は {{< katex >}}\{\zeta\mid |\zeta|<1\}{{< /katex >}} において正則で，{{< katex >}}g_\nu(\zeta)\neq0{{< /katex >}}, {{< katex >}}g_\nu(\zeta)\neq1{{< /katex >}} となります．
 すると，Schottky の定理 (Theorem 6) より，{{< katex >}}|\zeta|\le(1/2)\cdot1{{< /katex >}} に対して，定数 {{< katex >}}S(\gamma,1/2){{< /katex >}} が存在し，{{< katex >}}|g_\nu(\zeta)|< S(\gamma,1/2){{< /katex >}} が成り立ちます．
 
-ここで，{{< katex >}}\zeta\in\mathbb{R}{{< /katex >}} ならば {{< katex >}}|c_\nu e^{2\pi i\zeta}|=|c_\nu|{{< /katex >}} なので，{{< katex >}}\zeta\in\mathbb{R}\cap\{\zeta\mid |\zeta|\le1/2\}{{< /katex >}} においては，{{< katex >}}z=c_\nu e^{2\pi i\zeta}{{< /katex >}} とおくと，{{< katex >}}|z|=|c_\nu|{{< /katex >}} であって，{{< katex >}}g(z)=g(c_\nu e^{2\pi i\zeta})=g_\nu(\zeta){{< /katex >}} より {{< katex >}}|g(z)|\le S(\gamma,1/2){{< /katex >}} となります．
+ここで，{{< katex >}}\zeta\in\mathbb{R}{{< /katex >}} ならば {{< katex >}}|c_\nu e^{2\pi i\zeta}|=|c_\nu|{{< /katex >}} なので，{{< katex >}}\zeta\in\mathbb{R}\cap\{\zeta\mid |\zeta|\le1/2\}{{< /katex >}} においては，{{< katex >}}z=c_\nu e^{2\pi i\zeta}{{< /katex >}} とおくと，{{< katex >}}|z|=|c_\nu|{{< /katex >}} であって，{{< katex >}}g(z)=g(c_\nu e^{2\pi i\zeta})=g_\nu(\zeta){{< /katex >}} より，{{< katex >}}|g(z)|< S(\gamma,1/2){{< /katex >}} となります．
 
 {{< katex >}}R_\nu=|c_\nu|{{< /katex >}}, {{< katex >}}M=S(\gamma,1/2){{< /katex >}} とおくと，{{< katex >}}R_1>R_2>\dots{{< /katex >}}, {{< katex >}}R_\nu\to0{{< /katex >}} であり，{{< katex >}}\{z\mid |z|=R_\nu\}{{< /katex >}} の上で {{< katex >}}|g(z)|< M{{< /katex >}} なので，Lemma 4 より，{{< katex >}}z=0{{< /katex >}} は {{< katex >}}g{{< /katex >}} の除去可能な特異点となります．
 
 これは {{< katex >}}z=0{{< /katex >}} が {{< katex >}}g{{< /katex >}} の真性特異点であることに反するので，背理法によって主張が示せました．
 
-なお，Corollay 2 は，{{< katex >}}R{{< /katex >}} を {{< katex >}}\delta{{< /katex >}} に置き換えても証明が成り立つことからわかり，Corollary 3 は，除外値が3個存在し，{{< katex >}}\omega_1,\omega_2,\omega_3{{< /katex >}} であるとすると，{{< katex >}}\delta=\min\{z\mid f(z)\in\{\omega_1,\omega_2,\omega_3\}\}{{< /katex >}} とおくと，{{< katex >}}0<|z-c|<\delta{{< /katex >}} では {{< katex >}}f(z)\notin\{\omega_1,\omega_2,\omega_3\}{{< /katex >}} となり，Corollary 2 に反することから示せます．
+なお，Corollay 2 は，{{< katex >}}R{{< /katex >}} を {{< katex >}}\delta{{< /katex >}} に置き換えても証明が成り立つことからわかり，Corollary 3 は，除外値が3個存在し，{{< katex >}}\omega_1,\omega_2,\omega_3{{< /katex >}} であるとすると，{{< katex >}}\delta=\argmin_z\{|z-c|\mid f(z)\in\{\omega_1,\omega_2,\omega_3\}\}{{< /katex >}} とおくと，{{< katex >}}0<|z-c|<\delta{{< /katex >}} では {{< katex >}}f(z)\notin\{\omega_1,\omega_2,\omega_3\}{{< /katex >}} となり，Corollary 2 に反することから示せます．
 
 また，{{< katex >}}f{{< /katex >}} が {{< katex >}}0<|z-c|< R{{< /katex >}} で正則な場合は，{{< katex >}}\infty{{< /katex >}} をとらないことがわかっているので，Theorem 1 や Collorary 2, 3 にある {{< katex >}}\omega{{< /katex >}} は，ほかにあっても1個ということになります．
 
