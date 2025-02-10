@@ -19,5 +19,6 @@ type: "docs"
 1. [環境構築]({{< ref "env/_index.md" >}})
 2. [関数ポインタ]({{< ref "fp/_index.md" >}})
 3. [配列へのポインタ]({{< ref "arrp/_index.md" >}})
+3. [行列積の計算時間]({{< ref "mmul/_index.md" >}})
 
 
