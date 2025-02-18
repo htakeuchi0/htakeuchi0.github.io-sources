@@ -1,6 +1,6 @@
 ---
 title: "指数関数の定積分"
-weight: 1
+weight: 2
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false

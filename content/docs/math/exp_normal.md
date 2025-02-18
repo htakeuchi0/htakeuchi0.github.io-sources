@@ -1,6 +1,6 @@
 ---
 title: "指数関数の定積分：正規分布の累積分布関数の計算への応用"
-weight: 2
+weight: 3
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false

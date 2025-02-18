@@ -1,6 +1,6 @@
 ---
 title: "函数論"
-weight: 4
+weight: 5
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
