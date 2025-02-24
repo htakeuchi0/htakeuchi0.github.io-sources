@@ -17,9 +17,10 @@ weight: 2
 {{< katex display=true >}}
   f_1(X_1,\dots,X_n)=\cdots=f_s(X_1,\dots,X_n)=0
 {{< /katex >}}
-を，ここでは多変数連立代数方程式と呼ぶことにします．
+を考えます．
+ここではこれを多変数連立代数方程式と呼ぶことにします．
 
-1次式であれば単なる線形方程式であり，1変数であれば4次までは解の公式が存在しますが，多変数多項式による連立方程式の解の求め方は，それらに比べて明らかではありません．
+多変数連立代数方程式は，1次式であれば単なる線形方程式であり，1変数であれば4次までは解の公式が存在しますが，一般の場合の解の求め方は，それらに比べて明らかではありません．
 
 [[1]](cite:1), [[2]](cite:2) は，この解法を考える上で重要な概念である **グレブナー基底** の有名な入門書です．
 本ページでは，[[1]](cite:1), [[2]](cite:2) を初読した際の記録として，多変数連立代数方程式と，グレブナー基底と呼ばれる概念についての概要をまとめます．
@@ -32,19 +33,20 @@ weight: 2
 {{< katex >}}k{{< /katex >}} を体として，係数を体 {{< katex >}}k{{< /katex >}} にもつ多項式を考えます．
 
 {{< katex >}}\mathbb{N}{{< /katex >}} を0以上の整数全体，つまり {{< katex >}}\mathbb{N}=\{0,1,\dots\}{{< /katex >}} とします．
-{{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} について，{{< katex >}}\alpha=(\alpha_i)_{i=1,2,\dots,n}{{< /katex >}} であるとします．
+{{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} について，{{< katex >}}\alpha=(\alpha_i)_{i=1,2,\dots,n}{{< /katex >}} と表すものとします．
 
 有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} が存在し，{{< katex >}}n{{< /katex >}} 個の不定元 {{< katex >}}X_1,\dots,X_n\notin k{{< /katex >}} を用いて
 {{< katex display=true >}}
   f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
 {{< /katex >}}
 と表せるとき，この {{< katex >}}f{{< /katex >}} を **多項式** といいます．
-不定元が {{< katex >}}X_1,X_2,\dots,X_n{{< /katex >}} である多項式全体の集合を {{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} と表し，これは単位的可換環をなします．
+不定元が {{< katex >}}X_1,X_2,\dots,X_n{{< /katex >}} である多項式全体の集合を {{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} と表します．
+この {{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} は単位的可換環をなします．
 この事実から，{{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} は **多項式環** と呼ばれます．
 
 詳細は [前ページ]({{< ref poly >}}) をご参照ください．
 前ページの記号でいうと，{{< katex >}}K{{< /katex >}} を有限集合として，{{< katex >}}|K|=n{{< /katex >}} である場合を考えていることになります．
-また，{{< katex >}}K{{< /katex >}} が有限集合なら，前ページで {{< katex >}}\mathbb{N}^{(K)}{{< /katex >}} としていたところは {{< katex >}}\mathbb{N}^n{{< /katex >}} とできることも使っています．
+また，{{< katex >}}K{{< /katex >}} が有限集合なら，前ページで {{< katex >}}\mathbb{N}^{(K)}{{< /katex >}} としていたところは {{< katex >}}\mathbb{N}^n{{< /katex >}} とできます．
 
 以降で，いくつか関連する用語を定義します．
 
@@ -83,8 +85,77 @@ weight: 2
 
 {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} に対するイデアル {{< katex >}}I{{< /katex >}} は，{{< katex >}}\mathbb{Z}{{< /katex >}} に対する {{< katex >}}n\mathbb{Z}=\{nx\mid x\in\mathbb{Z}\}{{< /katex >}} を想像しておけばよいです．
 
-## 参考文献
+{{< katex >}}f_1,\dots,f_s\in k[X_1,X_2,\dots,X_n]{{< /katex >}} について，
+{{< katex display=true >}}
+  \langle f_1,\dots,f_s\rangle=\left.\left\{\sum_{i=1}^sh_if_i\,\right|\,h_1,\dots,h_s\in k[X_1,\dots,X_n]\right\}
+{{< /katex >}}
+とすると，{{< katex >}}\langle f_1,\dots,f_s\rangle{{< /katex >}} はイデアルになります．
+この {{< katex >}}\{f_1,\dots,f_s\}{{< /katex >}} を {{< katex >}}f_1,\dots,f_s{{< /katex >}} により **生成されるイデアル** といいます．
 
+逆に，イデアル {{< katex >}}I{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} が存在し，{{< katex >}}I=\langle f_1,\dots,f_s\rangle{{< /katex >}} となることが知られています（**ヒルベルトの基底定理**）．
+この {{< katex >}}f_1,\dots,f_s{{< /katex >}} を {{< katex >}}I{{< /katex >}} の **基底** といいます．
+
+### アフィン多様体
+
+{{< katex >}}f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，
+{{< katex display=true >}}
+\bm{V}(f_1,\dots,f_s)=\{a\in k^n\mid \forall i\in\{1,2,\dots,s\}\,(f_i(a)=0)\}
+{{< /katex >}}
+を {{< katex >}}f_1,\dots,f_s{{< /katex >}} により定義される **アフィン多様体** といいます．
+これは連立方程式
+{{< katex display=true >}}
+f_i(a)=0,\quad i=1,2,\dots,s
+{{< /katex >}}
+の解全体の集合です．
+
+{{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} をイデアルとするとき，
+{{< katex display=true >}}
+  \bm{V}(I)=\{a\in k^n\mid \forall f\in I\,(f(a)=0)\}
+{{< /katex >}}
+とします．
+
+{{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} をイデアルとするとき，{{< katex >}}I=\langle f_1,\dots,f_s\rangle{{< /katex >}} となる {{< katex >}}f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} が存在しますが，このとき
+{{< katex display=true >}}
+  \bm{V}(\langle f_1,\dots,f_s\rangle)=\bm{V}(f_1,\dots,f_s)
+{{< /katex >}}
+であることが知られています．
+
+これは，特に {{< katex >}}\langle f_1,\dots,f_s\rangle=\langle g_1,\dots,g_t\rangle{{< /katex >}} ならば，
+{{< katex display=true >}}
+  \bm{V}(f_1,\dots,f_s)=\bm{V}(g_1,\dots,g_t)
+{{< /katex >}}
+であることも示しています．
+
+一般に，連立方程式 {{< katex >}}f_1=0,\dots,f_s=0{{< /katex >}} が解きづらければ，解きやすいそれと等価な方程式 {{< katex >}}g_1=0,\dots,g_t=0{{< /katex >}} を解けばよいのですが，その方法として，それらが生成するイデアル {{< katex >}}\langle f_1,\dots,f_s\rangle{{< /katex >}} を考え，連立方程式が解きやすい {{< katex >}}I{{< /katex >}} の基底 {{< katex >}}g_1,\dots,g_t{{< /katex >}} を見つけてもよい，ということになります．
+
+## 単項式順序
+
+多項式の先頭項やアルゴリズムを述べるため，多項式の項の順序を考えます．
+
+1変数の多項式 {{< katex >}}a_nX^n+a_{n-1}X^{n-1}+\cdots+a_1X+a_0{{< /katex >}} や，1次の多変数多項式 {{< katex >}}a_1X_1+a_2X_2+\cdots+a_nX_n{{< /katex >}} では，多項式の各項の順序は（決まらずとも）自然に考えられます．
+
+つまり，前者であれば
+{{< katex display=true >}}
+X^n>X^{n-1}>\cdots>X>1
+{{< /katex >}}
+という順序を考え，後者であれば
+{{< katex display=true >}}
+X_1>X_2>\cdots>X_n
+{{< /katex >}}
+という順序を考え，この順に項を並べることにすればよいです．
+
+一方で，一般の {{< katex >}}n{{< /katex >}} 次の多変数多項式の場合，その順序は自然に決まりません．
+全次数をもとに並べることにしても，例えば，{{< katex >}}X^2Y^2,X^3Y,XY^3{{< /katex >}} の序列は直感的に明らかではありません．
+
+ここで，単項式の順序について考えます．
+
+単項式全体の集合は
+{{< katex display=true >}}
+  \left.\left\{\prod_{i=1}^nX_i^{\alpha_i}\,\right|\,(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n\right\}
+{{< /katex >}}
+と書けますが，この順序を考えることは，{{< katex >}}\mathbb{N}^n{{< /katex >}} 上の順序を考えることと同じことです．
+
+## 参考文献
 
 {{< anchor "cite:1" >}}[1] 	D. A. Cox, J. Little, D. O'Shea（大杉英史，土屋昭善訳），グレブナー基底と代数多様体入門上 原書4版 イデアル・多様体・アルゴリズム，丸善出版，東京，2023.    
 {{< anchor "cite:2" >}}[2] 	D. A. Cox, J. Little, D. O'Shea（大杉英史，土屋昭善訳），グレブナー基底と代数多様体入門下 原書4版 イデアル・多様体・アルゴリズム，丸善出版，東京，2023.
