@@ -217,10 +217,15 @@ X_1>X_2>\cdots>X_n
 {{< /katex >}}
 とします．
 
+{{< katex >}}f\in k[X_1,X_2,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き，{{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
+{{< katex display=true >}}
+  f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
+{{< /katex >}}
+と表されているとします．
 このとき，
 {{< katex display=true >}}
 \begin{aligned}
-  &\mathrm{multideg}\,f=\max\{\alpha\mid a_{\alpha}\neq0\},\\
+  &\mathrm{multideg}\,f=\max\{\alpha\mid \alpha\in\mathbb{N}^n\wedge a_{\alpha}\neq0\},\\
   &\mathrm{LC}(f)=a_{\mathrm{multideg}\,f}\in k,\\
   &\mathrm{LM}(f)=X^{\mathrm{multideg}\,f}\in k[X_1,\dots,X_n],\\
   &\mathrm{LT}(f)=\mathrm{LC}(f)\mathrm{LM}(f)
@@ -230,7 +235,7 @@ X_1>X_2>\cdots>X_n
 
 特に {{< katex >}}\mathrm{multideg}\,f{{< /katex >}} を {{< katex >}}f{{< /katex >}} の **多重次数**，{{< katex >}}\mathrm{LT}(f){{< /katex >}} を {{< katex >}}f{{< /katex >}} の **先頭項** といいます．
 
-これで，他変数多項式に対しても項の順序を考えることができ，先頭項という概念を導入できました．
+これで，多変数多項式に対しても項の順序を考えることができ，先頭項という概念を導入できました．
 
 ## グレブナー基底
 
