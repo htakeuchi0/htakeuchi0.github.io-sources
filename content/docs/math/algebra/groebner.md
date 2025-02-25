@@ -60,6 +60,12 @@ weight: 2
 
 ### 全次数
 
+{{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} に対し，
+{{< katex display=true >}}
+|\alpha|=\sum_{i=1}^n\alpha_i
+{{< /katex >}}
+とします．
+
 {{< katex >}}f\in k[X_1,X_2,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き，{{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
 {{< katex display=true >}}
   f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
@@ -153,7 +159,86 @@ X_1>X_2>\cdots>X_n
 {{< katex display=true >}}
   \left.\left\{\prod_{i=1}^nX_i^{\alpha_i}\,\right|\,(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n\right\}
 {{< /katex >}}
-と書けますが，この順序を考えることは，{{< katex >}}\mathbb{N}^n{{< /katex >}} 上の順序を考えることと同じことです．
+と書けますが，この順序を考えることは，{{< katex >}}\mathbb{N}^n{{< /katex >}} 上の順序を考えることと同じことになります．
+
+### 順序
+
+まず，一般の集合に対する **順序** の定義を説明します．
+
+集合 {{< katex >}}A{{< /katex >}} に対し，{{< katex >}}R\subseteq A^2{{< /katex >}} を **関係** といいます．
+{{< katex >}}(a,b)\in R{{< /katex >}} であることを {{< katex >}}aRb{{< /katex >}} と表すとき，
+{{< katex display=true >}}
+\begin{aligned}
+  &\forall a\in A\,(aRa),\\
+  &\forall a,b,c\in A\,(aRb\wedge bRc\implies aRc),\\
+  &\forall a,b\in A\,(aRb\wedge bRa\implies a=b),\\
+\end{aligned}
+{{< /katex >}}
+を満たすとき，{{< katex >}}R{{< /katex >}} は **半順序** であるといい，
+{{< katex display=true >}}
+\begin{aligned}
+  &\forall a\in A\,(aRa),\\
+  &\forall a,b,c\in A\,(aRb\wedge bRc\implies aRc),\\
+  &\forall a,b\in A\,(aRb\wedge bRa\implies a=b),\\
+  &\forall a,b\in A\,(aRb\vee bRa),\\
+\end{aligned}
+{{< /katex >}}
+を満たすとき，{{< katex >}}R{{< /katex >}} は **全順序** であるといいます．
+このとき，{{< katex >}}aRb{{< /katex >}} は {{< katex >}}a\le b{{< /katex >}} と書くことがふつうです．
+また，{{< katex >}}a\le b\wedge a\neq b{{< /katex >}} であることを {{< katex >}}a< b{{< /katex >}} と表します．
+
+任意の {{< katex >}}S\subseteq A{{< /katex >}} に対し，{{< katex >}}S\neq\emptyset{{< /katex >}} ならば，ある {{< katex >}}\alpha\in S{{< /katex >}} が存在して任意の {{< katex >}}\beta\in S{{< /katex >}} に対して {{< katex >}}\alpha\le\beta{{< /katex >}} が成り立つとき，{{< katex >}}\le{{< /katex >}} は **整列順序** であるといいます．
+
+### 単項式順序
+
+単項式に対する順序を定義します．
+この順序は，{{< katex >}}\mathbb{N}^n{{< /katex >}} の順序に，多項式環の代数構造と両立するための性質を追加で要求したものです．
+
+{{< katex >}}\mathbb{N}^n{{< /katex >}} 上の順序 {{< katex >}}>{{< /katex >}} が，
+1. {{< katex >}}>{{< /katex >}} は {{< katex >}}\mathbb{N}^n{{< /katex >}} の全順序である．
+2. {{< katex >}}\forall\alpha,\beta,\gamma\in\mathbb{N}^n\,(\alpha>\beta\implies \alpha+\gamma>\beta+\gamma){{< /katex >}}.
+3. {{< katex >}}>{{< /katex >}} は {{< katex >}}\mathbb{N}^n{{< /katex >}} の整列順序である．
+
+を満たすとき，{{< katex >}}>{{< /katex >}} は **単項式順序** であるといいます．
+
+代表的な多項式順序は以下のとおりです．
+
+* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}j=\min\{i\mid\alpha_i\neq\beta_i\}{{< /katex >}} において {{< katex >}}\alpha_j>\beta_j{{< /katex >}} であるとき {{< katex >}}\alpha>_{\mathrm{lex}}\beta{{< /katex >}} とする．
+* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}|\alpha|>|\beta|{{< /katex >}} または {{< katex >}}|\alpha|=|\beta|\wedge\alpha>_{\mathrm{lex}}\beta{{< /katex >}} となるとき，{{< katex >}}\alpha>_{\mathrm{grlex}}\beta{{< /katex >}} とする．
+* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}|\alpha|>|\beta|{{< /katex >}} または {{< katex >}}|\alpha|=|\beta|\wedge(j=\max\{i\mid \alpha_i\neq\beta_i\}\implies \alpha_j<\beta_j){{< /katex >}} となるとき，{{< katex >}}\alpha>_{\mathrm{grevlex}}\beta{{< /katex >}} とする．
+
+### 単項式順序に関連する定義
+
+単項式順序 {{< katex >}}>{{< /katex >}} を固定し，{{< katex >}}\mathbb{N}^n{{< /katex >}} の部分集合上の {{< katex >}}\max{{< /katex >}} はこの順序の意味でとることとします．
+
+{{< katex >}}X=(X_1,\dots,X_n)\in k[X_1,\dots,X_n]^n{{< /katex >}}, {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} に対し，
+{{< katex display=true >}}
+  X^{\alpha}=\prod_{i=1}^nX_i^{\alpha_i}
+{{< /katex >}}
+とします．
+
+このとき，
+{{< katex display=true >}}
+\begin{aligned}
+  &\mathrm{multideg}\,f=\max\{\alpha\mid a_{\alpha}\neq0\},\\
+  &\mathrm{LC}(f)=a_{\mathrm{multideg}\,f}\in k,\\
+  &\mathrm{LM}(f)=X^{\mathrm{multideg}\,f}\in k[X_1,\dots,X_n],\\
+  &\mathrm{LT}(f)=\mathrm{LC}(f)\mathrm{LM}(f)
+\end{aligned}
+{{< /katex >}}
+と定めます．
+
+特に {{< katex >}}\mathrm{multideg}\,f{{< /katex >}} を {{< katex >}}f{{< /katex >}} の **多重次数**，{{< katex >}}\mathrm{LT}(f){{< /katex >}} を {{< katex >}}f{{< /katex >}} の **先頭項** といいます．
+
+これで，他変数多項式に対しても項の順序を考えることができ，先頭項という概念を導入できました．
+
+## グレブナー基底
+
+{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+f_sh_s+r{{< /katex >}} と書けて，{{< katex >}}r=0{{< /katex >}} であれば，{{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} とわかります（正確にいえばこれは十分条件で必要条件ではありません）．
+
+1変数多項式 {{< katex >}}f\in k[X]{{< /katex >}} に対し，{{< katex >}}g\in k[X]{{< /katex >}} を零でない多項式とすると，{{< katex >}}f=qg+r{{< /katex >}}, {{< katex >}}r=0{{< /katex >}} または {{< katex >}}\deg r<\deg g{{< /katex >}} なる {{< katex >}}q,r\in k[X]{{< /katex >}} が存在することが知られていて，{{< katex >}}r{{< /katex >}} は，{{< katex >}}f{{< /katex >}} を {{< katex >}}h{{< /katex >}} で割った余り，と呼ばれています．
+
+その拡張概念として，{{< katex >}}f,f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，“{{< katex >}}f{{< /katex >}} を {{< katex >}}(f_1,\dots,f_s){{< /katex >}} で割った余りが {{< katex >}}r{{< /katex >}}” というものが作れないかを考え，その議論の中でグレブナー基底とはなにかということを説明します．
 
 ## 参考文献
 
