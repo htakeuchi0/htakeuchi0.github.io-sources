@@ -201,7 +201,7 @@ X_1>X_2>\cdots>X_n
 
 を満たすとき，{{< katex >}}>{{< /katex >}} は **単項式順序** であるといいます．
 
-代表的な多項式順序は以下のとおりです．
+代表的な単項式順序は以下のとおりです．
 
 * {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}j=\min\{i\mid\alpha_i\neq\beta_i\}{{< /katex >}} において {{< katex >}}\alpha_j>\beta_j{{< /katex >}} であるとき {{< katex >}}\alpha>_{\mathrm{lex}}\beta{{< /katex >}} とする．
 * {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}|\alpha|>|\beta|{{< /katex >}} または {{< katex >}}|\alpha|=|\beta|\wedge\alpha>_{\mathrm{lex}}\beta{{< /katex >}} となるとき，{{< katex >}}\alpha>_{\mathrm{grlex}}\beta{{< /katex >}} とする．
@@ -237,15 +237,76 @@ X_1>X_2>\cdots>X_n
 
 これで，多変数多項式に対しても項の順序を考えることができ，先頭項という概念を導入できました．
 
-## グレブナー基底
+## 多変数多項式の割り算と余り
 
 {{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+f_sh_s+r{{< /katex >}} と書けて，{{< katex >}}r=0{{< /katex >}} であれば，{{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} とわかります（正確にいえばこれは十分条件で必要条件ではありません）．
 
 1変数多項式 {{< katex >}}f\in k[X]{{< /katex >}} に対し，{{< katex >}}g\in k[X]{{< /katex >}} を零でない多項式とすると，{{< katex >}}f=qg+r{{< /katex >}}, {{< katex >}}r=0{{< /katex >}} または {{< katex >}}\deg r<\deg g{{< /katex >}} なる {{< katex >}}q,r\in k[X]{{< /katex >}} が存在することが知られていて，{{< katex >}}r{{< /katex >}} は，{{< katex >}}f{{< /katex >}} を {{< katex >}}h{{< /katex >}} で割った余り，と呼ばれています．
 
-その拡張概念として，{{< katex >}}f,f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，“{{< katex >}}f{{< /katex >}} を {{< katex >}}(f_1,\dots,f_s){{< /katex >}} で割った余りが {{< katex >}}r{{< /katex >}}” というものが作れないかを考え，その議論の中でグレブナー基底とはなにかということを説明します．
+その拡張概念として，{{< katex >}}f,f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，“{{< katex >}}f{{< /katex >}} を {{< katex >}}(f_1,\dots,f_s){{< /katex >}} で割った余りが {{< katex >}}r{{< /katex >}}” というものが作れないかを考えます．
+
+{{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の単項式順序を固定します．
+{{< katex >}}F=(f_1,\dots,f_s)\in k[X_1,\dots,X_n]^s{{< /katex >}} とします．
+このとき，
+{{< katex display=true >}}
+  f=q_1f_1+\cdots+q_sf_s+r
+{{< /katex >}}
+であり，{{< katex >}}r{{< /katex >}} は {{< katex >}}r=0{{< /katex >}} であるか，
+{{< katex display=true >}}
+  r=\sum_{\alpha\in\mathbb{N}^n}b_\alpha X^{\alpha}
+{{< /katex >}}
+のとき {{< katex >}}b_\alpha\not=0{{< /katex >}} なる {{< katex >}}X^\alpha{{< /katex >}} は {{< katex >}}\mathrm{LT}(f_1),\dots,\mathrm{LT}(f_s){{< /katex >}} のいずれでも割り切れないような，{{< katex >}}q_1,\dots,q_s,r\in k[X_1,\dots,X_n]{{< /katex >}} が存在することが知られています．
+さらに，{{< katex >}}i=1,2,\dots,s{{< /katex >}} について {{< katex >}}q_if_i\neq0{{< /katex >}} ならば {{< katex >}}\mathrm{multideg}\,f\ge\mathrm{multideg}\,q_if_i{{< /katex >}} が成り立つことも示せます．
+
+この {{< katex >}}r{{< /katex >}} は， {{< katex >}}f{{< /katex >}} を {{< katex >}}F{{< /katex >}} で割った **余り** と呼ばれ，{{< katex >}}\bar{f}^F{{< /katex >}} と表されます．
+
+{{< katex >}}F=(f_1,\dots,f_s){{< /katex >}} の多項式の順番を入れ替えた多項式列を {{< katex >}}F^\sigma=(f_{\sigma(1)},f_{\sigma(2)},\dots,f_{\sigma(s)}){{< /katex >}} と書くと，一般には，{{< katex >}}\bar{f}^F\neq\bar{f}^{F^\sigma}{{< /katex >}} であることが知られています．
+{{< katex >}}q_i\,(i=1,2,\dots,s){{< /katex >}} に関しても同様です．
+
+この事実は，{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+f_sh_s+r{{< /katex >}} と書けて，{{< katex >}}r\neq0{{< /katex >}} であったとしても，{{< katex >}}f_1,\dots,f_s{{< /katex >}} の順番を入れ替えると，余りが0になる場合があるので，{{< katex >}}r=\bar{f}^F=0{{< /katex >}} であることは {{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} であることの十分条件であっても必要条件ではない，ということを示唆しています．
+
+## グレブナー基底
+
+{{< katex >}}I{{< /katex >}} を {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の {{< katex >}}\{0\}{{< /katex >}} でないイデアルとします．
+{{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の単項式順序を固定します．
+{{< katex display=true >}}
+\begin{aligned}
+  &\mathrm{LT}(I)=\{\mathrm{LT}(f)\mid f\in I-\{0\}\},\\
+  &\langle \mathrm{LT}(I)\rangle=\langle f\mid f\in\mathrm{LT}(I)\rangle
+\end{aligned}
+{{< /katex >}}
+とします．
+
+{{< katex >}}G=\{g_1,\dots,g_t\}\subseteq k[X_1,\dots,X_n]{{< /katex >}} が
+{{< katex display=true >}}
+  \langle\mathrm{LT}(g_1),\dots,\mathrm{LT}(g_t)\rangle=\langle\mathrm{LT}(I)\rangle
+{{< /katex >}}
+のとき，{{< katex >}}G{{< /katex >}} は {{< katex >}}I{{< /katex >}} の **グレブナー基底** といいます．
+また，{{< katex >}}\langle\emptyset\rangle=\{0\}{{< /katex >}} として，{{< katex >}}\emptyset{{< /katex >}} は {{< katex >}}\{0\}{{< /katex >}} のグレブナー基底であるとします．
+
+すべてのイデアル {{< katex >}}I{{< /katex >}} を {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} はグレブナー基底をもちます．
+また，グレブナー基底は {{< katex >}}I{{< /katex >}} の基底であり，{{< katex >}}\bar{f}^G{{< /katex >}} は {{< katex >}}G=(g_1,\dots,g_t){{< /katex >}} の順序を入れ替えても変わりません（{{< katex >}}q_i\,(i=1,2,\dots,s){{< /katex >}} は変わります）．
+一般の多項式列 {{< katex >}}F=(f_1,\dots,f_s){{< /katex >}} の場合は，多項式の順番を変えると余りが変わってしまいますが，余りに関しては，グレブナー基底であれば順番は気にしなくてよい，ということです．
+また，これによって，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} のグレブナー基底ならば，{{< katex >}}f\in I{{< /katex >}} であることと {{< katex >}}\bar{f}^G=0{{< /katex >}} は同値になります．
+
+次に，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかの判定ができることを説明します．
+
+{{< katex >}}f,g\in k[X_1,\dots,X_n]{{< /katex >}} を0でない多項式とします．
+{{< katex >}}\mathrm{multideg}\,f=\alpha,\mathrm{multideg}\,g=\beta{{< /katex >}} とし，{{< katex >}}\gamma_i=\max\{\alpha_i,\beta_i\}\,(i=1,2,\dots,n),\gamma=(\gamma_1,\dots,\gamma_n){{< /katex >}} とします．
+このとき，
+{{< katex display=true >}}
+S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cdot g
+{{< /katex >}}
+を，{{< katex >}}f,g{{< /katex >}} の **{{< katex >}}S{{< /katex >}}多項式** といいます．
+
+{{< katex >}}S{{< /katex >}}多項式を使うと，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかを判定することができます．
+
+具体的には，{{< katex >}}G=\{g_1,\dots,g_t\}{{< /katex >}} のすべての {{< katex >}}i\neq j{{< /katex >}} となる添字について，{{< katex >}}\overline{S(g_i,g_j)}^G=0{{< /katex >}} であることと，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} のグレブナー基底であることは同値です（**ブッフバーガーの判定条件**）．
+
+さらに，多変数多項式の余りは有限回の手続きで求まり，ブッフバーガーの判定条件を用いると，与えられたイデアルのグレブナー基底も有限回の手続きで求まることが知られています．
 
 ## 参考文献
 
 {{< anchor "cite:1" >}}[1] 	D. A. Cox, J. Little, D. O'Shea（大杉英史，土屋昭善訳），グレブナー基底と代数多様体入門上 原書4版 イデアル・多様体・アルゴリズム，丸善出版，東京，2023.    
 {{< anchor "cite:2" >}}[2] 	D. A. Cox, J. Little, D. O'Shea（大杉英史，土屋昭善訳），グレブナー基底と代数多様体入門下 原書4版 イデアル・多様体・アルゴリズム，丸善出版，東京，2023.
+
