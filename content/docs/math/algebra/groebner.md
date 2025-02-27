@@ -25,6 +25,7 @@ weight: 2
 [[1]](cite:1), [[2]](cite:2) は，この解法を考える上で重要な概念である **グレブナー基底** の有名な入門書です．
 本ページでは，[[1]](cite:1), [[2]](cite:2) を初読した際の記録として，多変数連立代数方程式と，グレブナー基底と呼ばれる概念についての概要をまとめます．
 
+証明は省略し，どのような話題があるかを概観できるものとするため，証明や詳細な議論は [[1]](cite:1), [[2]](cite:2) をご参照ください．
 
 ## 多項式・イデアル・アフィン多様体
 
@@ -35,11 +36,16 @@ weight: 2
 {{< katex >}}\mathbb{N}{{< /katex >}} を0以上の整数全体，つまり {{< katex >}}\mathbb{N}=\{0,1,\dots\}{{< /katex >}} とします．
 {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} について，{{< katex >}}\alpha=(\alpha_i)_{i=1,2,\dots,n}{{< /katex >}} と表すものとします．
 
-有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} が存在し，{{< katex >}}n{{< /katex >}} 個の不定元 {{< katex >}}X_1,\dots,X_n\notin k{{< /katex >}} を用いて
+有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} が存在し，{{< katex >}}n{{< /katex >}} 個の **不定元** {{< katex >}}X_1,\dots,X_n\notin k{{< /katex >}} を用いて
 {{< katex display=true >}}
   f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
 {{< /katex >}}
 と表せるとき，この {{< katex >}}f{{< /katex >}} を **多項式** といいます．
+不定元を明示して
+{{< katex display=true >}}
+  f(X_1,\dots,X_n)=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
+{{< /katex >}}
+と書くこともあります．
 不定元が {{< katex >}}X_1,X_2,\dots,X_n{{< /katex >}} である多項式全体の集合を {{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} と表します．
 この {{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} は単位的可換環をなします．
 この事実から，{{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} は **多項式環** と呼ばれます．
@@ -89,6 +95,8 @@ weight: 2
 {{< /katex >}}
 であるとき，{{< katex >}}I{{< /katex >}} は **イデアル** であるといいます．
 
+イデアルは，多項式環以外でも定義される一般的な概念ですが，本ページでイデアルといえば，多項式環のイデアルを指すこととします．
+
 {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} に対するイデアル {{< katex >}}I{{< /katex >}} は，{{< katex >}}\mathbb{Z}{{< /katex >}} に対する {{< katex >}}n\mathbb{Z}=\{nx\mid x\in\mathbb{Z}\}{{< /katex >}} を想像しておけばよいです．
 
 {{< katex >}}f_1,\dots,f_s\in k[X_1,X_2,\dots,X_n]{{< /katex >}} について，
@@ -96,7 +104,7 @@ weight: 2
   \langle f_1,\dots,f_s\rangle=\left.\left\{\sum_{i=1}^sh_if_i\,\right|\,h_1,\dots,h_s\in k[X_1,\dots,X_n]\right\}
 {{< /katex >}}
 とすると，{{< katex >}}\langle f_1,\dots,f_s\rangle{{< /katex >}} はイデアルになります．
-この {{< katex >}}\{f_1,\dots,f_s\}{{< /katex >}} を {{< katex >}}f_1,\dots,f_s{{< /katex >}} により **生成されるイデアル** といいます．
+この {{< katex >}}\langle f_1,\dots,f_s\rangle{{< /katex >}} を {{< katex >}}f_1,\dots,f_s{{< /katex >}} により **生成されるイデアル** といいます．
 
 逆に，イデアル {{< katex >}}I{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} が存在し，{{< katex >}}I=\langle f_1,\dots,f_s\rangle{{< /katex >}} となることが知られています（**ヒルベルトの基底定理**）．
 この {{< katex >}}f_1,\dots,f_s{{< /katex >}} を {{< katex >}}I{{< /katex >}} の **基底** といいます．
@@ -217,11 +225,11 @@ X_1>X_2>\cdots>X_n
 {{< katex display=true >}}
   X^{\alpha}=\prod_{i=1}^nX_i^{\alpha_i}
 {{< /katex >}}
-とします．
+と表すことにします．
 
 {{< katex >}}f\in k[X_1,X_2,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き，{{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
 {{< katex display=true >}}
-  f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
+  f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}=\sum_{\alpha\in\mathbb{N}^n}a_{\alpha}X^{\alpha}
 {{< /katex >}}
 と表されているとします．
 このとき，
@@ -243,9 +251,9 @@ X_1>X_2>\cdots>X_n
 
 {{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+f_sh_s+r{{< /katex >}} と書けて，{{< katex >}}r=0{{< /katex >}} であれば，{{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} とわかります（正確にいえばこれは十分条件で必要条件ではありません）．
 
-1変数多項式 {{< katex >}}f\in k[X]{{< /katex >}} に対し，{{< katex >}}g\in k[X]{{< /katex >}} を零でない多項式とすると，{{< katex >}}f=qg+r{{< /katex >}}, {{< katex >}}r=0{{< /katex >}} または {{< katex >}}\deg r<\deg g{{< /katex >}} なる {{< katex >}}q,r\in k[X]{{< /katex >}} が存在することが知られていて，{{< katex >}}r{{< /katex >}} は，{{< katex >}}f{{< /katex >}} を {{< katex >}}h{{< /katex >}} で割った余り，と呼ばれています．
+1変数多項式 {{< katex >}}f\in k[X]{{< /katex >}} に対し，{{< katex >}}g\in k[X]{{< /katex >}} を零でない多項式とすると，{{< katex >}}f=qg+r{{< /katex >}}, {{< katex >}}r=0{{< /katex >}} または {{< katex >}}\deg r<\deg g{{< /katex >}} なる {{< katex >}}q,r\in k[X]{{< /katex >}} が存在することが知られていて，{{< katex >}}r{{< /katex >}} は，{{< katex >}}f{{< /katex >}} を {{< katex >}}h{{< /katex >}} で割った **余り**，と呼ばれています．
 
-その拡張概念として，{{< katex >}}f,f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，“{{< katex >}}f{{< /katex >}} を {{< katex >}}(f_1,\dots,f_s){{< /katex >}} で割った余りが {{< katex >}}r{{< /katex >}}” というものが作れないかを考えます．
+そレを拡張し，{{< katex >}}f,f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，**{{< katex >}}f{{< /katex >}} を {{< katex >}}(f_1,\dots,f_s){{< /katex >}} で割った余りが {{< katex >}}r{{< /katex >}}** という概念が作れないかを考えます．
 
 {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の単項式順序を固定します．
 {{< katex >}}F=(f_1,\dots,f_s)\in k[X_1,\dots,X_n]^s{{< /katex >}} とします．
@@ -271,42 +279,42 @@ X_1>X_2>\cdots>X_n
 
 {{< katex >}}I{{< /katex >}} を {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の {{< katex >}}\{0\}{{< /katex >}} でないイデアルとします．
 {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の単項式順序を固定します．
+ここで，
 {{< katex display=true >}}
 \begin{aligned}
   &\mathrm{LT}(I)=\{\mathrm{LT}(f)\mid f\in I-\{0\}\},\\
   &\langle \mathrm{LT}(I)\rangle=\langle f\mid f\in\mathrm{LT}(I)\rangle
 \end{aligned}
 {{< /katex >}}
-とします．
+と定義します．
 
 {{< katex >}}G=\{g_1,\dots,g_t\}\subseteq k[X_1,\dots,X_n]{{< /katex >}} が
 {{< katex display=true >}}
   \langle\mathrm{LT}(g_1),\dots,\mathrm{LT}(g_t)\rangle=\langle\mathrm{LT}(I)\rangle
 {{< /katex >}}
-のとき，{{< katex >}}G{{< /katex >}} は {{< katex >}}I{{< /katex >}} の **グレブナー基底** といいます．
+を満たすとき，{{< katex >}}G{{< /katex >}} は {{< katex >}}I{{< /katex >}} の **グレブナー基底** といいます．
 また，{{< katex >}}\langle\emptyset\rangle=\{0\}{{< /katex >}} として，{{< katex >}}\emptyset{{< /katex >}} は {{< katex >}}\{0\}{{< /katex >}} のグレブナー基底であるとします．
 
-すべてのイデアル {{< katex >}}I{{< /katex >}} を {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} はグレブナー基底をもちます．
-また，グレブナー基底は {{< katex >}}I{{< /katex >}} の基底であり，{{< katex >}}\bar{f}^G{{< /katex >}} は {{< katex >}}G=(g_1,\dots,g_t){{< /katex >}} の順序を入れ替えても変わりません（{{< katex >}}q_i\,(i=1,2,\dots,s){{< /katex >}} は変わります）．
+すべてのイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} はグレブナー基底をもちます．
+また，グレブナー基底は {{< katex >}}I{{< /katex >}} の基底であり，{{< katex >}}\bar{f}^G{{< /katex >}} は {{< katex >}}G=(g_1,\dots,g_t){{< /katex >}} の順序を入れ替えても変わりません（一方で {{< katex >}}q_i\,(i=1,2,\dots,s){{< /katex >}} は変わります）．
 一般の多項式列 {{< katex >}}F=(f_1,\dots,f_s){{< /katex >}} の場合は，多項式の順番を変えると余りが変わってしまいますが，余りに関しては，グレブナー基底であれば順番は気にしなくてよい，ということです．
-また，これによって，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} のグレブナー基底ならば，{{< katex >}}f\in I{{< /katex >}} であることと {{< katex >}}\bar{f}^G=0{{< /katex >}} は同値になります．
+また，これによって，**{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} のグレブナー基底ならば，{{< katex >}}f\in I{{< /katex >}} であることと {{< katex >}}\bar{f}^G=0{{< /katex >}} であることは同値になります**．
 
-次に，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかの判定ができることを説明します．
+次に，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかが判定できることを説明します．
 
-{{< katex >}}f,g\in k[X_1,\dots,X_n]{{< /katex >}} を0でない多項式とします．
+{{< katex >}}f,g\in k[X_1,\dots,X_n]{{< /katex >}} を零でない多項式とします．
 {{< katex >}}\mathrm{multideg}\,f=\alpha,\mathrm{multideg}\,g=\beta{{< /katex >}} とし，{{< katex >}}\gamma_i=\max\{\alpha_i,\beta_i\}\,(i=1,2,\dots,n),\gamma=(\gamma_1,\dots,\gamma_n){{< /katex >}} とします．
 このとき，
 {{< katex display=true >}}
 S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cdot g
 {{< /katex >}}
 を，{{< katex >}}f,g{{< /katex >}} の **{{< katex >}}S{{< /katex >}}多項式** といいます．
-この多項式は，{{< katex >}}f,g{{< /katex >}} の先頭項を打ち消すような多項式です．
+この多項式は，{{< katex >}}f,g{{< /katex >}} の先頭項を打ち消すように作られた多項式です．
 
-{{< katex >}}S{{< /katex >}}多項式を使うと，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかを判定することができます．
-
+{{< katex >}}S{{< /katex >}}多項式を使うと，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかが判定できます．
 具体的には，{{< katex >}}G=\{g_1,\dots,g_t\}{{< /katex >}} のすべての {{< katex >}}i\neq j{{< /katex >}} となる添字について，{{< katex >}}\overline{S(g_i,g_j)}^G=0{{< /katex >}} であることと，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} のグレブナー基底であることは同値です（**ブッフバーガーの判定条件**）．
 
-さらに，多変数多項式の余りは有限回の手続きで求まり，ブッフバーガーの判定条件を用いると，与えられたイデアルのグレブナー基底も有限回の手続きで求まることが知られています．
+さらに，多変数多項式の余りは有限回の手続きで求まり，ブッフバーガーの判定条件を用いると，与えられたイデアルのグレブナー基底も有限回の手続きで求まることが知られています（**ブッフバーガーのアルゴリズム**）．
 
 さらに，イデアル {{< katex >}}I{{< /katex >}} のグレブナー基底 {{< katex >}}G{{< /katex >}} が
 {{< katex display=true >}}
@@ -330,8 +338,28 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
 
 前節の方法で消去ができたとしても，その **部分解** がもとの解の一部になるかは明らかではありません．
 それが実現できる条件を述べたのが **拡張定理** です．
-前節の消去定理とこの拡張定理を合わせると，グレブナー基底を用いて，**消去法** で多変数連立代数方程式が解ける仕組みが理解できます．
+前節の消去定理とこの拡張定理を合わせると，グレブナー基底を用いて，**消去法** で多変数連立代数方程式が解ける仕組みや解ける条件が理解できます．
 
+{{< katex >}}k{{< /katex >}} を代数的閉体とします．
+イデアル {{< katex >}}I=\langle f_1,\dots,f_s\rangle\subseteq k[X_1,\dots,X_n]{{< /katex >}} を考え，{{< katex >}}I_1{{< /katex >}} を {{< katex >}}I{{< /katex >}} の1次の消去イデアルとします．
+{{< katex >}}i=1,2,\dots,s{{< /katex >}} に対して，
+{{< katex display=true >}}
+  f_i=c_i(X_2,\dots,X_n)X_1^{N_i}+o(X_1^{N_i})
+{{< /katex >}}
+と表します．
+ここで，{{< katex >}}N_i\ge 0{{< /katex >}} で {{< katex >}}c_i\in k[X_2,\dots,X_n]{{< /katex >}} は零でない多項式とします．
+このとき，{{< katex >}}(a_2,\dots,a_n)\notin\bm{V}(c_1,\dots,c_s){{< /katex >}} ならば {{< katex >}}a_1\in k{{< /katex >}} が存在して {{< katex >}}(a_1,\dots,a_n)\in\bm{V}(I){{< /katex >}} となります（**拡張定理**）．
+
+この定理は，残念ながら，部分解をもとの方程式の解に拡張することが常に可能なわけではないことも示唆しています．
+
+## まとめ
+
+本ページでは，[[1]](cite:1), [[2]](cite:2) を初読した際の記録として，多変数連立代数方程式と，グレブナー基底と呼ばれる概念についての概要をまとめました．
+
+本ページではブッフバーガーのアルゴリズムの内容は述べていませんが，オリジナルの方法に対して，効率的に計算する方法が研究されており，例えば **F4アルゴリズム**，**F5アルゴリズム** というものが知られています．
+
+また，多変数連立代数方程式に着目しましたが，グレブナー基底にまつわる話題はこれだけではありません．
+詳細は [[1]](cite:1), [[2]](cite:2) をご参照ください．
 
 ## 参考文献
 
