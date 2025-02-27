@@ -203,9 +203,11 @@ X_1>X_2>\cdots>X_n
 
 代表的な単項式順序は以下のとおりです．
 
-* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}j=\min\{i\mid\alpha_i\neq\beta_i\}{{< /katex >}} において {{< katex >}}\alpha_j>\beta_j{{< /katex >}} であるとき {{< katex >}}\alpha>_{\mathrm{lex}}\beta{{< /katex >}} とする．
-* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}|\alpha|>|\beta|{{< /katex >}} または {{< katex >}}|\alpha|=|\beta|\wedge\alpha>_{\mathrm{lex}}\beta{{< /katex >}} となるとき，{{< katex >}}\alpha>_{\mathrm{grlex}}\beta{{< /katex >}} とする．
-* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}|\alpha|>|\beta|{{< /katex >}} または {{< katex >}}|\alpha|=|\beta|\wedge(j=\max\{i\mid \alpha_i\neq\beta_i\}\implies \alpha_j<\beta_j){{< /katex >}} となるとき，{{< katex >}}\alpha>_{\mathrm{grevlex}}\beta{{< /katex >}} とする．
+* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}j=\min\{i\mid\alpha_i\neq\beta_i\}{{< /katex >}} において {{< katex >}}\alpha_j>\beta_j{{< /katex >}} であるとき {{< katex >}}\alpha>_{\mathrm{lex}}\beta{{< /katex >}} とする（**辞書式順序**，**lex 順序**）．
+* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}|\alpha|>|\beta|{{< /katex >}} または {{< katex >}}|\alpha|=|\beta|\wedge\alpha>_{\mathrm{lex}}\beta{{< /katex >}} となるとき，{{< katex >}}\alpha>_{\mathrm{grlex}}\beta{{< /katex >}} とする（**次数付き辞書式順序**，**grlex 順序**）．
+* {{< katex >}}\alpha,\beta\in\mathbb{N}^n{{< /katex >}} に対し，{{< katex >}}|\alpha|>|\beta|{{< /katex >}} または {{< katex >}}|\alpha|=|\beta|\wedge(j=\max\{i\mid \alpha_i\neq\beta_i\}\implies \alpha_j<\beta_j){{< /katex >}} となるとき，{{< katex >}}\alpha>_{\mathrm{grevlex}}\beta{{< /katex >}} とする（**次数付き逆辞書式順序**，**grevlex 順序**）．
+
+これら順序に優劣はなく，それぞれの性質から，目的にあわせて使い分けられています．
 
 ### 単項式順序に関連する定義
 
@@ -298,12 +300,38 @@ X_1>X_2>\cdots>X_n
 S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cdot g
 {{< /katex >}}
 を，{{< katex >}}f,g{{< /katex >}} の **{{< katex >}}S{{< /katex >}}多項式** といいます．
+この多項式は，{{< katex >}}f,g{{< /katex >}} の先頭項を打ち消すような多項式です．
 
 {{< katex >}}S{{< /katex >}}多項式を使うと，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかを判定することができます．
 
 具体的には，{{< katex >}}G=\{g_1,\dots,g_t\}{{< /katex >}} のすべての {{< katex >}}i\neq j{{< /katex >}} となる添字について，{{< katex >}}\overline{S(g_i,g_j)}^G=0{{< /katex >}} であることと，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} のグレブナー基底であることは同値です（**ブッフバーガーの判定条件**）．
 
 さらに，多変数多項式の余りは有限回の手続きで求まり，ブッフバーガーの判定条件を用いると，与えられたイデアルのグレブナー基底も有限回の手続きで求まることが知られています．
+
+さらに，イデアル {{< katex >}}I{{< /katex >}} のグレブナー基底 {{< katex >}}G{{< /katex >}} が
+{{< katex display=true >}}
+  \forall p\in G\,(\mathrm{LC}(p)=1)
+{{< /katex >}}
+であり，すべての {{< katex >}}p\in G{{< /katex >}} について，{{< katex >}}p{{< /katex >}} のどの単項式も {{< katex >}}\langle\mathrm{LT}(G-\{p\})\rangle{{< /katex >}} に含まれないとき，{{< katex >}}G{{< /katex >}} は **被約グレブナー基底** と呼ばれ，{{< katex >}}\{0\}{{< /katex >}} でないイデアル {{< katex >}}I{{< /katex >}} は与えられた単項式順序に対して被約グレブナー基底をもち，ただひとつに定まることがいえます．
+さらに，被約グレブナー基底も，有限回の手続きで求めることができます．
+
+## 消去定理
+
+イデアル {{< katex >}}I=\langle f_1,\dots,f_s\rangle{{< /katex >}}  に対して，{{< katex >}}I_l=I\cap k[X_{l+1},\dots,X_n]{{< /katex >}} はイデアルであり，これを {{< katex >}}l{{< /katex >}} 次の **消去イデアル** といいます．
+
+{{< katex >}}l{{< /katex >}} 次の消去イデアルは，連立方程式 {{< katex >}}f_1=\cdots=f_s=0{{< /katex >}} から {{< katex >}}X_1,\dots,X_l{{< /katex >}} を消去して得られる式全体からなるイデアルです．
+
+{{< katex >}}I{{< /katex >}} をイデアルとして，{{< katex >}}G{{< /katex >}} を {{< katex >}}I{{< /katex >}} の lex 順序 {{< katex >}}X_1>X_2>\cdots>X_n{{< /katex >}} に関するグレブナー基底ならば，{{< katex >}}0\le l\le n{{< /katex >}} に対し，{{< katex >}}G_l=G\cap k[X_{l+1},\dots,X_n]{{< /katex >}} は {{< katex >}}l{{< /katex >}} 次の消去イデアル {{< katex >}}I_l{{< /katex >}} のグレブナー基底になります（**消去定理**）．
+
+つまり，lex 順序に関するグレブナー基底は，連立方程式から変数を消去する機能があることを示しています．
+これによって，変数の少ない方程式から順に解を求めて，もともとの連立方程式を解くことができると考えられます．
+
+## 拡張定理
+
+前節の方法で消去ができたとしても，その **部分解** がもとの解の一部になるかは明らかではありません．
+それが実現できる条件を述べたのが **拡張定理** です．
+前節の消去定理とこの拡張定理を合わせると，グレブナー基底を用いて，**消去法** で多変数連立代数方程式が解ける仕組みが理解できます．
+
 
 ## 参考文献
 
