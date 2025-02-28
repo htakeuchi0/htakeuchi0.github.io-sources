@@ -280,13 +280,13 @@ X_1>X_2>\cdots>X_n
 
 {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の単項式順序を固定します．
 {{< katex >}}F=(f_1,\dots,f_s)\in k[X_1,\dots,X_n]^s{{< /katex >}} とします．
-このとき，{{< katex >}}q_1,\dots,q_s,r\in k[X_1,\dots,X_n]{{< /katex >}} が存在し，いかが成り立つことが知られています．
+このとき，{{< katex >}}q_1,\dots,q_s,r\in k[X_1,\dots,X_n]{{< /katex >}} が存在し，以下が成り立つことが知られています．
 1. {{< katex >}}f=q_1f_1+\cdots+q_sf_s+r{{< /katex >}}.
-2. {{< katex >}}r{{< /katex >}} は {{< katex >}}r=0{{< /katex >}} であるか，
+2. {{< katex >}}r{{< /katex >}} は {{< katex >}}r=0{{< /katex >}} であるか，そうでなければ
 {{< katex display=true >}}
   r=\sum_{\alpha\in\mathbb{N}^n}b_\alpha X^{\alpha}
 {{< /katex >}}
-のとき {{< katex >}}b_\alpha\not=0{{< /katex >}} なる {{< katex >}}X^\alpha{{< /katex >}} は {{< katex >}}\mathrm{LT}(f_1),\dots,\mathrm{LT}(f_s){{< /katex >}} のいずれでも割り切れない．
+のとき，{{< katex >}}b_\alpha\not=0{{< /katex >}} なる {{< katex >}}X^\alpha{{< /katex >}} は {{< katex >}}\mathrm{LT}(f_1),\dots,\mathrm{LT}(f_s){{< /katex >}} のいずれでも割り切れない．
 
 さらに，{{< katex >}}i=1,2,\dots,s{{< /katex >}} について {{< katex >}}q_if_i\neq0{{< /katex >}} ならば {{< katex >}}\mathrm{multideg}\,f\ge\mathrm{multideg}\,q_if_i{{< /katex >}} が成り立つことも示せます．
 
@@ -383,7 +383,7 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
 
 ## まとめ
 
-本ページでは，[[1]](cite:1), [[2]](cite:2) を初読した際の記録として，多変数連立代数方程式と，グレブナー基底と呼ばれる概念についての概要をまとめました．
+本ページでは，[[1]](cite:1), [[2]](cite:2) を流し読みした際の記録として，多変数連立代数方程式とグレブナー基底についての概要をまとめました．
 
 本ページではブッフバーガーのアルゴリズムの内容は述べていませんが，オリジナルの方法に対して，効率的に計算する方法が研究されており，例えば **F4アルゴリズム**，**F5アルゴリズム** というものが知られています．
 
