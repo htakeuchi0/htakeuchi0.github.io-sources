@@ -24,11 +24,14 @@ weight: 2
 多変数連立代数方程式は，1次式であれば単なる線形方程式であり，1変数であれば4次までは解の公式が存在しますが，一般の場合の解の求め方は，それらに比べて明らかではありません．
 
 [[1]](cite:1), [[2]](cite:2) は，この解法を考える上で重要な概念である **グレブナー基底** の有名な入門書です．
-本ページでは，この分野の概観を把握するため，[[1]](cite:1) (それとほとんど目を通せていないですが [[2]](cite:2)) を流し読みした際の記録として，多変数連立代数方程式とグレブナー基底についての概要をまとめます．
-この分野でどのような話題があるかを概観できるものとするため，証明や詳細な議論は省略します．
+本ページでは，この分野の概観を把握するため，[[1]](cite:1) (それとほとんど目を通せていないですが [[2]](cite:2) も) を読み流した際の記録として，多変数連立代数方程式とグレブナー基底についての概要をまとめます．
+
+多変数連立代数方程式を解くという観点に絞り，この分野でどのような話題があるかを概観できるものとするため，証明や詳細な議論，重要であってもその周辺の話題の紹介は省略します．
 [[1]](cite:1), [[2]](cite:2) をご参照ください．
 
 ## 多項式・イデアル・アフィン多様体
+
+本節では主要な概念を定義します．
 
 ### 多項式
 
@@ -37,7 +40,7 @@ weight: 2
 {{< katex >}}\mathbb{N}{{< /katex >}} を0以上の整数全体，つまり {{< katex >}}\mathbb{N}=\{0,1,\dots\}{{< /katex >}} とします．
 {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} について，{{< katex >}}\alpha=(\alpha_i)_{i=1,2,\dots,n}{{< /katex >}} と表すものとします．
 
-有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} ({{< katex >}}\forall\alpha\in\mathbb{N}^n\,(a_\alpha\in k){{< /katex >}}) が存在し，{{< katex >}}n{{< /katex >}} 個の **不定元** {{< katex >}}X_1,\dots,X_n\notin k{{< /katex >}} を用いて
+有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} ({{< katex >}}\forall\alpha\in\mathbb{N}^n\,(a_\alpha\in k){{< /katex >}}) が存在し，{{< katex >}}n{{< /katex >}} 個の **不定元** {{< katex >}}X_1,\dots,X_n\notin k{{< /katex >}} を用いて {{< katex >}}f{{< /katex >}} が
 {{< katex display=true >}}
   f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
 {{< /katex >}}
@@ -48,12 +51,13 @@ weight: 2
 {{< /katex >}}
 と書くこともあります．
 
-後者の表記は次の場合に有用です．例えば {{< katex >}}g\in k[X_1,\dots,X_n]{{< /katex >}} について，{{< katex >}}\alpha_1\neq0{{< /katex >}} ならば {{< katex >}}a_{(\alpha_1,\dots,\alpha_n)}=0{{< /katex >}} であるとき，{{< katex >}}X_1{{< /katex >}} は {{< katex >}}g{{< /katex >}} の項に現れません．
+後者の表記に関連し，例えば {{< katex >}}g\in k[X_1,\dots,X_n]{{< /katex >}} について，{{< katex >}}\alpha_1\neq0{{< /katex >}} ならば {{< katex >}}a_{(\alpha_1,\dots,\alpha_n)}=0{{< /katex >}} であるとき，{{< katex >}}X_1{{< /katex >}} は {{< katex >}}g{{< /katex >}} の項に現れません．
 それを明示するために，{{< katex >}}g{{< /katex >}} の代わりに {{< katex >}}g(X_2,\dots,X_n){{< /katex >}} と書くことがあります．
+付随して，このような多項式全体の集合を {{< katex >}}k[X_2,\dots,X_n]{{< /katex >}} と書くこともあります．
 
-不定元が {{< katex >}}X_1,X_2,\dots,X_n{{< /katex >}} である多項式全体の集合を {{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} と表します．
-この {{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} は単位的可換環をなします．
-この事実から，{{< katex >}}k[X_1,X_2,\dots,X_n]{{< /katex >}} は **多項式環** と呼ばれます．
+不定元が {{< katex >}}X_1,\dots,X_n{{< /katex >}} である多項式全体の集合を {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} と表します．
+この {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} は単位的可換環をなします．
+この事実から，{{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} は **多項式環** と呼ばれます．
 
 詳細は [前ページ]({{< ref poly >}}) をご参照ください．
 前ページの記号でいうと，{{< katex >}}K{{< /katex >}} を有限集合として，{{< katex >}}|K|=n{{< /katex >}} である場合を考えていることになります．
@@ -63,13 +67,13 @@ weight: 2
 
 ### 単項式
 
-{{< katex >}}f[X_1,X_2,\dots,X_n]{{< /katex >}} において，{{< katex >}}(\alpha_i)_{i=1,2,\dots,n}\in\mathbb{N}^n{{< /katex >}} のとき，
+{{< katex >}}f[X_1,\dots,X_n]{{< /katex >}} において，{{< katex >}}(\alpha_i)_{i=1,2,\dots,n}\in\mathbb{N}^n{{< /katex >}} のとき，
 {{< katex display=true >}}
   \prod_{i=1}^nX_i^{\alpha_i}
 {{< /katex >}}
 を **単項式** といいます．
 
-{{< katex >}}f\in k[X_1,X_2,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
+{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
 {{< katex display=true >}}
   f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
 {{< /katex >}}
@@ -87,7 +91,7 @@ weight: 2
 {{< /katex >}}
 とします．
 
-{{< katex >}}f\in k[X_1,X_2,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き，{{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
+{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き，{{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
 {{< katex display=true >}}
   f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}
 {{< /katex >}}
@@ -250,7 +254,7 @@ X_1>X_2>\cdots>X_n
 {{< /katex >}}
 と表すことにします．
 
-{{< katex >}}f\in k[X_1,X_2,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
+{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} が，有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
 {{< katex display=true >}}
   f=\sum_{(\alpha_1,\dots,\alpha_n)\in\mathbb{N}^n}a_{(\alpha_1,\dots,\alpha_n)}\prod_{i=1}^nX_i^{\alpha_i}=\sum_{\alpha\in\mathbb{N}^n}a_{\alpha}X^{\alpha}
 {{< /katex >}}
@@ -272,11 +276,11 @@ X_1>X_2>\cdots>X_n
 
 ## 多変数多項式の割り算と余り
 
-{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+f_sh_s+r{{< /katex >}} と書けて，{{< katex >}}r=0{{< /katex >}} であれば，{{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} とわかります（正確にいえばこれは十分条件で必要条件ではありません）．
+{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+h_sf_s+r{{< /katex >}} と書けて，{{< katex >}}r=0{{< /katex >}} であれば，{{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} とわかります（正確にいえばこれは十分条件で必要条件ではありません）．
 
-1変数多項式 {{< katex >}}f\in k[X]{{< /katex >}} に対し，{{< katex >}}g\in k[X]{{< /katex >}} を零でない多項式とすると，{{< katex >}}f=qg+r{{< /katex >}}, {{< katex >}}r=0{{< /katex >}} または {{< katex >}}\deg r<\deg g{{< /katex >}} なる {{< katex >}}q,r\in k[X]{{< /katex >}} が存在することが知られていて，{{< katex >}}r{{< /katex >}} は，{{< katex >}}f{{< /katex >}} を {{< katex >}}h{{< /katex >}} で割った **余り**，と呼ばれています．
+1変数多項式 {{< katex >}}f\in k[X]{{< /katex >}} に対し，{{< katex >}}g\in k[X]{{< /katex >}} を零でない多項式とすると，{{< katex >}}f=qg+r{{< /katex >}}, {{< katex >}}r=0{{< /katex >}} または {{< katex >}}\deg r<\deg g{{< /katex >}} なる {{< katex >}}q,r\in k[X]{{< /katex >}} が存在することが知られていて，{{< katex >}}r{{< /katex >}} は，{{< katex >}}f{{< /katex >}} を {{< katex >}}h{{< /katex >}} で割った **余り** と呼ばれています．
 
-それを拡張し，{{< katex >}}f,f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，**{{< katex >}}f{{< /katex >}} を {{< katex >}}(f_1,\dots,f_s){{< /katex >}} で割った余り {{< katex >}}r{{< /katex >}}** という概念が作れないかを考えます．
+それを拡張し，{{< katex >}}f,f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} に対し，**{{< katex >}}f{{< /katex >}} を {{< katex >}}(f_1,\dots,f_s){{< /katex >}} で割った余り** という概念が作れないかを考えます．
 
 {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の単項式順序を固定します．
 {{< katex >}}F=(f_1,\dots,f_s)\in k[X_1,\dots,X_n]^s{{< /katex >}} とします．
@@ -296,7 +300,7 @@ X_1>X_2>\cdots>X_n
 {{< katex >}}F=(f_1,\dots,f_s){{< /katex >}} の多項式の順番を入れ替えた多項式列を {{< katex >}}F^\sigma=(f_{\sigma(1)},f_{\sigma(2)},\dots,f_{\sigma(s)}){{< /katex >}} と書くと，一般には，{{< katex >}}\bar{f}^F\neq\bar{f}^{F^\sigma}{{< /katex >}} であることが知られています．
 {{< katex >}}q_i\,(i=1,2,\dots,s){{< /katex >}} に関しても同様です．
 
-{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+f_sh_s+r{{< /katex >}} と書けて {{< katex >}}r\neq0{{< /katex >}} であったとしても，{{< katex >}}f_1,\dots,f_s{{< /katex >}} の順番を入れ替えると，余りが0になる場合があるので，{{< katex >}}r=\bar{f}^F=0{{< /katex >}} であることは {{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} であることの十分条件であっても必要条件ではない，ということになります．
+{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} に対して，{{< katex >}}f_1,\dots,f_s,h_1,\dots,h_s,r\in k[X_1,\dots,X_n]{{< /katex >}} を用いて {{< katex >}}f=h_1f_1+\cdots+h_sf_s+r{{< /katex >}} と書けて {{< katex >}}r\neq0{{< /katex >}} であったとしても，{{< katex >}}f_1,\dots,f_s{{< /katex >}} の順番を入れ替えると，余りが0になる場合があるので，{{< katex >}}r=\bar{f}^F=0{{< /katex >}} であることは {{< katex >}}f\in\langle f_1,\dots,f_s\rangle{{< /katex >}} であることの十分条件であっても必要条件ではない，ということになります．
 
 ## グレブナー基底
 
@@ -317,7 +321,7 @@ X_1>X_2>\cdots>X_n
 {{< /katex >}}
 を満たすとき，{{< katex >}}G{{< /katex >}} は {{< katex >}}I{{< /katex >}} の **グレブナー基底** といいます．
 また，{{< katex >}}\langle\emptyset\rangle=\{0\}{{< /katex >}} として，{{< katex >}}\emptyset{{< /katex >}} は {{< katex >}}\{0\}{{< /katex >}} のグレブナー基底であるとします．
-これまでの {{< katex >}}\langle f_1,\dots,f_s\rangle=I{{< /katex >}} に対し，先頭項だけに注目したような定義です．
+これまでの {{< katex >}}\langle f_1,\dots,f_s\rangle=I{{< /katex >}} に対し，先頭項だけに注目したような定義といえます．
 
 すべてのイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} はグレブナー基底をもちます．
 また，グレブナー基底は {{< katex >}}I{{< /katex >}} の基底であり，{{< katex >}}\bar{f}^G{{< /katex >}} は {{< katex >}}G=(g_1,\dots,g_t){{< /katex >}} の順序を入れ替えても変わりません（一方で {{< katex >}}q_i\,(i=1,2,\dots,s){{< /katex >}} は変わります）．
@@ -343,7 +347,7 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
 
 さらに，多変数多項式の余りは有限回の手続きで求まり，ブッフバーガーの判定条件を用いると，与えられたイデアル {{< katex >}}I=\langle f_1,\dots,f_s\rangle\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底も有限回の手続きで求まることが知られています（**ブッフバーガーのアルゴリズム**）．
 
-簡単にいうと，すべて {{< katex >}}\overline{S(g_i,g_j)}^G=0{{< /katex >}} となればよいため，ひとまずは仮に {{< katex >}}G=\{f_1,\dots,f_t\}\subseteq I{{< /katex >}} としてはじめて，{{< katex >}}r=\overline{S(g_i,g_j)}^G\neq0{{< /katex >}} である {{< katex >}}r\in I{{< /katex >}} が見つかったら，それを基底候補 {{< katex >}}G{{< /katex >}} に加えることを続けていけばよいです．
+簡単にいうと，すべて {{< katex >}}\overline{S(g_i,g_j)}^G=0{{< /katex >}} となればよいため，ひとまずは仮に {{< katex >}}G=\{f_1,\dots,f_t\}\subseteq I{{< /katex >}} としてはじめて，{{< katex >}}r=\overline{S(g_i,g_j)}^G\neq0{{< /katex >}} である {{< katex >}}r\in I{{< /katex >}} が見つかったら，それをグレブナー基底候補 {{< katex >}}G{{< /katex >}} に加えることを続けていく方法です．
 この操作でグレブナー基底が求まること，さらにその手続きが有限回で終わることが示せます．
 
 さらに，イデアル {{< katex >}}I{{< /katex >}} のグレブナー基底 {{< katex >}}G{{< /katex >}} が
@@ -351,16 +355,26 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
   \forall p\in G\,(\mathrm{LC}(p)=1)
 {{< /katex >}}
 であり，すべての {{< katex >}}p\in G{{< /katex >}} について，{{< katex >}}p{{< /katex >}} のどの単項式も {{< katex >}}\langle\mathrm{LT}(G-\{p\})\rangle{{< /katex >}} に含まれないとき，{{< katex >}}G{{< /katex >}} は **被約グレブナー基底** と呼ばれ，{{< katex >}}\{0\}{{< /katex >}} でないイデアル {{< katex >}}I{{< /katex >}} は与えられた単項式順序に対して被約グレブナー基底をもち，ただひとつに定まることがいえます．
-さらに，被約グレブナー基底も，有限回の手続きで求めることができます．
+被約グレブナー基底も，有限回の手続きで求めることができます．
 
 ## 消去定理
 
 {{< katex >}}f_1,\dots,f_s\in k[X_1,\dots,X_n]{{< /katex >}} とします．
 イデアル {{< katex >}}I=\langle f_1,\dots,f_s\rangle{{< /katex >}}  に対して，{{< katex >}}I_l=I\cap k[X_{l+1},\dots,X_n]{{< /katex >}} はイデアルであり，これを {{< katex >}}l{{< /katex >}} 次の **消去イデアル** といいます．
 
-{{< katex >}}l{{< /katex >}} 次の消去イデアルは，連立方程式 {{< katex >}}f_1=\cdots=f_s=0{{< /katex >}} から {{< katex >}}X_1,\dots,X_l{{< /katex >}} を消去して得られる式全体からなるイデアルといえます．
+ただし，{{< katex >}}k[X_{l+1},\dots,X_n]\subseteq k[X_1,\dots,X_n]{{< /katex >}} とは，
+{{< katex >}}f\in k[X_1,\dots,X_n]{{< /katex >}} を
+有限個の {{< katex >}}\alpha\in\mathbb{N}^n{{< /katex >}} を除き {{< katex >}}a_\alpha=0{{< /katex >}} であるような {{< katex >}}(a_{\alpha})_{\alpha\in\mathbb{N}^n}{{< /katex >}} によって
+{{< katex display=true >}}
+f=\sum_{\alpha\in\mathbb{N}^n}a_\alpha X^\alpha
+{{< /katex >}}
+と表すとき，{{< katex >}}(\alpha_1,\dots,\alpha_l)\neq0{{< /katex >}} ならば {{< katex >}}a_{(\alpha_1,\dots,\alpha_n)}=0{{< /katex >}} であるもの全体の集合とします．
 
-{{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} をイデアルとして，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} の lex 順序 {{< katex >}}X_1>X_2>\cdots>X_n{{< /katex >}} に関するグレブナー基底ならば，{{< katex >}}0\le l\le n{{< /katex >}} に対し，{{< katex >}}G_l=G\cap k[X_{l+1},\dots,X_n]{{< /katex >}} は {{< katex >}}l{{< /katex >}} 次の消去イデアル {{< katex >}}I_l{{< /katex >}} のグレブナー基底になります（**消去定理**）．
+{{< katex >}}l{{< /katex >}} 次の消去イデアル {{< katex >}}I_l{{< /katex >}} の元には {{< katex >}}X_1,\dots,X_l{{< /katex >}} が現れません．
+このことより，連立方程式 {{< katex >}}f_1=\cdots=f_s=0{{< /katex >}} から {{< katex >}}X_1,\dots,X_l{{< /katex >}} を消去することは，{{< katex >}}I{{< /katex >}} の {{< katex >}}l{{< /katex >}} 次の消去イデアル {{< katex >}}I_l{{< /katex >}} の基底を求めることに相当するといえます．
+
+では，消去イデアルとその基底をどのように求めればよいかですが，適切な単項式順序をとれば，グレブナー基底でただちに求まります．
+具体的には，{{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} をイデアルとして，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} の lex 順序 {{< katex >}}X_1>X_2>\cdots>X_n{{< /katex >}} に関するグレブナー基底ならば，{{< katex >}}0\le l\le n{{< /katex >}} に対し，{{< katex >}}G_l=G\cap k[X_{l+1},\dots,X_n]{{< /katex >}} は {{< katex >}}l{{< /katex >}} 次の消去イデアル {{< katex >}}I_l{{< /katex >}} のグレブナー基底になることが知られています（**消去定理**）．
 
 つまり，lex 順序に関するグレブナー基底を用いると，連立方程式から変数を消去して，変数の少ない方程式から順に解を求めることで，もとの連立方程式を解くことができると考えられます．
 
@@ -370,9 +384,24 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
 それが実現できる条件を述べたのが **拡張定理** です．
 前節の消去定理とこの拡張定理を合わせると，グレブナー基底を用いて，**消去法** で多変数連立代数方程式が解ける仕組みや解けるための条件が理解できます．
 
+例えば，1次の消去イデアルを考えて，{{< katex >}}(a_2,\dots,a_n)\in\bm{V}(I_1){{< /katex >}} が求まったとします．
+この **部分解** をもとの方程式の完全な解に **拡張** するには，{{< katex >}}I=\langle g_1,\dots,g_t\rangle{{< /katex >}} に対して，
+{{< katex display=true >}}
+\begin{aligned}
+  &g_1(X_1,a_2,\dots,a_n)=0,\\
+  &g_2(X_1,a_2,\dots,a_n)=0,\\
+  &\cdots\\
+  &g_t(X_1,a_2,\dots,a_n)=0
+\end{aligned}
+{{< /katex >}}
+を満たす {{< katex >}}X_1=a_1{{< /katex >}} を求めればよいですが，**この共通解が常に存在するとは限らない** という点が問題になります．
+
+どのようなときに，そのような共通解が取れるかを述べたのが **拡張定理** です．
+
 {{< katex >}}k{{< /katex >}} を体とします．
 すべての定数でない多項式 {{< katex >}}f\in k[X]{{< /katex >}} について {{< katex >}}f(a)=0{{< /katex >}} を満たす {{< katex >}}a\in k{{< /katex >}} が存在するとき，{{< katex >}}k{{< /katex >}} は **代数的閉体** であるといいます．
 
+拡張定理は次のとおりです．
 {{< katex >}}k{{< /katex >}} を代数的閉体とします．
 イデアル {{< katex >}}I=\langle f_1,\dots,f_s\rangle\subseteq k[X_1,\dots,X_n]{{< /katex >}} を考え，{{< katex >}}I_1{{< /katex >}} を {{< katex >}}I{{< /katex >}} の1次の消去イデアルとします．
 {{< katex >}}i=1,2,\dots,s{{< /katex >}} に対して，
@@ -382,20 +411,22 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
 と表します．
 ただし，{{< katex >}}g_i{{< /katex >}} は {{< katex >}}X_1{{< /katex >}} の次数が {{< katex >}}N_i{{< /katex >}} 未満であるような多項式です．
 ここで，{{< katex >}}N_i\ge 0{{< /katex >}} で {{< katex >}}c_i\in k[X_2,\dots,X_n]{{< /katex >}} は零でない多項式とします．
-
-部分解 {{< katex >}}(a_1,\dots,a_n)\in\bm{V}(I_1){{< /katex >}}
-
+部分解 {{< katex >}}(a_2,\dots,a_n)\in\bm{V}(I_1){{< /katex >}} があると仮定します．
 このとき，{{< katex >}}(a_2,\dots,a_n)\notin\bm{V}(c_1,\dots,c_s){{< /katex >}} ならば {{< katex >}}a_1\in k{{< /katex >}} が存在して {{< katex >}}(a_1,\dots,a_n)\in\bm{V}(I){{< /katex >}} となります（**拡張定理**）．
 
-この定理は，残念ながら，部分解をもとの方程式の解に拡張することが常に可能なわけではないことも示唆しています．
+ここでポイントとなる条件は {{< katex >}}(a_2,\dots,a_n)\notin\bm{V}(c_1,\dots,c_s){{< /katex >}} という部分です．
+{{< katex >}}(a_2,\dots,a_n)\in\bm{V}(c_1,\dots,c_s){{< /katex >}} ならば，{{< katex >}}i=1,2,\dots,s{{< /katex >}} について {{< katex >}}c_i(a_2,\dots,a_n)=0{{< /katex >}} なので，これは {{< katex >}}(X_2,\dots,X_n){{< /katex >}} を {{< katex >}}(a_2,\dots,a_n){{< /katex >}} に置き換えて得られる {{< katex >}}f_i(X_1,a_2,\dots,a_n)\in k[X_1]\,(i=1,2,\dots,s){{< /katex >}} において，**拡張しようとしたら先頭係数が同時に消えてしまう場合** を意味します．
+
+つまり，拡張定理は，**拡張しようとしたら先頭係数が同時に消えてしまう場合に限っては，拡張がうまくいかないかもしれない** ということを示しています．
+そうでない場合は部分解を拡張して，もとの方程式の解が得られるということになります．
 
 ## まとめ
 
-本ページでは，[[1]](cite:1) (ほとんど目を通せていませんが [[2]](cite:2) も) を流し読みした際の記録として，多変数連立代数方程式とグレブナー基底についての概要をまとめました．
+本ページでは，[[1]](cite:1) (それとほとんど目を通せていませんが [[2]](cite:2) も) を読み流した際の記録として，多変数連立代数方程式とグレブナー基底についての概要をまとめました．
 
 本ページではブッフバーガーのアルゴリズムの内容は述べていませんが，オリジナルの方法に対して，効率的に計算する方法が研究されており，例えば **F4アルゴリズム**，**F5アルゴリズム** というものが知られています [[2]](cite:2)．
 
-また，多変数連立代数方程式に着目しましたが，グレブナー基底にまつわる話題はこれだけではありません．
+また，多変数連立代数方程式を解くという点だけに着目しましたが，グレブナー基底にまつわる話題はこれだけではありません．
 詳細は [[1]](cite:1), [[2]](cite:2) をご参照ください．
 
 ## 参考文献
