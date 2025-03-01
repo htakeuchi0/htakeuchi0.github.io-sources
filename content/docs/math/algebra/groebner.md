@@ -335,10 +335,16 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
 を，{{< katex >}}f,g{{< /katex >}} の **{{< katex >}}S{{< /katex >}}多項式** といいます．
 この多項式は，{{< katex >}}f,g{{< /katex >}} の先頭項を打ち消すように作られた多項式です．
 
-{{< katex >}}S{{< /katex >}}多項式を使うと，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかが判定できます．
+イデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} の適当な基底 {{< katex >}}f_1,\dots,f_s{{< /katex >}} はグレブナー基底になるとは限らないのですが，これはなぜかというと，{{< katex >}}S{{< /katex >}} 多項式のように先頭項を打ち消してつくった多項式の先頭項が {{< katex >}}f_1,\dots,f_s{{< /katex >}} の先頭項たちの線形結合で作れない場合，{{< katex >}}\langle\mathrm{LT}(f_1),\dots,\mathrm{LT}(f_s)\rangle{{< /katex >}} より {{< katex >}}\langle\mathrm{LT}(I)\rangle{{< /katex >}} が大きくなってしまうことがあるためです．
+このため，{{< katex >}}S{{< /katex >}} 多項式というものを定義して，イデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} の基底がグレブナー基底であるかを解析しようということです．
+
+実際，{{< katex >}}S{{< /katex >}}多項式を使うと，{{< katex >}}G\subseteq k[X_1,\dots,X_n]{{< /katex >}} がイデアル {{< katex >}}I\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底であるかが判定できます．
 具体的には，{{< katex >}}G=\{g_1,\dots,g_t\}{{< /katex >}} のすべての {{< katex >}}i\neq j{{< /katex >}} となる添字について，{{< katex >}}\overline{S(g_i,g_j)}^G=0{{< /katex >}} であることと，{{< katex >}}G{{< /katex >}} が {{< katex >}}I{{< /katex >}} のグレブナー基底であることは同値です（**ブッフバーガーの判定条件**）．
 
-さらに，多変数多項式の余りは有限回の手続きで求まり，ブッフバーガーの判定条件を用いると，与えられたイデアルのグレブナー基底も有限回の手続きで求まることが知られています（**ブッフバーガーのアルゴリズム**）．
+さらに，多変数多項式の余りは有限回の手続きで求まり，ブッフバーガーの判定条件を用いると，与えられたイデアル {{< katex >}}I=\langle f_1,\dots,f_s\rangle\subseteq k[X_1,\dots,X_n]{{< /katex >}} のグレブナー基底も有限回の手続きで求まることが知られています（**ブッフバーガーのアルゴリズム**）．
+
+簡単にいうと，すべて {{< katex >}}\overline{S(g_i,g_j)}^G=0{{< /katex >}} となればよいため，ひとまずは仮に {{< katex >}}G=\{f_1,\dots,f_t\}\subseteq I{{< /katex >}} としてはじめて，{{< katex >}}r=\overline{S(g_i,g_j)}^G\neq0{{< /katex >}} である {{< katex >}}r\in I{{< /katex >}} が見つかったら，それを基底候補 {{< katex >}}G{{< /katex >}} に加えることを続けていけばよいです．
+この操作でグレブナー基底が求まること，さらにその手続きが有限回で終わることが示せます．
 
 さらに，イデアル {{< katex >}}I{{< /katex >}} のグレブナー基底 {{< katex >}}G{{< /katex >}} が
 {{< katex display=true >}}
@@ -376,7 +382,9 @@ S(f,g)=\frac{X^\gamma}{\mathrm{LT}(f)}\cdot f-\frac{X^\gamma}{\mathrm{LT}(g)}\cd
 と表します．
 ただし，{{< katex >}}g_i{{< /katex >}} は {{< katex >}}X_1{{< /katex >}} の次数が {{< katex >}}N_i{{< /katex >}} 未満であるような多項式です．
 ここで，{{< katex >}}N_i\ge 0{{< /katex >}} で {{< katex >}}c_i\in k[X_2,\dots,X_n]{{< /katex >}} は零でない多項式とします．
-部分解 {{< katex >}}(a_1,\dots,a_n)\in\bm{V}(I){{< /katex >}}
+
+部分解 {{< katex >}}(a_1,\dots,a_n)\in\bm{V}(I_1){{< /katex >}}
+
 このとき，{{< katex >}}(a_2,\dots,a_n)\notin\bm{V}(c_1,\dots,c_s){{< /katex >}} ならば {{< katex >}}a_1\in k{{< /katex >}} が存在して {{< katex >}}(a_1,\dots,a_n)\in\bm{V}(I){{< /katex >}} となります（**拡張定理**）．
 
 この定理は，残念ながら，部分解をもとの方程式の解に拡張することが常に可能なわけではないことも示唆しています．
