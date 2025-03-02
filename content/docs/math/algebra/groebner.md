@@ -291,9 +291,7 @@ X_1>X_2>\cdots>X_n
   r=\sum_{\alpha\in\mathbb{N}^n}b_\alpha X^{\alpha}
 {{< /katex >}}
 のとき，{{< katex >}}b_\alpha\not=0{{< /katex >}} なる {{< katex >}}X^\alpha{{< /katex >}} は {{< katex >}}\mathrm{LT}(f_1),\dots,\mathrm{LT}(f_s){{< /katex >}} のいずれでも割り切れない．
-
-さらに，{{< katex >}}i=1,2,\dots,s{{< /katex >}} について {{< katex >}}q_if_i\neq0{{< /katex >}} ならば {{< katex >}}\mathrm{multideg}\,f\ge\mathrm{multideg}\,q_if_i{{< /katex >}} が成り立つことも示せます．
-
+3. {{< katex >}}i=1,2,\dots,s{{< /katex >}} について {{< katex >}}q_if_i\neq0{{< /katex >}} ならば {{< katex >}}\mathrm{multideg}\,f\ge\mathrm{multideg}\,q_if_i{{< /katex >}} が成り立つ．
 
 この {{< katex >}}r{{< /katex >}} は， {{< katex >}}f{{< /katex >}} を {{< katex >}}F{{< /katex >}} で割った **余り** と呼ばれ，{{< katex >}}\bar{f}^F{{< /katex >}} と表されます．
 
