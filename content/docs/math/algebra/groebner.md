@@ -29,6 +29,8 @@ weight: 2
 多変数連立代数方程式を解くという観点に絞り，この分野でどのような話題があるかを概観できるものとするため，証明や詳細な議論，重要であってもその周辺の話題の紹介は省略します．
 [[1]](cite:1), [[2]](cite:2) をご参照ください．
 
+※2025/3/1: あまりの説明が誤っていたため修正しました[^1]．
+
 ## 多項式・イデアル・アフィン多様体
 
 本節では主要な概念を定義します．
@@ -284,7 +286,7 @@ X_1>X_2>\cdots>X_n
 
 {{< katex >}}k[X_1,\dots,X_n]{{< /katex >}} の単項式順序を固定します．
 {{< katex >}}F=(f_1,\dots,f_s)\in k[X_1,\dots,X_n]^s{{< /katex >}} とします．
-このとき，{{< katex >}}q_1,\dots,q_s,r\in k[X_1,\dots,X_n]{{< /katex >}} が存在し，以下が成り立つことが知られています．
+このとき，{{< katex >}}q_1,\dots,q_s,r\in k[X_1,\dots,X_n]{{< /katex >}} が存在し，以下が成り立つことが知られています[^1]．
 1. {{< katex >}}f=q_1f_1+\cdots+q_sf_s+r{{< /katex >}}.
 2. {{< katex >}}r{{< /katex >}} は {{< katex >}}r=0{{< /katex >}} であるか，そうでなければ
 {{< katex display=true >}}
@@ -292,6 +294,8 @@ X_1>X_2>\cdots>X_n
 {{< /katex >}}
 のとき，{{< katex >}}b_\alpha\not=0{{< /katex >}} なる {{< katex >}}X^\alpha{{< /katex >}} は {{< katex >}}\mathrm{LT}(f_1),\dots,\mathrm{LT}(f_s){{< /katex >}} のいずれでも割り切れない．
 3. {{< katex >}}i=1,2,\dots,s{{< /katex >}} について {{< katex >}}q_if_i\neq0{{< /katex >}} ならば {{< katex >}}\mathrm{multideg}\,f\ge\mathrm{multideg}\,q_if_i{{< /katex >}} が成り立つ．
+
+[^1]:あまりの説明が誤っていたため修正しました． https://github.com/htakeuchi0/htakeuchi0.github.io-sources/commit/89182896f1e188a9dfd81895ff39cb9184763c8f
 
 この {{< katex >}}r{{< /katex >}} は， {{< katex >}}f{{< /katex >}} を {{< katex >}}F{{< /katex >}} で割った **余り** と呼ばれ，{{< katex >}}\bar{f}^F{{< /katex >}} と表されます．
 
