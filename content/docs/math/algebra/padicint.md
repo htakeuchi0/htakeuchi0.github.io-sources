@@ -1,6 +1,6 @@
 ---
 title: "p進整数と射影極限"
-weight: 1
+weight: 3
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -352,7 +352,14 @@ Def. 1において，
 次に [[1, 例1.55, p.41]](#cite:1) では，{{< katex >}}\mathbb{Z}_p{{< /katex >}} が整域であり，{{< katex >}}\mathbb{Z}_p{{< /katex >}} において {{< katex >}}\underbrace{1_{\mathbb{Z}_p}+\cdots+1_{\mathbb{Z}_p}}_{p\text{\ times}}\neq0_{\mathbb{Z}_p}{{< /katex >}} であることが説明されています．
 その準備として，さらに {{< katex >}}\mathbb{Z}_p{{< /katex >}} の元の性質を観察してみます．
 
-...
+{{< katex >}}x=(x_n)_n\in\mathbb{Z}_p{{< /katex >}} とします．
+{{< katex >}}m\in\mathbb{Z}{{< /katex >}} とし，{{< katex >}}x_m=0+p^m\mathbb{Z}{{< /katex >}} とします．
+{{< katex >}}n\le m{{< /katex >}} ならば {{< katex >}}f_{nm}(x_m)=f_{nm}=(0+p^m\mathbb{Z})=0+p^n\mathbb{Z}{{< /katex >}} なので，{{< katex >}}x_n=f_{nm}(x_m)=0+p^n\mathbb{Z}{{< /katex >}} となります．
+したがって，ある {{< katex >}}m{{< /katex >}} において {{< katex >}}x_m=0+p^m\mathbb{Z}{{< /katex >}} のとき，{{< katex >}}n\le m{{< /katex >}} ならば {{< katex >}}x_n=0+p^n\mathbb{Z}{{< /katex >}} となります．
+
+この観察から，{{< katex >}}x\neq(0+p^n\mathbb{Z})_n{{< /katex >}} ならば，ある {{< katex >}}N\in\mathbb{N}{{< /katex >}} が存在し，{{< katex >}}n\ge N{{< /katex >}} ならば {{< katex >}}x_n=x'_n+p^n\mathbb{Z},x'_n\in\mathbb{Z}{{< /katex >}} において {{< katex >}}x'_n\neq0{{< /katex >}} となることがわかります．
+{{< katex >}}(0+p^n\mathbb{Z})_n\in\mathbb{Z}_p{{< /katex >}} であることに注意してください．
+なぜならば，そのような {{< katex >}}N\in\mathbb{N}{{< /katex >}} が存在しなければ，任意の {{< katex >}}n\in\mathbb{N}{{< /katex >}} について {{< katex >}}n'\ge n{{< /katex >}} が存在し {{< katex >}}x_{n'}=0+p^{n'}\mathbb{Z}{{< /katex >}} となりますが，{{< katex >}}n'\ge n{{< /katex >}} より {{< katex >}}x_n=0+p^n\mathbb{Z}{{< /katex >}} となり，これが任意の {{< katex >}}n\in\mathbb{N}{{< /katex >}} について成り立つので矛盾するためです．
 
 ## まとめ
 

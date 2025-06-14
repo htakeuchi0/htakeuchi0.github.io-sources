@@ -15,3 +15,4 @@ weight: 1
 
 1. [多項式]({{< ref poly >}})
 2. [多変数連立代数方程式とグレブナー基底]({{< ref groebner >}})
+3. [{{< katex >}}p{{< /katex >}}進整数と射影極限]({{< ref padicint >}})
