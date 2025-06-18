@@ -14,22 +14,23 @@ weight: 3
 ## 概要
 
 ホモロジー代数の教科書として，志甫 淳の『層とホモロジー代数』[[1]](#cite:1) があります．
-[[1]](#cite:1) では，基本的な集合論的知識以外の予備知識をほとんど仮定せずに層やホモロジー代数が説明されているとのことです [[1, まえがき]](#cite:1)．
+[[1]](#cite:1) は，基本的な集合論的知識以外の予備知識をほとんど仮定せずに，層やホモロジー代数が説明されている教科書だそうです [[1, まえがき]](#cite:1)．
 
-[[1, 例1.55, p.41]](#cite:1) では，**射影極限** の例として **{{< katex >}}p{{< /katex >}}進整数環** が紹介されています．
-そこでは {{< katex >}}p{{< /katex >}}進整数環 {{< katex >}}\mathbb{Z}_p{{< /katex >}} が整域であることを示すため，{{< katex >}}a=(a_n)_n,b=(b_n)_n\in\mathbb{Z}_p{{< /katex >}} について {{< katex >}}a,b\neq0{{< /katex >}} ならば {{< katex >}}a_n,b_n\neq0{{< /katex >}} なる {{< katex >}}n{{< /katex >}} がとれることを主張していますが，その詳細は触れられていません．
+さて，[[1, 例1.55, p.41]](#cite:1) では，**射影極限** の例として **{{< katex >}}p{{< /katex >}}進整数環** が紹介されています．
+そこでは {{< katex >}}p{{< /katex >}}進整数環 {{< katex >}}\mathbb{Z}_p{{< /katex >}} が整域であることを示すため，{{< katex >}}a=(a_n)_n,b=(b_n)_n\in\mathbb{Z}_p{{< /katex >}} について {{< katex >}}a,b\neq0{{< /katex >}} ならば {{< katex >}}a_n,b_n\neq0{{< /katex >}} なる {{< katex >}}n{{< /katex >}} がとれると書かれています．
+しかし，その詳細までは触れられていませんでした．
 本ページの作者は，射影極限にも {{< katex >}}p{{< /katex >}}進整数環にも不慣れなので[^1]，そこで述べられた主張をひとつひとつ確認しながら読み進めたいと思います．
 本ページはその軌跡を残したものです．
 [^1]: そもそも代数に不慣れです．
 
 したがって本ページは，表題の内容に関する解説書ではなく，正確な理解を求めるには不向きです．
-原典 [[1]](#cite:1) またはその他資料をご確認ください．
+正確な理解を求める場合は，原典 [[1]](#cite:1) またはその他資料をご確認ください．
 
 ## 準備：[1] の議論の引用
 
 まず， **帰納極限** の定義を述べます．
 すべての定義は書ききれないので，ここでは [[1, 定義1.49, pp.36, 37]](#cite:1) だけを引用します．
-簡単に補足すると，{{< katex >}}I{{< /katex >}} は有向グラフの頂点の集合，{{< katex >}}J(i,i'){{< /katex >}} は頂点 {{< katex >}}i{{< /katex >}} から頂点 {{< katex >}}i'{{< /katex >}} に向かう辺の集合，{{< katex >}}\mathcal{I}^{\mathrm{op}}{{< /katex >}} は {{< katex >}}\mathcal{I}{{< /katex >}} の辺の向きを反対にしたもの，{{< katex >}}R{{< /katex >}} は環，{{< katex >}}M_i{{< /katex >}} は左 {{< katex >}}R{{< /katex >}} 加群，{{< katex >}}f_{\varphi}{{< /katex >}} は準同型写像，{{< katex >}}\prod{{< /katex >}} は左 {{< katex >}}R{{< /katex >}} 加群としての直積，{{< katex >}}\varphi\in J(i,i'){{< /katex >}} に対して {{< katex >}}\mathrm{s}(\varphi)=i,\mathrm{t}(\varphi)=i'{{< /katex >}}, {{< katex >}}\mathrm{Ker}(f){{< /katex >}} は準同型写像 {{< katex >}}f{{< /katex >}} の核です．
+そこに出てくる記号だけを簡単に補足すると，{{< katex >}}I{{< /katex >}} は有向グラフの頂点の集合，{{< katex >}}J(i,i'){{< /katex >}} は頂点 {{< katex >}}i{{< /katex >}} から頂点 {{< katex >}}i'{{< /katex >}} に向かう辺の集合，{{< katex >}}\mathcal{I}^{\mathrm{op}}{{< /katex >}} は {{< katex >}}\mathcal{I}{{< /katex >}} の辺の向きを反対にしたもの，{{< katex >}}R{{< /katex >}} は環，{{< katex >}}M_i{{< /katex >}} は左 {{< katex >}}R{{< /katex >}} 加群，{{< katex >}}f_{\varphi}{{< /katex >}} は準同型写像，{{< katex >}}\prod{{< /katex >}} は左 {{< katex >}}R{{< /katex >}} 加群としての直積，{{< katex >}}\varphi\in J(i,i'){{< /katex >}} に対して {{< katex >}}\mathrm{s}(\varphi)=i,\mathrm{t}(\varphi)=i'{{< /katex >}}, {{< katex >}}\mathrm{Ker}(f){{< /katex >}} は準同型写像 {{< katex >}}f{{< /katex >}} の核です．
 
 {{% hint info %}}{{< theorem-label name="Definition" comment="帰納極限 [[1, 定義1.49, pp.36, 37]](#cite:1)" >}}{{< katex >}}\mathcal{I}=(I,J(i,i'))_{i,i'\in I}{{< /katex >}} を圏とし，
 {{< katex display=true >}}
@@ -89,9 +90,10 @@ J(i',i'')\times J(i,i')\ni(*_{i',i''},*_{i,i'})\mapsto *_{i,i''}\in J(i,i'')
 
 {{< katex >}}x,y\in p^n\mathbb{Z}{{< /katex >}} なら {{< katex >}}x=x'p^n{{< /katex >}}, {{< katex >}}y=y'p^n{{< /katex >}} なる {{< katex >}}x',y'\in\mathbb{Z}{{< /katex >}} が存在します．
 {{< katex >}}x+y=(x'+y')p^n{{< /katex >}} となりますが {{< katex >}}x'+y'\in\mathbb{Z}{{< /katex >}} なので，{{< katex >}}x+y\in p^n\mathbb{Z}{{< /katex >}} となります．
-また，{{< katex >}}a\in\mathbb{Z}{{< /katex >}}, {{< katex >}}x\in p^n\mathbb{Z}{{< /katex >}} に対し，{{< katex >}}x=x'p^n{{< /katex >}} なる {{< katex >}}x'\in\mathbb{Z}{{< /katex >}} が存在するので {{< katex >}}ax=(ax')p^n{{< /katex >}} と表せます．
+次に，{{< katex >}}x\in p^n\mathbb{Z}{{< /katex >}} なら {{< katex >}}x=x'p^n{{< /katex >}} なる {{< katex >}}x'\in\mathbb{Z}{{< /katex >}} が存在しますが，{{< katex >}}-x'\in\mathbb{Z}{{< /katex >}} なので，{{< katex >}}y=(-x')p^n{{< /katex >}} も {{< katex >}}p^n\mathbb{Z}{{< /katex >}} に属します．
+ここで，{{< katex >}}x+y=(x'+(-x'))p^n=0{{< /katex >}}, {{< katex >}}y+x=((-x')+x')p^n=0{{< /katex >}} なので，{{< katex >}}-x=y\in p^n\mathbb{Z}{{< /katex >}} となります．
+さらに，{{< katex >}}x\in p^n\mathbb{Z}{{< /katex >}} に対し，{{< katex >}}x=x'p^n{{< /katex >}} なる {{< katex >}}x'\in\mathbb{Z}{{< /katex >}} が存在するので，任意の {{< katex >}}a\in\mathbb{Z}{{< /katex >}} について {{< katex >}}ax=(ax')p^n{{< /katex >}} と表せます．
 {{< katex >}}ax'\in\mathbb{Z}{{< /katex >}} なので {{< katex >}}ax\in p^n\mathbb{Z}{{< /katex >}} となります．
-また，{{< katex >}}\mathbb{Z}{{< /katex >}} の零元 {{< katex >}}0{{< /katex >}} は {{< katex >}}0=p^n\cdot0{{< /katex >}}, {{< katex >}}0\in\mathbb{Z}{{< /katex >}} なので {{< katex >}}0\in p^n\mathbb{Z}{{< /katex >}} です．
 よって，[[1, p.8]](#cite:1) の議論より，{{< katex >}}p^n\mathbb{Z}{{< /katex >}} は {{< katex >}}\mathbb{Z}{{< /katex >}} の部分加群です．
 
 ここで {{< katex >}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} を {{< katex >}}\mathbb{Z}/p^n\mathbb{Z}=\{x+p^n\mathbb{Z}\mid x\in\mathbb{Z}\}{{< /katex >}} で定めます．
@@ -104,7 +106,7 @@ J(i',i'')\times J(i,i')\ni(*_{i',i''},*_{i,i'})\mapsto *_{i,i''}\in J(i,i'')
 一般に {{< katex >}}x+p^n\mathbb{Z}=x'+p^n\mathbb{Z},x\neq x'{{< /katex >}} なる {{< katex >}}x,x'\in\mathbb{Z}{{< /katex >}} が存在するので，{{< katex >}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} の要素の “表現” によらずに演算結果が定まること（well-defined であること）を確認する必要があります．
 ここでは省略しますが，[[1, 補題1.18, p.9]](#cite:1) よりこれは well-defined であることがわかります．
 
-これによって，{{< katex >}}n\in\mathbb{N}{{< /katex >}} について {{< katex >}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} が左 {{< katex >}}\mathbb{Z}{{< /katex >}} 加群となることがわかりました．
+以上より，{{< katex >}}n\in\mathbb{N}{{< /katex >}} について {{< katex >}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} が左 {{< katex >}}\mathbb{Z}{{< /katex >}} 加群となることがわかりました．
 
 ### 左 \\(\mathbb{Z}\\) 加群 \\(\mathbb{Z}/p^n\mathbb{Z}\\) 上の準同型写像 \\(f_{nm}\\)
 
@@ -179,7 +181,7 @@ J(i',i'')\times J(i,i')\ni(*_{i',i''},*_{i,i'})\mapsto *_{i,i''}\in J(i,i'')
 
 ### 準同型写像 \\(f_{nm}\\) の性質
 
-{{< katex >}}f_{nm}{{< /katex >}} の性質を確認します．
+以降の議論のために {{< katex >}}f_{nm}{{< /katex >}} の性質をまとめておきます．
 {{< katex >}}n\in\mathbb{N}=\{0,1,\dots\}{{< /katex >}} とします．
 {{< katex >}}x+p^n\mathbb{Z}\in\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}}, {{< katex >}}x\in\mathbb{Z}{{< /katex >}} とします．
 このとき，{{< katex >}}f_{nn}(x+p^n\mathbb{Z})=x+p^n\mathbb{Z}{{< /katex >}} となるので，{{< katex >}}f_{nn}=\mathrm{id}_{\mathbb{Z}/p^n\mathbb{Z}}{{< /katex >}} です．
@@ -239,7 +241,7 @@ Def. 1において，
 {{< /katex >}}
 となります．
 
-さらに，{{< katex >}}n\in\mathbb{N}{{< /katex >}} について {{< katex >}}x_n=x'_n+p^n\mathbb{Z}, x'_n\in\mathbb{Z}{{< /katex >}} と表しておくと，{{< katex >}}x_n=f_{nm}(x_m){{< /katex >}} は {{< katex >}}x'_n+p^n\mathbb{Z}=x'_m+p^n\mathbb{Z}{{< /katex >}} になるので，
+さらに，{{< katex >}}n\in\mathbb{N}{{< /katex >}} について {{< katex >}}x_n=x'_n+p^n\mathbb{Z}, x'_n\in\mathbb{Z}{{< /katex >}} と表しておくと，{{< katex >}}x_n=f_{nm}(x_m){{< /katex >}} の関係は {{< katex >}}x'_n+p^n\mathbb{Z}=x'_m+p^n\mathbb{Z}{{< /katex >}} と表せるので，
 {{< katex display=true >}}
 \begin{aligned}
 &\varprojlim_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}\\
@@ -251,7 +253,7 @@ Def. 1において，
 と書けることがわかります．
 
 さて，[[1, 例1.55, p.41]](#cite:1) では，{{< katex >}}(a_n)_n,(b_n)_n\in\mathbb{Z}_p{{< /katex >}} の和と積を {{< katex >}}(a_n)_n+(b_n)_n=(a_n+b_n)_n{{< /katex >}}, {{< katex >}}(a_n)_n(b_n)_n=(a_nb_n)_n{{< /katex >}} と定めることで，{{< katex >}}\mathbb{Z}_p{{< /katex >}} は可換環となると説明されています ．
-ここではこれを確認します．
+これを確認します．
 
 {{< katex >}}(a_n)_n,(b_n)_n\in\mathbb{Z}_p{{< /katex >}} とします．
 このとき，{{< katex >}}n\in\mathbb{N}{{< /katex >}} について {{< katex >}}a_n=a_n'+p^n\mathbb{Z},b_n=b'_n+p^n\mathbb{Z},a'_n,b'_n\in\mathbb{Z}{{< /katex >}} と表せます．
@@ -263,15 +265,15 @@ Def. 1において，
 &b'_n+p^n\mathbb{Z}=b'_m+p^n\mathbb{Z}
 \end{aligned}
 {{< /katex >}}
-なので，{{< katex >}}n\in\mathbb{N}{{< /katex >}} について，
+なので，各辺の和および積をとると，
 {{< katex display=true >}}
 \begin{aligned}
-&a_n+b_n=(a'_n+p^n\mathbb{Z})+(b'_n+p^n\mathbb{Z})=(a'_n+b'_n)+p^n\mathbb{Z}=(a'_m+b'_m)+p^n\mathbb{Z},\\
-&a_nb_n=(a'_n+p^n\mathbb{Z})(b'_n+p^n\mathbb{Z})=(a'_nb'_n)+p^n\mathbb{Z}=(a'_mb'_m)+p^n\mathbb{Z}
+&(a'_n+b'_n)+p^n\mathbb{Z}=(a'_m+b'_m)+p^n\mathbb{Z},\\
+&(a'_nb'_n)+p^n\mathbb{Z}=(a'_mb'_m)+p^n\mathbb{Z}
 \end{aligned}
 {{< /katex >}}
 が成り立ちます．
-よって，{{< katex >}}(a_n)_n,(b_n)_n\in\mathbb{Z}_p{{< /katex >}} ならば {{< katex >}}(a_n+b_n)_n\in\mathbb{Z}_p,(a_nb_n)_n\in\mathbb{Z}_p{{< /katex >}} です．
+これは，{{< katex >}}a_n+b_n=f_{nm}(a_m+b_m),a_nb_n=f_{nm}(a_mb_m){{< /katex >}} を意味するため，{{< katex >}}(a_n)_n,(b_n)_n\in\mathbb{Z}_p{{< /katex >}} ならば {{< katex >}}(a_n+b_n)_n\in\mathbb{Z}_p,(a_nb_n)_n\in\mathbb{Z}_p{{< /katex >}} です．
 したがって，{{< katex >}}\mathbb{Z}_p{{< /katex >}} 上の和と積を {{< katex >}}(a_n)_n+(b_n)_n=(a_n+b_n)_n{{< /katex >}}, {{< katex >}}(a_n)_n(b_n)_n=(a_nb_n)_n{{< /katex >}} と定めることができます．
 
 いま，{{< katex >}}x=(x_n)_n\in\prod_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} が {{< katex >}}x'\in\mathbb{Z}{{< /katex >}} によって {{< katex >}}x=(x'+p^n\mathbb{Z})_n{{< /katex >}} と表されているものとします．
@@ -279,8 +281,11 @@ Def. 1において，
 特に，{{< katex >}}x'=0{{< /katex >}} や {{< katex >}}x'=1{{< /katex >}} とした {{< katex >}}(0+p^n\mathbb{Z})_n,(1+p^n\mathbb{Z})_n{{< /katex >}} も {{< katex >}}\mathbb{Z}_p{{< /katex >}} に属します．
 
 {{< katex >}}\prod_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} は左 {{< katex >}}\mathbb{Z}{{< /katex >}} 加群であることから特に {{< katex >}}\prod_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} は可換群で，その零元は {{< katex >}}(0+p^n\mathbb{Z})_n{{< /katex >}} です．
-{{< katex >}}\mathbb{Z}_p\subseteq\prod_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} で，{{< katex >}}\mathbb{Z}_p{{< /katex >}} は加法によって閉じていて零元も属するので {{< katex >}}\mathbb{Z}_p{{< /katex >}} はその部分群となります．
-よって，{{< katex >}}\mathbb{Z}_p{{< /katex >}} は可換群をなします．
+{{< katex >}}\mathbb{Z}_p\subseteq\prod_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} で，{{< katex >}}\mathbb{Z}_p{{< /katex >}} は加法によって閉じています．
+{{< katex >}}x=(x'_n+p^n\mathbb{Z})_n\in\mathbb{Z}_p,x'_n\in\mathbb{Z}{{< /katex >}} に対し，{{< katex >}}-x'_n\in\mathbb{Z}{{< /katex >}} なので，{{< katex >}}y=((-x'_n)+p^n\mathbb{Z})_n{{< /katex >}} とおくと {{< katex >}}y\in\prod_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} です．
+そして，{{< katex >}}n\le m{{< /katex >}} において {{< katex >}}x'_n+p^n\mathbb{Z}=x'_m+p^n\mathbb{Z}{{< /katex >}} より，両辺 {{< katex >}}(-1)){{< /katex >}} 倍して {{< katex >}}(-x'_n)+p^n\mathbb{Z}=(-x'_m)+p^n\mathbb{Z}{{< /katex >}} なので {{< katex >}}y\in\mathbb{Z}_p{{< /katex >}} です．
+さらに，{{< katex >}}x+y=((x'_n+(-x'_n))+p^n\mathbb{Z})_n=(0+p^n\mathbb{Z})_n{{< /katex >}}, {{< katex >}}y+x=(((-x'_n)+x'_n)+p^n\mathbb{Z})_n=(0+p^n\mathbb{Z})_n{{< /katex >}} なので，{{< katex >}}-x=y\in\mathbb{Z}_p{{< /katex >}} となります．
+よって，{{< katex >}}\mathbb{Z}_p{{< /katex >}} は可換群 {{< katex >}}\prod_{n\in\mathbb{N}}\mathbb{Z}/p^n\mathbb{Z}{{< /katex >}} の部分群となり，{{< katex >}}\mathbb{Z}_p{{< /katex >}} は可換群をなすことがわかります．
 
 {{< katex >}}a=(a'_n+p^n\mathbb{Z})_n,b=(b'_n+p^n\mathbb{Z})_n,c=(c'_n+p^n\mathbb{Z})_n\in\mathbb{Z}_p,a'_n,b'_n,c'_n\in\mathbb{Z}{{< /katex >}} とすると，
 {{< katex display=true >}}
@@ -336,7 +341,7 @@ Def. 1において，
   &=a
 \end{aligned}
 {{< /katex >}}
-なので {{< katex >}}e{{< /katex >}}は単位元となり {{< katex >}}\mathbb{Z}_p{{< /katex >}} は環をなします．
+なので {{< katex >}}e{{< /katex >}}は乗法の単位元となり {{< katex >}}\mathbb{Z}_p{{< /katex >}} は環をなします．
 以下，{{< katex >}}0_{\mathbb{Z}_p}=(0+p^n\mathbb{Z})_n{{< /katex >}}, {{< katex >}}1_{\mathbb{Z}_p}=(1+p^n\mathbb{Z})_n{{< /katex >}} と書くことにします．
 
 さらに，
@@ -351,16 +356,17 @@ Def. 1において，
 \end{aligned}
 {{< /katex >}}
 なので，{{< katex >}}\mathbb{Z}_p{{< /katex >}} は可換環をなすことがわかります．
+この {{< katex >}}\mathbb{Z}_p{{< /katex >}} を **{{< katex >}}p{{< /katex >}}進整数環** といいます．
 
 これも冒頭で述べたとおり，[[1, 例1.55, p.41]](#cite:1) では，{{< katex >}}\mathbb{Z}_p{{< /katex >}} が整域であり，{{< katex >}}\mathbb{Z}_p{{< /katex >}} において {{< katex >}}p1_{\mathbb{Z}_p}=\underbrace{1_{\mathbb{Z}_p}+\cdots+1_{\mathbb{Z}_p}}_{p\text{\ times}}\neq0_{\mathbb{Z}_p}{{< /katex >}} であることが説明されています．
 その準備として，さらに {{< katex >}}\mathbb{Z}_p{{< /katex >}} の元の性質を観察してみます．
 
 {{< katex >}}x=(x_n)_n\in\mathbb{Z}_p{{< /katex >}} とします．
-{{< katex >}}m\in\mathbb{Z}{{< /katex >}} とし，{{< katex >}}x_m=0+p^m\mathbb{Z}{{< /katex >}} とします．
+{{< katex >}}m\in\mathbb{N}{{< /katex >}} とし，{{< katex >}}x_m=0+p^m\mathbb{Z}{{< /katex >}} とします．
 すると，{{< katex >}}n\le m{{< /katex >}} ならば {{< katex >}}x_n=f_{nm}(x_m)=f_{nm}(0+p^m\mathbb{Z})=0+p^n\mathbb{Z}{{< /katex >}} となります．
 したがって，ある {{< katex >}}m{{< /katex >}} において {{< katex >}}x_m=0+p^m\mathbb{Z}{{< /katex >}} のとき，{{< katex >}}n\le m{{< /katex >}} ならば {{< katex >}}x_n=0+p^n\mathbb{Z}{{< /katex >}} となります．
 
-この観察から，{{< katex >}}x\neq0_{\mathbb{Z}_p}{{< /katex >}} ならば，ある {{< katex >}}N\in\mathbb{N}{{< /katex >}} が存在し，{{< katex >}}n\ge N{{< /katex >}} ならば {{< katex >}}x_n=x'_n+p^n\mathbb{Z}\neq0+p^n\mathbb{Z}{{< /katex >}} となることがわかります．
+この観察から，{{< katex >}}x\neq0_{\mathbb{Z}_p}{{< /katex >}} ならば，ある {{< katex >}}N\in\mathbb{N}{{< /katex >}} が存在し，{{< katex >}}n\ge N{{< /katex >}} ならば {{< katex >}}x_n\neq0+p^n\mathbb{Z}{{< /katex >}} となることがわかります．
 なぜならば，そのような {{< katex >}}N\in\mathbb{N}{{< /katex >}} が存在しなければ，任意の {{< katex >}}n\in\mathbb{N}{{< /katex >}} について {{< katex >}}n'\ge n{{< /katex >}} が存在し {{< katex >}}x_{n'}=0+p^{n'}\mathbb{Z}{{< /katex >}} となりますが，{{< katex >}}n'\ge n{{< /katex >}} より {{< katex >}}x_n=0+p^n\mathbb{Z}{{< /katex >}} となり，これが任意の {{< katex >}}n\in\mathbb{N}{{< /katex >}} について成り立つので {{< katex >}}x=0_{\mathbb{Z}_p}{{< /katex >}} となり矛盾するためです．
 
 さて，[[1, 例1.55, p.41]](#cite:1) に戻り，まず {{< katex >}}\mathbb{Z}_p{{< /katex >}} が整域であることを確認します．
