@@ -28,11 +28,11 @@ weight: 3
 
 ## 準備：[1] の議論の引用
 
-まず， **帰納極限** の定義を述べます．
+まず， **射影極限** の定義を述べます．
 すべての定義は書ききれないので，ここでは [[1, 定義1.49, pp.36, 37]](#cite:1) だけを引用します．
 そこに出てくる記号だけを簡単に補足すると，{{< katex >}}I{{< /katex >}} は有向グラフの頂点の集合，{{< katex >}}J(i,i'){{< /katex >}} は頂点 {{< katex >}}i{{< /katex >}} から頂点 {{< katex >}}i'{{< /katex >}} に向かう辺の集合，{{< katex >}}\mathcal{I}^{\mathrm{op}}{{< /katex >}} は {{< katex >}}\mathcal{I}{{< /katex >}} の辺の向きを反対にしたもの，{{< katex >}}R{{< /katex >}} は環，{{< katex >}}M_i{{< /katex >}} は左 {{< katex >}}R{{< /katex >}} 加群，{{< katex >}}f_{\varphi}{{< /katex >}} は準同型写像，{{< katex >}}\prod{{< /katex >}} は左 {{< katex >}}R{{< /katex >}} 加群としての直積，{{< katex >}}\varphi\in J(i,i'){{< /katex >}} に対して {{< katex >}}\mathrm{s}(\varphi)=i,\mathrm{t}(\varphi)=i'{{< /katex >}}, {{< katex >}}\mathrm{Ker}(f){{< /katex >}} は準同型写像 {{< katex >}}f{{< /katex >}} の核です．
 
-{{% hint info %}}{{< theorem-label name="Definition" comment="帰納極限 [[1, 定義1.49, pp.36, 37]](#cite:1)" >}}{{< katex >}}\mathcal{I}=(I,J(i,i'))_{i,i'\in I}{{< /katex >}} を圏とし，
+{{% hint info %}}{{< theorem-label name="Definition" comment="射影極限 [[1, 定義1.49, pp.36, 37]](#cite:1)" >}}{{< katex >}}\mathcal{I}=(I,J(i,i'))_{i,i'\in I}{{< /katex >}} を圏とし，
 {{< katex display=true >}}
 \begin{align}
 ((M_i)_{i\in I},(f_{\varphi}:M_{i'}\to M_i)_{i,i'\in I,\varphi\in J(i,i')})
@@ -408,7 +408,7 @@ a_{2n-1}b_{2n-1}\neq 0+p^{2n-1}\mathbb{Z}
 
 本ページでは [[1, 例1.55, p.41]](#cite:1) の主張をひとつひとつ確認しました．
 特に，**{{< katex >}}p{{< /katex >}}進整数環** について，細かく述べられていなかった主張を確認しました．
-もちろんこれだけでは {{< katex >}}p{{< /katex >}}進整数環についてほとんど何もわかりませんでしたが，具体例について考えたことで，帰納極限やそれに関連する議論の練習に少しだけでもなったように思います．
+もちろんこれだけでは {{< katex >}}p{{< /katex >}}進整数環についてほとんど何もわかりませんでしたが，具体例について考えたことで，射影極限やそれに関連する議論の練習に少しだけでもなったように思います．
 
 ## 参考文献
 
